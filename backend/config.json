@@ -1,0 +1,74 @@
+{
+    "mappings": [
+        {
+            "id": 1,
+            "event": "gift",
+            "giftName": "Rose",
+            "action": [
+                "relay_1",
+                "relay_3",
+                "relay_2",
+                "relay_4",
+                "led_pulse",
+                "servo_wave"
+            ],
+            "duration": 1000,
+            "sound": "gift.mp3",
+            "threshold": 0,
+            "minValue": 0,
+            "maxValue": 0
+        },
+        {
+            "id": 2,
+            "event": "like_goal",
+            "threshold": 1000,
+            "action": [
+                "relay_2"
+            ],
+            "duration": 2000,
+            "sound": "welcome.mp3",
+            "autoReset": true,
+            "minValue": 0,
+            "maxValue": 0
+        },
+        {
+            "id": 3,
+            "event": "gift",
+            "action": [
+                "relay_4"
+            ],
+            "duration": 500,
+            "sound": "like.mp3",
+            "threshold": 0,
+            "minValue": 0,
+            "maxValue": 0,
+            "giftName": "Ice Cream Cone"
+        },
+        {
+            "id": 4,
+            "event": "gift",
+            "giftName": "Universe",
+            "action": [],
+            "duration": 1000,
+            "sound": "gift.mp3",
+            "autoReset": true,
+            "threshold": 0,
+            "minValue": 0,
+            "maxValue": 0
+        }
+    ],
+    "levels": {
+        "follower": {
+            "priority": 1,
+            "color": "#00ff00"
+        },
+        "fan": {
+            "priority": 2,
+            "color": "#0000ff"
+        },
+        "super_fan": {
+            "priority": 3,
+            "color": "#ff0000"
+        }
+    }
+}
