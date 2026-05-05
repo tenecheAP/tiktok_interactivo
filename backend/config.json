@@ -8,9 +8,7 @@
                 "relay_1",
                 "relay_3",
                 "relay_2",
-                "relay_4",
-                "led_pulse",
-                "servo_wave"
+                "relay_4"
             ],
             "duration": 1000,
             "sound": "gift.mp3",
@@ -42,7 +40,7 @@
             "threshold": 0,
             "minValue": 0,
             "maxValue": 0,
-            "giftName": "Ice Cream Cone"
+            "giftName": "GG"
         },
         {
             "id": 4,

@@ -6,8 +6,46 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+// Copia consola -> proyecto/logs/backend.log (detectar errores después)
+const LOG_DIR = path.join(__dirname, '..', 'logs');
+const LOG_FILE = path.join(LOG_DIR, 'backend.log');
+function appendLogFile(level, args) {
+    try {
+        if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
+        const msg = args.map((a) => {
+            if (a instanceof Error) return a.stack || a.message;
+            if (typeof a === 'object' && a !== null) {
+                try {
+                    return JSON.stringify(a);
+                } catch {
+                    return String(a);
+                }
+            }
+            return String(a);
+        }).join(' ');
+        const line = `[${new Date().toISOString()}] [${level}] ${msg}\n`;
+        fs.appendFileSync(LOG_FILE, line);
+    } catch {
+        /* no romper el servidor si falla el disco */
+    }
+}
+const _clog = console.log.bind(console);
+const _cerr = console.error.bind(console);
+console.log = (...a) => {
+    _clog(...a);
+    appendLogFile('LOG', a);
+};
+console.error = (...a) => {
+    _cerr(...a);
+    appendLogFile('ERR', a);
+};
+
 const app = express();
 app.use(cors());
+
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando 🔥');
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -66,6 +104,31 @@ function saveConfig(newConfig) {
 
 // Inicializar configuración
 loadConfig();
+
+/** Normaliza payload para clientes (bot lector / dashboard). */
+function normalizeLiveChat(data) {
+    return {
+        uniqueId: data.uniqueId || data.userId || data.user?.uniqueId || null,
+        userId: data.userId || data.user?.userId || null,
+        nickname: data.nickname || data.user?.nickname || 'Anónimo',
+        comment: data.comment ?? '',
+        ts: Date.now()
+    };
+}
+
+function normalizeLiveGift(data) {
+    const name = data.giftName || data.giftId || 'Regalo';
+    return {
+        ...data,
+        giftName: name,
+        nickname: data.nickname || 'Anónimo',
+        giftValue: data.giftValue ?? 0,
+        repeatCount: data.repeatCount ?? 1,
+        badgeLevel: data.badgeLevel ?? 0,
+        uniqueId: data.uniqueId || data.userId || null,
+        ts: Date.now()
+    };
+}
 
 let currentLikes = 0;
 
@@ -154,14 +217,33 @@ io.on('connection', (socket) => {
     // Evento de simulación para pruebas
     socket.on('simulate_event', (type) => {
         console.log(`Simulando evento: ${type}`);
+
+        if (type === 'chat') {
+            const mockChat = {
+                nickname: `User_${Math.floor(Math.random() * 1000)}`,
+                comment: `Comentario de prueba ${Date.now()}`,
+                uniqueId: `mock_${Math.random().toString(36).slice(2, 12)}`
+            };
+            io.emit('live_chat', normalizeLiveChat(mockChat));
+            return;
+        }
+
         const mockData = {
             nickname: `User_${Math.floor(Math.random() * 1000)}`,
             giftName: type === 'gift' ? (Math.random() > 0.5 ? 'Rose' : 'TikTok') : null,
             repeatCount: Math.floor(Math.random() * 5) + 1,
             likeCount: type === 'like' ? 100 : 0,
             badgeLevel: Math.floor(Math.random() * 15),
-            giftValue: type === 'gift' ? Math.floor(Math.random() * 100) : 0
+            giftValue: type === 'gift' ? Math.floor(Math.random() * 100) : 0,
+            uniqueId: type === 'gift' ? `mock_${Math.random().toString(36).slice(2, 12)}` : undefined
         };
+
+        if (type === 'gift') {
+            const name = mockData.giftName || 'Rose';
+            mockData.giftName = name;
+            io.emit('live_gift', normalizeLiveGift(mockData));
+        }
+
         processEvent(type, mockData);
     });
 });
@@ -220,6 +302,7 @@ function connectToTikTok(username, socket) {
         
         // Aseguramos que data tenga giftName para el resto de la lógica
         data.giftName = name;
+        io.emit('live_gift', normalizeLiveGift(data));
         processEvent('gift', data);
     });
 
@@ -238,7 +321,7 @@ function connectToTikTok(username, socket) {
     // Evento: Chat
     tiktokConnection.on('chat', data => {
         console.log(`${data.nickname}: ${data.comment}`);
-        // Posibilidad de mini-juegos aquí
+        io.emit('live_chat', normalizeLiveChat(data));
     });
 }
 
@@ -336,6 +419,16 @@ function triggerAction(mapping, data) {
 }
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
+});
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(
+            `[ERR] El puerto ${PORT} ya está en uso. Cierra el otro proceso Node o en PowerShell: $env:PORT=4000; npm start`
+        );
+    } else {
+        console.error('[ERR] Error del servidor HTTP:', err);
+    }
+    process.exit(1);
 });

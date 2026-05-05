@@ -1,0 +1,107 @@
+================================================================================
+  TikTok interactivo — cómo arrancar el proyecto (Windows / PowerShell)
+================================================================================
+
+Ruta base del proyecto (ajusta si tu carpeta tiene otro nombre):
+  ...\proyecto tiktok interactivo\tiktok_interactivo\
+
+Si ves "ERR_CONNECTION_REFUSED" en el navegador:
+  - Casi siempre significa que NO está corriendo el servidor (Vite en 5173).
+  - Arranca el FRONTEND con: cd frontend  →  npm run dev
+  - Y el BACKEND con otra terminal: cd backend  →  npm start
+
+--------------------------------------------------------------------------------
+0) UNA SOLA TERMINAL — backend + frontend juntos (recomendado)
+--------------------------------------------------------------------------------
+
+  Desde la carpeta tiktok_interactivo (la que contiene backend y frontend):
+
+    npm install
+    npm run dev
+
+  Esto levanta Node en :3000 y Vite en :5173 a la vez.
+
+--------------------------------------------------------------------------------
+0b) Windows — dos ventanas automáticas
+--------------------------------------------------------------------------------
+
+  Desde tiktok_interactivo:
+
+    .\scripts\iniciar-dos-ventanas.ps1
+
+Necesitas DOS terminales abiertas si no usas los métodos de arriba.
+
+
+--------------------------------------------------------------------------------
+1) BACKEND (Node, puerto 3000)
+--------------------------------------------------------------------------------
+
+  cd "ruta\completa\tiktok_interactivo\backend"
+
+  Primera vez (si no instalaste dependencias):
+    npm install
+
+  Arrancar:
+    npm start
+    (equivale a: node index.js)
+
+  Los mensajes de la consola también se guardan en:
+    tiktok_interactivo\logs\backend.log
+
+  Opcional — script desde la raíz tiktok_interactivo:
+    .\scripts\iniciar-backend.ps1
+
+
+--------------------------------------------------------------------------------
+2) FRONTEND (Vite, puerto 5173)
+--------------------------------------------------------------------------------
+
+  cd "ruta\completa\tiktok_interactivo\frontend"
+
+  Primera vez:
+    npm install
+
+  Arrancar:
+    npm run dev
+
+  Abre el navegador en:
+    http://localhost:5173
+
+  Rutas útiles:
+    http://localhost:5173/           → Dashboard actuadores
+    http://localhost:5173/bot-lector → Bot lector (TTS)
+
+  Opcional — script:
+    .\scripts\iniciar-frontend.ps1
+
+  Para guardar también la salida de la consola del frontend en un archivo:
+    .\scripts\iniciar-frontend-con-log.ps1
+    (genera o sobrescribe según tu PowerShell: logs\frontend-consola.log)
+
+
+--------------------------------------------------------------------------------
+3) DÓNDE MIRAR SI HAY ERRORES
+--------------------------------------------------------------------------------
+
+  Backend (siempre que uses npm start / node index.js):
+    tiktok_interactivo\logs\backend.log
+
+  Frontend (solo si usas iniciar-frontend-con-log.ps1 o rediriges a mano):
+    tiktok_interactivo\logs\frontend-consola.log
+
+  Busca líneas con [ERR] en backend.log o mensajes en rojo en consola.
+
+
+--------------------------------------------------------------------------------
+4) COMANDO RÁPIDO MANUAL (dos ventanas)
+--------------------------------------------------------------------------------
+
+  Ventana A:
+    cd ...\tiktok_interactivo\backend && npm start
+
+  Ventana B:
+    cd ...\tiktok_interactivo\frontend && npm run dev
+
+  (En PowerShell clásico usa ";" en lugar de "&&", o ejecuta cd y npm en dos líneas.)
+
+================================================================================

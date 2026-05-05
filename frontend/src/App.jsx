@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { io } from 'socket.io-client';
-import { Settings, Play, Wifi, WifiOff, Volume2, User, Zap, Gift } from 'lucide-react';
-
-// Intentar conectar al backend dinámicamente
-const socket = io(window.location.hostname === 'localhost' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`, {
-  transports: ['websocket', 'polling'],
-  reconnectionAttempts: 5
-});
+import { Link } from 'react-router-dom';
+import { Settings, Play, Wifi, Volume2, User, Zap, Gift } from 'lucide-react';
+import socket from './socket';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -440,9 +435,17 @@ function App() {
       <div className="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40">
         <div className="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <h1 className="text-xl font-black tracking-tighter bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent uppercase italic">
-              TikTok Live <span className="text-slate-200 not-italic">Pro</span>
-            </h1>
+            <div className="flex items-center gap-4">
+              <h1 className="text-xl font-black tracking-tighter bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent uppercase italic">
+                TikTok Live <span className="text-slate-200 not-italic">Pro</span>
+              </h1>
+              <Link
+                to="/bot-lector"
+                className="text-[10px] font-black uppercase tracking-widest text-violet-400 hover:text-violet-300 border border-violet-500/40 px-2 py-1 rounded-lg"
+              >
+                Bot lector
+              </Link>
+            </div>
             <div className="hidden md:flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"></div>
@@ -537,8 +540,8 @@ function App() {
                     >
                       Desconectar
                     </button>
-                    <div className="grid grid-cols-3 gap-1">
-                      {['gift', 'like', 'follow'].map(type => (
+                    <div className="grid grid-cols-2 gap-1">
+                      {['gift', 'like', 'follow', 'chat'].map(type => (
                         <button 
                           key={type}
                           onClick={() => socket.emit('simulate_event', type)}
@@ -605,8 +608,8 @@ function App() {
                   <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                     <Zap size={14} className="text-yellow-500" /> Simulador de Pruebas
                   </h3>
-                  <div className="grid grid-cols-3 gap-2">
-                    {['gift', 'like', 'follow'].map(type => (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {['gift', 'like', 'follow', 'chat'].map(type => (
                       <button 
                         key={type}
                         onClick={() => socket.emit('simulate_event', type)}
