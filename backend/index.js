@@ -63,7 +63,6 @@ const DEFAULT_CONFIG = {
         { id: 1, event: 'gift', giftName: 'Rose', action: ['relay_1'], duration: 1000, sound: 'gift.mp3' },
         { id: 2, event: 'like_goal', threshold: 1000, action: ['relay_2'], duration: 2000, sound: 'welcome.mp3', autoReset: true },
         { id: 3, event: 'follow', action: ['led_pulse'], duration: 500, sound: 'like.mp3' },
-        // Ejemplo de mapeo con múltiples actuadores para regalos valiosos
         { id: 4, event: 'gift', giftName: 'Universe', action: ['relay_1', 'relay_2', 'relay_3', 'relay_4', 'led_pulse', 'servo_wave'], duration: 5000, sound: 'gift.mp3' }
     ],
     levels: {
@@ -75,7 +74,6 @@ const DEFAULT_CONFIG = {
 
 let config = DEFAULT_CONFIG;
 
-// Cargar configuración desde el archivo
 function loadConfig() {
     try {
         if (fs.existsSync(CONFIG_FILE)) {
@@ -92,7 +90,6 @@ function loadConfig() {
     }
 }
 
-// Guardar configuración al archivo
 function saveConfig(newConfig) {
     try {
         fs.writeFileSync(CONFIG_FILE, JSON.stringify(newConfig, null, 4));
@@ -102,10 +99,8 @@ function saveConfig(newConfig) {
     }
 }
 
-// Inicializar configuración
 loadConfig();
 
-/** Normaliza payload para clientes (bot lector / dashboard). */
 function normalizeLiveChat(data) {
     return {
         uniqueId: data.uniqueId || data.userId || data.user?.uniqueId || null,
@@ -130,62 +125,68 @@ function normalizeLiveGift(data) {
     };
 }
 
-let currentLikes = 0;
+const roomStates = new Map();
 
-// Sistema de Colas para Actuadores
-const queues = {
-    relay_1: { items: [], processing: false },
-    relay_2: { items: [], processing: false },
-    led_pulse: { items: [], processing: false },
-    servo_wave: { items: [], processing: false }
-};
+function getRoomState(username) {
+    if (!roomStates.has(username)) {
+        roomStates.set(username, {
+            currentLikes: 0,
+            connectionStartTime: null,
+            queues: {
+                relay_1: { items: [], processing: false },
+                relay_2: { items: [], processing: false },
+                relay_3: { items: [], processing: false },
+                relay_4: { items: [], processing: false },
+                led_pulse: { items: [], processing: false },
+                servo_wave: { items: [], processing: false }
+            }
+        });
+    }
+    return roomStates.get(username);
+}
 
-function addToQueue(actuator, actionData) {
-    if (!queues[actuator]) {
-        queues[actuator] = { items: [], processing: false };
+function addToQueue(username, actuator, actionData) {
+    const state = getRoomState(username);
+    if (!state.queues[actuator]) {
+        state.queues[actuator] = { items: [], processing: false };
     }
     
-    queues[actuator].items.push(actionData);
-    console.log(`[QUEUE] Añadido a ${actuator}. Total en cola: ${queues[actuator].items.length}`);
+    state.queues[actuator].items.push(actionData);
+    console.log(`[QUEUE][${username}] Añadido a ${actuator}. Total en cola: ${state.queues[actuator].items.length}`);
     
-    // Notificar al frontend sobre el estado de la cola
-    io.emit('queue_update', {
+    io.to(username).emit('queue_update', {
         actuator: actuator,
-        count: queues[actuator].items.length
+        count: state.queues[actuator].items.length
     });
 
-    processQueue(actuator);
+    processQueue(username, actuator);
 }
 
-async function processQueue(actuator) {
-    if (queues[actuator].processing || queues[actuator].items.length === 0) return;
+async function processQueue(username, actuator) {
+    const state = getRoomState(username);
+    if (state.queues[actuator].processing || state.queues[actuator].items.length === 0) return;
 
-    queues[actuator].processing = true;
-    const currentAction = queues[actuator].items[0];
+    state.queues[actuator].processing = true;
+    const currentAction = state.queues[actuator].items[0];
 
-    console.log(`[EXEC] Ejecutando acción en ${actuator} para ${currentAction.user}`);
+    console.log(`[EXEC][${username}] Ejecutando acción en ${actuator} para ${currentAction.user}`);
     
-    // Enviar comando al ESP32 y Dashboard
-    io.emit('action_executing', currentAction);
+    io.to(username).emit('action_executing', currentAction);
 
-    // Esperar la duración de la acción
     await new Promise(resolve => setTimeout(resolve, currentAction.duration));
 
-    // Eliminar de la cola y continuar
-    queues[actuator].items.shift();
-    queues[actuator].processing = false;
+    state.queues[actuator].items.shift();
+    state.queues[actuator].processing = false;
     
-    io.emit('queue_update', {
+    io.to(username).emit('queue_update', {
         actuator: actuator,
-        count: queues[actuator].items.length
+        count: state.queues[actuator].items.length
     });
 
-    processQueue(actuator);
+    processQueue(username, actuator);
 }
 
-let tiktokUsername = "";
-let tiktokConnection = null;
-let connectionStartTime = null;
+const activeTikTokConnections = new Map();
 
 io.on('connection', (socket) => {
     console.log('Cliente conectado:', socket.id);
@@ -193,14 +194,24 @@ io.on('connection', (socket) => {
     socket.emit('config_update', config);
 
     socket.on('set_username', (username) => {
-        tiktokUsername = username;
-        connectToTikTok(username, socket);
+        const normalizedUser = username.toLowerCase().trim();
+        socket.tiktokRoom = normalizedUser;
+        socket.join(normalizedUser);
+        console.log(`Socket ${socket.id} unido a sala ${normalizedUser}`);
+        connectToTikTok(normalizedUser, socket);
+    });
+
+    socket.on('register_esp32', (targetUsername) => {
+        const normalizedUser = targetUsername.toLowerCase().trim();
+        socket.tiktokRoom = normalizedUser;
+        socket.join(normalizedUser);
+        console.log(`[ESP32] Registrado y unido a sala ${normalizedUser}`);
     });
 
     socket.on('update_config', (newConfig) => {
         config = newConfig;
         saveConfig(config);
-        io.emit('config_update', config);
+        io.emit('config_update', config); // Config is global
     });
 
     socket.on('reset_config', () => {
@@ -214,9 +225,31 @@ io.on('connection', (socket) => {
         socket.emit('config_update', config);
     });
 
-    // Evento de simulación para pruebas
+    socket.on('disconnect', () => {
+        console.log('Cliente desconectado:', socket.id);
+        if (socket.tiktokRoom) {
+            const room = socket.tiktokRoom;
+            // Verificar si hay más sockets en la sala
+            const clients = io.sockets.adapter.rooms.get(room);
+            if (!clients || clients.size === 0) {
+                console.log(`[CLEANUP] Sala ${room} vacía. Desconectando TikTok...`);
+                const conn = activeTikTokConnections.get(room);
+                if (conn) {
+                    conn.disconnect();
+                    activeTikTokConnections.delete(room);
+                }
+                roomStates.delete(room);
+            }
+        }
+    });
+
     socket.on('simulate_event', (type) => {
-        console.log(`Simulando evento: ${type}`);
+        const room = socket.tiktokRoom;
+        if (!room) {
+            console.log('No se puede simular sin una sala conectada');
+            return;
+        }
+        console.log(`Simulando evento: ${type} en sala ${room}`);
 
         if (type === 'chat') {
             const mockChat = {
@@ -224,7 +257,7 @@ io.on('connection', (socket) => {
                 comment: `Comentario de prueba ${Date.now()}`,
                 uniqueId: `mock_${Math.random().toString(36).slice(2, 12)}`
             };
-            io.emit('live_chat', normalizeLiveChat(mockChat));
+            io.to(room).emit('live_chat', normalizeLiveChat(mockChat));
             return;
         }
 
@@ -241,19 +274,26 @@ io.on('connection', (socket) => {
         if (type === 'gift') {
             const name = mockData.giftName || 'Rose';
             mockData.giftName = name;
-            io.emit('live_gift', normalizeLiveGift(mockData));
+            io.to(room).emit('live_gift', normalizeLiveGift(mockData));
         }
 
-        processEvent(type, mockData);
+        processEvent(type, mockData, room);
     });
 });
 
 function connectToTikTok(username, socket) {
-    if (tiktokConnection) {
-        tiktokConnection.disconnect();
+    if (activeTikTokConnections.has(username)) {
+        const state = getRoomState(username);
+        console.log(`[SOCKET] Emitiendo connection_status: connected a ${socket.id} (Conexión existente)`);
+        socket.emit('connection_status', {
+            status: 'connected',
+            roomId: username,
+            startTime: state.connectionStartTime
+        });
+        return;
     }
 
-    tiktokConnection = new WebcastPushConnection(username, {
+    const tiktokConnection = new WebcastPushConnection(username, {
         processInitialData: false,
         enableExtendedGiftInfo: true,
         enableWebsocketUpgrade: true,
@@ -264,6 +304,8 @@ function connectToTikTok(username, socket) {
         }
     });
 
+    activeTikTokConnections.set(username, tiktokConnection);
+
     const connectPromise = tiktokConnection.connect();
 
     const timeoutPromise = new Promise((_, reject) => {
@@ -272,91 +314,79 @@ function connectToTikTok(username, socket) {
 
     Promise.race([connectPromise, timeoutPromise]).then(state => {
         console.info(`Conectado al live de ${username}, Room ID: ${state.roomId}`);
-        connectionStartTime = Date.now();
-        console.log(`[SOCKET] Emitiendo connection_status: connected solo a ${socket.id}`);
-        socket.emit('connection_status', {
+        const roomState = getRoomState(username);
+        roomState.connectionStartTime = Date.now();
+        io.to(username).emit('connection_status', {
             status: 'connected',
             roomId: state.roomId,
-            startTime: connectionStartTime
+            startTime: roomState.connectionStartTime
         });
     }).catch(err => {
-        console.error('Error al conectar:', err.message || err);
-        console.log(`[SOCKET] Emitiendo connection_status: error solo a ${socket.id}`);
-        socket.emit('connection_status', { status: 'error', error: err.message || err.toString() });
+        console.error(`Error al conectar a ${username}:`, err.message || err);
+        io.to(username).emit('connection_status', { status: 'error', error: err.message || err.toString() });
+        activeTikTokConnections.delete(username);
     });
 
-    // Evento: Info de la sala (Espectadores)
     tiktokConnection.on('roomUser', data => {
-        io.emit('live_info', {
+        io.to(username).emit('live_info', {
             viewerCount: data.viewerCount,
             totalViewers: data.totalViewers
         });
     });
 
-    // Evento: Regalos
     tiktokConnection.on('gift', data => {
-        // TikTok envía los regalos a veces con nombres localizados o IDs
-        // Forzamos que siempre haya un nombre para el dashboard
         const name = data.giftName || data.giftId || 'Regalo';
-        console.log(`[GIFT] ${data.nickname} envió ${name} x${data.repeatCount}`);
-        
-        // Aseguramos que data tenga giftName para el resto de la lógica
+        console.log(`[GIFT][${username}] ${data.nickname} envió ${name} x${data.repeatCount}`);
         data.giftName = name;
-        io.emit('live_gift', normalizeLiveGift(data));
-        processEvent('gift', data);
+        io.to(username).emit('live_gift', normalizeLiveGift(data));
+        processEvent('gift', data, username);
     });
 
-    // Evento: Likes
     tiktokConnection.on('like', data => {
-        console.log(`Likes: ${data.likeCount} de ${data.nickname}`);
-        processEvent('like', data);
+        console.log(`Likes en ${username}: ${data.likeCount} de ${data.nickname}`);
+        processEvent('like', data, username);
     });
 
-    // Evento: Seguidores
     tiktokConnection.on('follow', data => {
-        console.log(`Nuevo seguidor: ${data.nickname}`);
-        processEvent('follow', data);
+        console.log(`Nuevo seguidor en ${username}: ${data.nickname}`);
+        processEvent('follow', data, username);
     });
 
-    // Evento: Chat
     tiktokConnection.on('chat', data => {
-        console.log(`${data.nickname}: ${data.comment}`);
-        io.emit('live_chat', normalizeLiveChat(data));
+        // No imprimimos los mensajes en la consola para evitar llenar los logs
+        io.to(username).emit('live_chat', normalizeLiveChat(data));
     });
 }
 
-function processEvent(eventType, data) {
-    // Manejo especial para likes y metas
+function processEvent(eventType, data, username) {
+    const state = getRoomState(username);
     if (eventType === 'like') {
-        currentLikes += (data.likeCount || 1);
+        state.currentLikes += (data.likeCount || 1);
         const goalMapping = config.mappings.find(m => m.event === 'like_goal');
-        if (goalMapping && currentLikes >= goalMapping.threshold) {
-            triggerAction(goalMapping, data);
+        if (goalMapping && state.currentLikes >= goalMapping.threshold) {
+            triggerAction(goalMapping, data, username);
             
             if (goalMapping.autoReset) {
-                currentLikes = 0; // Reiniciar meta
-                console.log(`[GOAL] Meta alcanzada y reiniciada.`);
+                state.currentLikes = 0;
+                console.log(`[GOAL][${username}] Meta alcanzada y reiniciada.`);
             } else {
-                currentLikes = goalMapping.threshold; // Mantener al máximo
-                console.log(`[GOAL] Meta alcanzada (Sin reinicio).`);
+                state.currentLikes = goalMapping.threshold;
+                console.log(`[GOAL][${username}] Meta alcanzada (Sin reinicio).`);
             }
         }
-        io.emit('likes_update', { current: currentLikes, goal: goalMapping?.threshold || 1000 });
+        io.to(username).emit('likes_update', { current: state.currentLikes, goal: goalMapping?.threshold || 1000 });
         return;
     }
 
-    // Manejo para regalos específicos
     if (eventType === 'gift') {
         const giftName = data.giftName || 'Regalo';
         const giftValue = data.giftValue || 0;
         
-        // 1. Buscar mapeo por nombre exacto
         const giftMapping = config.mappings.find(m => 
             m.event === 'gift' && 
             m.giftName.toLowerCase() === giftName.toLowerCase()
         );
         
-        // 2. Buscar mapeo por rango de valor (Monedas)
         const valueMapping = config.mappings.find(m => 
             m.event === 'gift_value' && 
             giftValue >= (m.minValue || 0) &&
@@ -364,13 +394,11 @@ function processEvent(eventType, data) {
         );
 
         if (giftMapping) {
-            triggerAction(giftMapping, data);
+            triggerAction(giftMapping, data, username);
         } else if (valueMapping) {
-            // Si no hay por nombre, pero cae en un rango de valor configurado
-            triggerAction(valueMapping, data);
+            triggerAction(valueMapping, data, username);
         } else {
-            // Si no hay mapeo, igual notificamos al frontend para el muro de regalos
-            io.emit('action', {
+            io.to(username).emit('action', {
                 user: data.nickname,
                 giftName: giftName,
                 giftValue: giftValue,
@@ -384,20 +412,17 @@ function processEvent(eventType, data) {
         return;
     }
 
-    // Otros eventos (follow, etc)
     const mapping = config.mappings.find(m => m.event === eventType);
     if (mapping) {
-        triggerAction(mapping, data);
+        triggerAction(mapping, data, username);
     }
 }
 
-function triggerAction(mapping, data) {
-    // Determinar nivel de usuario
+function triggerAction(mapping, data, username) {
     let userLevel = 'follower';
     if (data.badgeLevel >= 10 || data.giftValue > 50) userLevel = 'super_fan';
     else if (data.badgeLevel > 0) userLevel = 'fan';
 
-    // Manejar múltiples acciones (array) o una sola acción (string)
     const actions = Array.isArray(mapping.action) ? mapping.action : [mapping.action];
     
     actions.forEach(action => {
@@ -413,8 +438,7 @@ function triggerAction(mapping, data) {
             repeatCount: data.repeatCount || 1
         };
 
-        // En lugar de emitir directamente, añadir a la cola del actuador
-        addToQueue(action, actionData);
+        addToQueue(username, action, actionData);
     });
 }
 
@@ -424,9 +448,7 @@ server.listen(PORT, '0.0.0.0', () => {
 });
 server.on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
-        console.error(
-            `[ERR] El puerto ${PORT} ya está en uso. Cierra el otro proceso Node o en PowerShell: $env:PORT=4000; npm start`
-        );
+        console.error(`[ERR] El puerto ${PORT} ya está en uso.`);
     } else {
         console.error('[ERR] Error del servidor HTTP:', err);
     }

@@ -38,6 +38,7 @@ export default function BotLectorView() {
   const [liveInfo, setLiveInfo] = useState({ viewerCount: 0 });
 
   const [viewerMap, setViewerMap] = useState({});
+  const viewerMapRef = useRef({});
 
   const [logs, setLogs] = useState([]);
   const pushLog = useCallback((level, message) => {
@@ -95,14 +96,14 @@ export default function BotLectorView() {
 
   const processGift = useCallback(
     (payload) => {
-      setViewerMap((prev) => {
-        const { viewers: next, outputs } = reduceGift(botConfig, prev, payload);
-        queueMicrotask(() => {
-          outputs.forEach((o) => {
-            if (o.type === 'log') pushLog(o.level, o.message);
-          });
+      const prev = viewerMapRef.current;
+      const { viewers: next, outputs } = reduceGift(botConfig, prev, payload);
+      viewerMapRef.current = next;
+      setViewerMap(next);
+      queueMicrotask(() => {
+        outputs.forEach((o) => {
+          if (o.type === 'log') pushLog(o.level, o.message);
         });
-        return next;
       });
     },
     [botConfig, pushLog]
@@ -110,17 +111,17 @@ export default function BotLectorView() {
 
   const processChat = useCallback(
     (payload) => {
-      setViewerMap((prev) => {
-        const { viewers: next, outputs } = reduceChat(botConfig, prev, payload);
-        queueMicrotask(() => {
-          outputs.forEach((o) => {
-            if (o.type === 'log') pushLog(o.level, o.message);
-            if (o.type === 'utterance' && !ttsPausedRef.current) {
-              ttsRef.current?.speak(o.text, o.priority);
-            }
-          });
+      const prev = viewerMapRef.current;
+      const { viewers: next, outputs } = reduceChat(botConfig, prev, payload);
+      viewerMapRef.current = next;
+      setViewerMap(next);
+      queueMicrotask(() => {
+        outputs.forEach((o) => {
+          if (o.type === 'log') pushLog(o.level, o.message);
+          if (o.type === 'utterance' && !ttsPausedRef.current) {
+            ttsRef.current?.speak(o.text, o.priority);
+          }
         });
-        return next;
       });
     },
     [botConfig, pushLog]
@@ -163,6 +164,7 @@ export default function BotLectorView() {
   };
 
   const resetSession = () => {
+    viewerMapRef.current = {};
     setViewerMap({});
     ttsRef.current?.flush();
     pushLog('info', 'Estado de espectadores reiniciado para esta sesión.');
@@ -462,6 +464,17 @@ export default function BotLectorView() {
                 className="rounded border-slate-600"
               />
               <span className="text-xs">Prioridad VIP en cola TTS</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={botConfig.readUsername}
+                onChange={(e) =>
+                  persistBotField({ readUsername: e.target.checked })
+                }
+                className="rounded border-slate-600"
+              />
+              <span className="text-xs">Leer nombre de usuario</span>
             </label>
           </div>
           <button

@@ -10,6 +10,9 @@ const char* password = "TU_WIFI_PASSWORD";
 const char* ws_host = "192.168.1.XX"; // IP de tu PC corriendo el backend
 const int ws_port = 3000;
 
+// Configuración de la sala TikTok a escuchar
+const char* target_tiktok = "usuario_tiktok_a_escuchar";
+
 WebSocketsClient webSocket;
 
 // Pines de Actuadores
@@ -23,6 +26,12 @@ void webSocketEvent(WStype_t type, uint8_t * payload, length_t length) {
       break;
     case WStype_CONNECTED:
       Serial.println("[WSc] Conectado al backend");
+      {
+        char reg_msg[100];
+        snprintf(reg_msg, sizeof(reg_msg), "42[\"register_esp32\", \"%s\"]", target_tiktok);
+        webSocket.sendTXT(reg_msg);
+        Serial.printf("Registrado para escuchar a: %s\n", target_tiktok);
+      }
       break;
     case WStype_TEXT:
       {

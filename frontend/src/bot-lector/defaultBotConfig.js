@@ -7,6 +7,7 @@ export const DEFAULT_BOT_CONFIG = {
   vipMinCoinValue: 500,
   vipGiftNames: ['Universe', 'TikTok Universe'],
   priorityVipFirst: false,
+  readUsername: false,
 };
 
 export const STORAGE_KEY = 'tiktok_bot_lector_config';

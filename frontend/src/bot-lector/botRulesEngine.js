@@ -178,13 +178,28 @@ export function reduceChat(config, viewers, chat) {
   /** @type {(UtteranceOutput|LogOutput)[]} */
   const outputs = [];
 
-  if (!viewers[key]) {
+  const freeForAll = !config.activationGiftNames || config.activationGiftNames.length === 0;
+
+  // Filtrar emojis y dejar solo texto
+  const cleanComment = (chat.comment || '')
+    .replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '')
+    .trim();
+
+  // Si el mensaje estaba compuesto solo de emojis y quedó vacío, lo ignoramos
+  if (!cleanComment) {
     return { viewers, outputs: [] };
   }
 
-  let v = { ...viewers[key] };
+  if (!viewers[key] && !freeForAll) {
+    return { viewers, outputs: [] };
+  }
 
-  if (v.state !== 'active_reading') {
+  let v = viewers[key] ? { ...viewers[key] } : createDefaultViewerState();
+
+  if (freeForAll) {
+    v.state = 'active_reading';
+    v.blockRemaining = Infinity;
+  } else if (v.state !== 'active_reading') {
     return { viewers, outputs: [] };
   }
 
@@ -198,20 +213,20 @@ export function reduceChat(config, viewers, chat) {
     return { viewers: { ...viewers, [key]: v }, outputs };
   }
 
-  const quotaLeft = config.maxCommentsPerViewerSession - v.totalRead;
+  const quotaLeft = freeForAll ? Infinity : (config.maxCommentsPerViewerSession - v.totalRead);
   if (quotaLeft <= 0) {
     v = { ...v, state: 'exhausted' };
     return { viewers: { ...viewers, [key]: v }, outputs };
   }
 
-  const text = `${chat.nickname} dice: ${chat.comment}`;
+  const text = config.readUsername ? `${chat.nickname} dice: ${cleanComment}` : cleanComment;
   const priority =
     config.priorityVipFirst && v.vipBoost ? 1 : 0;
 
   v = {
     ...v,
     totalRead: v.totalRead + 1,
-    blockRemaining: v.blockRemaining - 1,
+    blockRemaining: freeForAll ? Infinity : (v.blockRemaining - 1),
   };
 
   outputs.push({
@@ -222,20 +237,22 @@ export function reduceChat(config, viewers, chat) {
     priority,
   });
 
-  if (v.totalRead >= config.maxCommentsPerViewerSession) {
-    v.state = 'exhausted';
-    outputs.push({
-      type: 'log',
-      level: 'info',
-      message: `${chat.nickname}: cota total de la sesión alcanzada.`,
-    });
-  } else if (v.blockRemaining === 0) {
-    v.state = 'blocked_need_gift';
-    outputs.push({
-      type: 'log',
-      level: 'info',
-      message: `${chat.nickname}: bloque completo; enviar regalo de continuación para más lecturas.`,
-    });
+  if (!freeForAll) {
+    if (v.totalRead >= config.maxCommentsPerViewerSession) {
+      v.state = 'exhausted';
+      outputs.push({
+        type: 'log',
+        level: 'info',
+        message: `${chat.nickname}: cota total de la sesión alcanzada.`,
+      });
+    } else if (v.blockRemaining === 0) {
+      v.state = 'blocked_need_gift';
+      outputs.push({
+        type: 'log',
+        level: 'info',
+        message: `${chat.nickname}: bloque completo; enviar regalo de continuación para más lecturas.`,
+      });
+    }
   }
 
   return { viewers: { ...viewers, [key]: v }, outputs };
