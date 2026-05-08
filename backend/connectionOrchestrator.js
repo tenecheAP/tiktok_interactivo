@@ -82,16 +82,22 @@ class ConnectionOrchestrator {
 
         try {
             const { WebcastPushConnection } = require('tiktok-live-connector');
-            const tiktokConn = new WebcastPushConnection(acc.username, {
+            const connectionOptions = {
                 processInitialData: false,
                 enableExtendedGiftInfo: true,
                 enableWebsocketUpgrade: true,
                 requestPollingIntervalMs: 2000,
+                disableEulerFallbacks: true,
                 clientParams: {
                     "app_language": "es-US",
                     "webcast_language": "es-US"
                 }
-            });
+            };
+            if (acc.sessionId) {
+                connectionOptions.sessionId = acc.sessionId;
+            }
+            
+            const tiktokConn = new WebcastPushConnection(roomUsername, connectionOptions);
 
             // Setup event handlers
             tiktokConn.on('roomUser', data => {
