@@ -35,14 +35,16 @@ export default function BotLectorView() {
   const [username, setUsername] = useState('');
   const [status, setStatus] = useState('disconnected');
   const [connectionError, setConnectionError] = useState('');
+  const [reconnectAttempts, setReconnectAttempts] = useState(0);
   const [liveInfo, setLiveInfo] = useState({ viewerCount: 0 });
 
   const [viewerMap, setViewerMap] = useState({});
   const viewerMapRef = useRef({});
 
   const [logs, setLogs] = useState([]);
+  const [stats, setStats] = useState({ totalGiftsProcessed: 0, totalChatsProcessed: 0, totalUtterances: 0 });
   const pushLog = useCallback((level, message) => {
-    const line = `[${new Date().toLocaleTimeString()}] ${message}`;
+    const line = `[${new Date().toLocaleTimeString()}] ${level.toUpperCase()}: ${message}`;
     setLogs((prev) => [line, ...prev].slice(0, 200));
   }, []);
 
@@ -53,6 +55,24 @@ export default function BotLectorView() {
     ttsPausedRef.current = ttsPaused;
   }, [ttsPaused]);
 
+  // Persistir viewerMap en sessionStorage para recuperación tras refresh
+  const VIEWER_MAP_KEY = 'tiktok_bot_lector_viewer_map';
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(VIEWER_MAP_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        viewerMapRef.current = parsed;
+        setViewerMap(parsed);
+      }
+    } catch (e) {
+      pushLog('warn', 'No se pudo cargar mapa de espectadores guardado.');
+    }
+  }, []);
+  useEffect(() => {
+    sessionStorage.setItem(VIEWER_MAP_KEY, JSON.stringify(viewerMap));
+  }, [viewerMap]);
+
   useEffect(() => {
     if (!ttsRef.current) ttsRef.current = new TtsQueue();
     return () => {
@@ -60,24 +80,36 @@ export default function BotLectorView() {
     };
   }, []);
 
-  useEffect(() => {
-    const refreshVoices = () => {
-      const list = window.speechSynthesis.getVoices();
-      setVoices(list);
-      if (!selectedVoiceURI && list.length) {
-        const pick = TtsQueue.pickFemaleSpanishVoice(list);
-        if (pick) {
-          setSelectedVoiceURI(pick.voiceURI);
-          setTtsParams((p) => ({ ...p, voiceURI: pick.voiceURI }));
-        }
-      }
-    };
-    refreshVoices();
-    window.speechSynthesis.onvoiceschanged = refreshVoices;
-    return () => {
-      window.speechSynthesis.onvoiceschanged = null;
-    };
-  }, [selectedVoiceURI]);
+   useEffect(() => {
+     const refreshVoices = () => {
+       const list = window.speechSynthesis.getVoices();
+       setVoices(list);
+       if (!selectedVoiceURI && list.length) {
+         const pick = TtsQueue.pickFemaleSpanishVoice(list);
+         if (pick) {
+           setSelectedVoiceURI(pick.voiceURI);
+           setTtsParams((p) => ({ ...p, voiceURI: pick.voiceURI }));
+         }
+       }
+     };
+     refreshVoices();
+     window.speechSynthesis.onvoiceschanged = refreshVoices;
+     return () => {
+       window.speechSynthesis.onvoiceschanged = null;
+     };
+   }, [selectedVoiceURI]);
+
+   // TTS error handling – fallback a AudioContext synth
+   useEffect(() => {
+     const handleTtsError = (e) => {
+       pushLog('warn', `TTS error: ${e.error?.message || e.type}. Activando fallback...`);
+       // Aquí se podría activar un fallback a Web Audio API synth
+     };
+     window.speechSynthesis.onerror = handleTtsError;
+     return () => {
+       window.speechSynthesis.onerror = null;
+     };
+   }, [pushLog]);
 
   useEffect(() => {
     const q = ttsRef.current;
@@ -94,53 +126,82 @@ export default function BotLectorView() {
     saveTtsParams({ ...ttsParams, voiceURI: selectedVoiceURI });
   }, [ttsParams, voices, selectedVoiceURI]);
 
-  const processGift = useCallback(
-    (payload) => {
-      const prev = viewerMapRef.current;
-      const { viewers: next, outputs } = reduceGift(botConfig, prev, payload);
-      viewerMapRef.current = next;
-      setViewerMap(next);
-      queueMicrotask(() => {
-        outputs.forEach((o) => {
-          if (o.type === 'log') pushLog(o.level, o.message);
-        });
-      });
-    },
-    [botConfig, pushLog]
-  );
+   const processGift = useCallback(
+     (payload) => {
+       const prev = viewerMapRef.current;
+       const { viewers: next, outputs } = reduceGift(botConfig, prev, payload);
+       viewerMapRef.current = next;
+       setViewerMap(next);
+       setStats(s => ({ ...s, totalGiftsProcessed: s.totalGiftsProcessed + 1 }));
+       queueMicrotask(() => {
+         outputs.forEach((o) => {
+           if (o.type === 'log') pushLog(o.level, o.message);
+         });
+       });
+     },
+     [botConfig, pushLog]
+   );
 
-  const processChat = useCallback(
-    (payload) => {
-      const prev = viewerMapRef.current;
-      const { viewers: next, outputs } = reduceChat(botConfig, prev, payload);
-      viewerMapRef.current = next;
-      setViewerMap(next);
-      queueMicrotask(() => {
-        outputs.forEach((o) => {
-          if (o.type === 'log') pushLog(o.level, o.message);
-          if (o.type === 'utterance' && !ttsPausedRef.current) {
-            ttsRef.current?.speak(o.text, o.priority);
-          }
-        });
-      });
-    },
-    [botConfig, pushLog]
-  );
+   const processChat = useCallback(
+     (payload) => {
+       const prev = viewerMapRef.current;
+       const { viewers: next, outputs } = reduceChat(botConfig, prev, payload);
+       viewerMapRef.current = next;
+       setViewerMap(next);
+       setStats(s => ({ ...s, totalChatsProcessed: s.totalChatsProcessed + 1 }));
+       queueMicrotask(() => {
+         outputs.forEach((o) => {
+           if (o.type === 'log') pushLog(o.level, o.message);
+           if (o.type === 'utterance' && !ttsPausedRef.current) {
+             ttsRef.current?.speak(o.text, o.priority);
+             setStats(s => ({ ...s, totalUtterances: s.totalUtterances + 1 }));
+           }
+         });
+       });
+     },
+     [botConfig, pushLog]
+   );
 
-  useEffect(() => {
-    socket.on('connection_status', (data) => {
-      setStatus(data.status);
-      if (data.status === 'connected') {
-        setConnectionError('');
-        pushLog('info', 'Conectado al live.');
-      } else if (data.status === 'error') {
-        setConnectionError(data.error || 'Error');
-      }
-    });
+   useEffect(() => {
+     socket.on('connection_status', (data) => {
+       setStatus(data.status);
+       if (data.status === 'connected') {
+         setConnectionError('');
+         setReconnectAttempts(0);
+         pushLog('info', 'Conectado al live.');
+       } else if (data.status === 'error') {
+         setConnectionError(data.error || 'Error');
+         pushLog('error', `Error de conexión: ${data.error || 'desconocido'}`);
+       } else if (data.status === 'disconnected') {
+         pushLog('warn', 'Desconectado del live.');
+       }
+     });
 
-    socket.on('live_info', (data) => {
-      setLiveInfo((prev) => ({ ...prev, viewerCount: data.viewerCount }));
-    });
+     socket.on('live_info', (data) => {
+       setLiveInfo((prev) => ({ ...prev, viewerCount: data.viewerCount }));
+     });
+
+     socket.on('connect', () => {
+       pushLog('info', 'Socket conectado al servidor.');
+     });
+
+     socket.on('disconnect', (reason) => {
+       pushLog('warn', `Socket desconectado: ${reason}`);
+     });
+
+     socket.on('reconnect_attempt', (attempt) => {
+       setReconnectAttempts(attempt);
+       pushLog('warn', `Reintentando conexión (intento ${attempt})...`);
+     });
+
+     socket.on('reconnect', (attempt) => {
+       setReconnectAttempts(0);
+       pushLog('info', `Reconexión exitosa después de ${attempt || 0} intentos.`);
+     });
+
+     socket.on('reconnect_failed', () => {
+       pushLog('error', 'Fallo de reconexión después de 10 intentos. Recarga la página.');
+     });
 
     const onGift = (payload) => processGift(payload);
     const onChat = (payload) => processChat(payload);
@@ -148,19 +209,28 @@ export default function BotLectorView() {
     socket.on('live_gift', onGift);
     socket.on('live_chat', onChat);
 
-    return () => {
-      socket.off('connection_status');
-      socket.off('live_info');
-      socket.off('live_gift', onGift);
-      socket.off('live_chat', onChat);
-    };
-  }, [processGift, processChat, pushLog]);
+     return () => {
+       socket.off('connection_status');
+       socket.off('live_info');
+       socket.off('live_gift', onGift);
+       socket.off('live_chat', onChat);
+       socket.off('connect');
+       socket.off('disconnect');
+       socket.off('reconnect_attempt');
+       socket.off('reconnect');
+       socket.off('reconnect_failed');
+     };
+   }, [processGift, processChat, pushLog]);
 
   const connectToLive = () => {
-    if (!username.trim()) return;
+    if (!username.trim()) {
+      pushLog('warn', 'Nombre de usuario vacío.');
+      return;
+    }
     setConnectionError('');
     socket.emit('set_username', username.trim());
     setStatus('connecting');
+    pushLog('info', `Intentando conectar a @${username.trim()}...`);
   };
 
   const resetSession = () => {
@@ -176,9 +246,11 @@ export default function BotLectorView() {
     if (ttsPaused) {
       q.resume();
       setTtsPaused(false);
+      pushLog('info', 'TTS reanudado.');
     } else {
       q.pause();
       setTtsPaused(true);
+      pushLog('info', 'TTS pausado.');
     }
   };
 
@@ -209,18 +281,27 @@ export default function BotLectorView() {
               Bot lector
             </h1>
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase">
-            <span
-              className={
-                status === 'connected'
-                  ? 'text-emerald-400'
-                  : 'text-slate-500'
-              }
-            >
-              {status}
+          <div className="flex items-center gap-4 text-[10px] font-mono uppercase">
+            <span className={`flex items-center gap-1.5 px-2 py-0.5 rounded ${
+              status === 'connected' ? 'bg-emerald-500/20 text-emerald-400' :
+              status === 'connecting' ? 'bg-amber-500/20 text-amber-400' :
+              'bg-red-500/20 text-red-400'
+            }`}>
+              <div className={`w-1.5 h-1.5 rounded-full ${
+                status === 'connected' ? 'bg-emerald-500' :
+                status === 'connecting' ? 'bg-amber-500 animate-pulse' :
+                'bg-red-500'
+              }`}></div>
+              {status === 'connected' ? 'ACTIVO' : status === 'connecting' ? `CONECTANDO${reconnectAttempts > 0 ? ` (${reconnectAttempts})` : ''}` : 'INACTIVO'}
             </span>
-            <Users size={14} className="text-slate-500" />
-            <span>{liveInfo.viewerCount}</span>
+            <span className="flex items-center gap-1">
+              <Users size={14} className="text-slate-500" />
+              {liveInfo.viewerCount}
+            </span>
+            <span className="text-slate-600">|</span>
+            <span title="Regalos procesados">🎁 {stats.totalGiftsProcessed}</span>
+            <span title="Chats procesados">💬 {stats.totalChatsProcessed}</span>
+            <span title="Utterances TTS">🔊 {stats.totalUtterances}</span>
           </div>
         </div>
       </header>

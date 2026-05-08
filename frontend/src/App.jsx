@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import { Settings, Play, Wifi, Volume2, User, Zap, Gift } from 'lucide-react';
 import socket from './socket';
+import BotLectorView from './bot-lector/BotLectorView';
+// import AccountsEnjambre from './accounts-enjambre/AccountsEnjambre';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -493,10 +495,15 @@ function App() {
       </div>
 
       <main className="max-w-[1600px] mx-auto p-6 space-y-6">
-        
-        <div className="grid grid-cols-12 gap-6">
-          {/* Sidebar Dinámica: Controls (Not Connected) or Gifts (Connected) */}
-          <div className={`${status === 'connected' ? 'col-span-12 lg:col-span-3' : 'col-span-12 lg:col-span-4'} space-y-6 transition-all duration-500`}>
+
+        <Routes>
+          <Route path="/bot-lector" element={<BotLectorView />} />
+          {/* <Route path="/accounts-enjambre" element={<AccountsEnjambre />} /> */}
+          <Route path="/" element={
+            <div className="space-y-6">
+              <div className="grid grid-cols-12 gap-6">
+                {/* Sidebar Dinámica: Controls (Not Connected) or Gifts (Connected) */}
+                <div className={`${status === 'connected' ? 'col-span-12 lg:col-span-3' : 'col-span-12 lg:col-span-4'} space-y-6 transition-all duration-500`}>
             
             {status === 'connected' ? (
               <>
@@ -1038,6 +1045,9 @@ function App() {
             )}
           </div>
         </section>
+            </div>
+          } />
+        </Routes>
       </main>
 
       <style dangerouslySetInnerHTML={{ __html: `

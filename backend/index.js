@@ -6,6 +6,14 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+// Account Pool System – High Availability Multi-Account Orchestrator
+const { AccountPool, AccountStatus } = require('./accountPool');
+const ConnectionOrchestrator = require('./connectionOrchestrator');
+
+// === MANAGERS ===
+const accountPool = new AccountPool();
+const orchestrator = new ConnectionOrchestrator(accountPool);
+
 // Copia consola -> proyecto/logs/backend.log (detectar errores después)
 const LOG_DIR = path.join(__dirname, '..', 'logs');
 const LOG_FILE = path.join(LOG_DIR, 'backend.log');
@@ -42,6 +50,7 @@ console.error = (...a) => {
 
 const app = express();
 app.use(cors());
+app.use(express.json()); // Para API REST
 
 app.get('/', (req, res) => {
     res.send('Servidor funcionando 🔥');
@@ -53,6 +62,133 @@ const io = new Server(server, {
         origin: "*",
         methods: ["GET", "POST"]
     }
+});
+
+// Exponer io globalmente para el orchestrator (inyección simple)
+global.io = io;
+
+// === INICIAR ACCOUNT POOL ===
+accountPool.load().then(() => {
+    console.log('[ACCOUNT_POOL] Cuentas cargadas:', accountPool.size());
+    orchestrator.startHealthLoop();
+}).catch(err => {
+    console.error('[ACCOUNT_POOL] Error cargando cuentas:', err);
+});
+
+// === HEALTH CHECK ENDPOINT ===
+app.get('/api/accounts/:id/health', (req, res) => {
+    const acc = accountPool.getAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    res.json({
+        account: acc,
+        healthDetails: {
+            score: acc.healthScore,
+            status: acc.status,
+            consecutiveFails: acc.consecutiveFails,
+            timeSinceLastEvent: acc.lastEventAt ? Date.now() - acc.lastEventAt : null,
+            uptime: acc.lastConnectedAt ? (Date.now() - new Date(acc.lastConnectedAt)) / 1000 : null
+        }
+    });
+});
+
+app.get('/api/system/health', (req, res) => {
+    const health = orchestrator.getSystemHealth();
+    res.json(health);
+});
+
+// === ACCOUNT POOL API ===
+app.get('/api/accounts', (req, res) => {
+    res.json(accountPool.getSnapshot());
+});
+
+app.post('/api/accounts', (req, res) => {
+    try {
+        const { username, uniqueId, sessionId, cookies, priority, weight } = req.body;
+        if (!username || !uniqueId) {
+            return res.status(400).json({ error: 'username y uniqueId requeridos' });
+        }
+        const acc = accountPool.addAccount({
+            username, uniqueId, sessionId, cookies, priority: priority || 10, weight: weight || 100
+        });
+        accountPool.persist();
+        res.status(201).json(acc);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.put('/api/accounts/:id', (req, res) => {
+    const acc = accountPool.getAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    Object.assign(acc, req.body);
+    acc.updatedAt = new Date().toISOString();
+    accountPool.persist();
+    res.json(acc);
+});
+
+app.delete('/api/accounts/:id', (req, res) => {
+    const acc = accountPool.removeAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    res.json({ message: 'Cuenta eliminada (soft delete)', account: acc });
+});
+
+app.post('/api/accounts/:id/connect', async (req, res) => {
+    const acc = accountPool.getAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    // Forzar conexión a una sala específica (envía roomUsername en body)
+    const { roomUsername } = req.body;
+    if (!roomUsername) return res.status(400).json({ error: 'roomUsername requerido' });
+
+    try {
+        // Marcar como activa y conectar
+        accountPool.markActive(acc.id, roomUsername);
+        const state = await orchestrator.connect(acc.id, roomUsername, (events) => {
+            io.to(roomUsername).emit(events.type, events.payload);
+            accountPool.recordActivity(acc.id, events.type);
+        });
+        if (state) {
+            res.json({ message: 'Conexión exitosa', roomId: state.roomId, account: acc });
+        } else {
+            res.status(500).json({ error: 'Falló la conexión' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/accounts/:id/disconnect', (req, res) => {
+    const success = orchestrator.releaseForRoom(req.params.id); // simplificado
+    accountPool.markDisconnected(req.params.id, 'manual');
+    res.json({ message: 'Desconexión solicitada' });
+});
+
+app.post('/api/accounts/:id/ban', (req, res) => {
+    const acc = accountPool.getAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    acc.status = AccountStatus.BANNED;
+    acc.lastDisconnectedAt = new Date().toISOString();
+    accountPool.persist();
+    res.json({ message: 'Cuenta baneada (cooldown activado)', account: acc });
+});
+
+app.post('/api/accounts/:id/reset-health', (req, res) => {
+    const acc = accountPool.getAccount(req.params.id);
+    if (!acc) return res.status(404).json({ error: 'Cuenta no encontrada' });
+    acc.healthScore = 1.0;
+    acc.consecutiveFails = 0;
+    acc.status = AccountStatus.STANDBY;
+    accountPool.persist();
+    res.json({ message: 'Health reseteado', account: acc });
+});
+
+app.get('/api/pool/rotation-policy', (req, res) => {
+    res.json(accountPool.config);
+});
+
+app.put('/api/pool/rotation-policy', (req, res) => {
+    accountPool.config = { ...accountPool.config, ...req.body };
+    accountPool.persist();
+    res.json(accountPool.config);
 });
 
 const CONFIG_FILE = path.join(__dirname, 'config.json');
@@ -184,178 +320,6 @@ async function processQueue(username, actuator) {
     });
 
     processQueue(username, actuator);
-}
-
-const activeTikTokConnections = new Map();
-
-io.on('connection', (socket) => {
-    console.log('Cliente conectado:', socket.id);
-
-    socket.emit('config_update', config);
-
-    socket.on('set_username', (username) => {
-        const normalizedUser = username.toLowerCase().trim();
-        socket.tiktokRoom = normalizedUser;
-        socket.join(normalizedUser);
-        console.log(`Socket ${socket.id} unido a sala ${normalizedUser}`);
-        connectToTikTok(normalizedUser, socket);
-    });
-
-    socket.on('register_esp32', (targetUsername) => {
-        const normalizedUser = targetUsername.toLowerCase().trim();
-        socket.tiktokRoom = normalizedUser;
-        socket.join(normalizedUser);
-        console.log(`[ESP32] Registrado y unido a sala ${normalizedUser}`);
-    });
-
-    socket.on('update_config', (newConfig) => {
-        config = newConfig;
-        saveConfig(config);
-        io.emit('config_update', config); // Config is global
-    });
-
-    socket.on('reset_config', () => {
-        config = DEFAULT_CONFIG;
-        saveConfig(config);
-        io.emit('config_update', config);
-        console.log('[CONFIG] Configuración restablecida a valores por defecto.');
-    });
-
-    socket.on('request_config', () => {
-        socket.emit('config_update', config);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('Cliente desconectado:', socket.id);
-        if (socket.tiktokRoom) {
-            const room = socket.tiktokRoom;
-            // Verificar si hay más sockets en la sala
-            const clients = io.sockets.adapter.rooms.get(room);
-            if (!clients || clients.size === 0) {
-                console.log(`[CLEANUP] Sala ${room} vacía. Desconectando TikTok...`);
-                const conn = activeTikTokConnections.get(room);
-                if (conn) {
-                    conn.disconnect();
-                    activeTikTokConnections.delete(room);
-                }
-                roomStates.delete(room);
-            }
-        }
-    });
-
-    socket.on('simulate_event', (type) => {
-        const room = socket.tiktokRoom;
-        if (!room) {
-            console.log('No se puede simular sin una sala conectada');
-            return;
-        }
-        console.log(`Simulando evento: ${type} en sala ${room}`);
-
-        if (type === 'chat') {
-            const mockChat = {
-                nickname: `User_${Math.floor(Math.random() * 1000)}`,
-                comment: `Comentario de prueba ${Date.now()}`,
-                uniqueId: `mock_${Math.random().toString(36).slice(2, 12)}`
-            };
-            io.to(room).emit('live_chat', normalizeLiveChat(mockChat));
-            return;
-        }
-
-        const mockData = {
-            nickname: `User_${Math.floor(Math.random() * 1000)}`,
-            giftName: type === 'gift' ? (Math.random() > 0.5 ? 'Rose' : 'TikTok') : null,
-            repeatCount: Math.floor(Math.random() * 5) + 1,
-            likeCount: type === 'like' ? 100 : 0,
-            badgeLevel: Math.floor(Math.random() * 15),
-            giftValue: type === 'gift' ? Math.floor(Math.random() * 100) : 0,
-            uniqueId: type === 'gift' ? `mock_${Math.random().toString(36).slice(2, 12)}` : undefined
-        };
-
-        if (type === 'gift') {
-            const name = mockData.giftName || 'Rose';
-            mockData.giftName = name;
-            io.to(room).emit('live_gift', normalizeLiveGift(mockData));
-        }
-
-        processEvent(type, mockData, room);
-    });
-});
-
-function connectToTikTok(username, socket) {
-    if (activeTikTokConnections.has(username)) {
-        const state = getRoomState(username);
-        console.log(`[SOCKET] Emitiendo connection_status: connected a ${socket.id} (Conexión existente)`);
-        socket.emit('connection_status', {
-            status: 'connected',
-            roomId: username,
-            startTime: state.connectionStartTime
-        });
-        return;
-    }
-
-    const tiktokConnection = new WebcastPushConnection(username, {
-        processInitialData: false,
-        enableExtendedGiftInfo: true,
-        enableWebsocketUpgrade: true,
-        requestPollingIntervalMs: 2000,
-        clientParams: {
-            "app_language": "es-US",
-            "webcast_language": "es-US"
-        }
-    });
-
-    activeTikTokConnections.set(username, tiktokConnection);
-
-    const connectPromise = tiktokConnection.connect();
-
-    const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Tiempo de espera agotado (10s). Revisa si el usuario está en vivo o intenta nuevamente.')), 10000);
-    });
-
-    Promise.race([connectPromise, timeoutPromise]).then(state => {
-        console.info(`Conectado al live de ${username}, Room ID: ${state.roomId}`);
-        const roomState = getRoomState(username);
-        roomState.connectionStartTime = Date.now();
-        io.to(username).emit('connection_status', {
-            status: 'connected',
-            roomId: state.roomId,
-            startTime: roomState.connectionStartTime
-        });
-    }).catch(err => {
-        console.error(`Error al conectar a ${username}:`, err.message || err);
-        io.to(username).emit('connection_status', { status: 'error', error: err.message || err.toString() });
-        activeTikTokConnections.delete(username);
-    });
-
-    tiktokConnection.on('roomUser', data => {
-        io.to(username).emit('live_info', {
-            viewerCount: data.viewerCount,
-            totalViewers: data.totalViewers
-        });
-    });
-
-    tiktokConnection.on('gift', data => {
-        const name = data.giftName || data.giftId || 'Regalo';
-        console.log(`[GIFT][${username}] ${data.nickname} envió ${name} x${data.repeatCount}`);
-        data.giftName = name;
-        io.to(username).emit('live_gift', normalizeLiveGift(data));
-        processEvent('gift', data, username);
-    });
-
-    tiktokConnection.on('like', data => {
-        console.log(`Likes en ${username}: ${data.likeCount} de ${data.nickname}`);
-        processEvent('like', data, username);
-    });
-
-    tiktokConnection.on('follow', data => {
-        console.log(`Nuevo seguidor en ${username}: ${data.nickname}`);
-        processEvent('follow', data, username);
-    });
-
-    tiktokConnection.on('chat', data => {
-        // No imprimimos los mensajes en la consola para evitar llenar los logs
-        io.to(username).emit('live_chat', normalizeLiveChat(data));
-    });
 }
 
 function processEvent(eventType, data, username) {
