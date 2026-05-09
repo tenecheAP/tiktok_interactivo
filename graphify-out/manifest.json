@@ -1,0 +1,126 @@
+{
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\old_index.js": {
+    "mtime": 1778293497.6692753,
+    "hash": "f015802631c62ad9deda1c9c716be5b0"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\old_index_utf8.js": {
+    "mtime": 1778293497.670578,
+    "hash": "0f32c9d311440cbbae7b1ff5905fa018"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\accountPool.js": {
+    "mtime": 1778293497.6219006,
+    "hash": "932d3acb4b686a11cef467d59979f140"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\connectionOrchestrator.js": {
+    "mtime": 1778293497.6344893,
+    "hash": "58f2824f01b1f564530be4eedcef73bf"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\index.js": {
+    "mtime": 1778293497.6364903,
+    "hash": "986825b0d5eae4b0fd5c71018c7e5060"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\seedAccounts.js": {
+    "mtime": 1778293497.640488,
+    "hash": "21082729b7816ed109f579b2d967c33f"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\ai.js": {
+    "mtime": 1778293497.6249096,
+    "hash": "5d67fec4b9800ef447b52ac45e2d1386"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\config.js": {
+    "mtime": 1778293497.625911,
+    "hash": "90926a43ed4188ad92526268d9acde39"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\filtros.js": {
+    "mtime": 1778293497.6269107,
+    "hash": "35c779b13963dae2162e3454d444b11f"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\index.js": {
+    "mtime": 1778293497.6279109,
+    "hash": "7d13e17de7ff9bd374f77a8f08cfb8f4"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\player.js": {
+    "mtime": 1778293497.6299596,
+    "hash": "888159ba6acf935e65d94eed9a6f64ba"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\queue.js": {
+    "mtime": 1778293497.6309712,
+    "hash": "ccb4b7991e455112d2c7f81467edf461"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\backend\\ai_bot\\tts.js": {
+    "mtime": 1778293497.6314785,
+    "hash": "83bcaf590b8875e22d892beb10c99f1c"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\fix_jsx.py": {
+    "mtime": 1778293497.643489,
+    "hash": "03b7d989aa6613c3ffa794d115745e1b"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\vite.config.js": {
+    "mtime": 1778293497.6652646,
+    "hash": "5f3b977cb12e36bf29b09c56ba499652"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\App.jsx": {
+    "mtime": 1778293497.652937,
+    "hash": "3b4fc5eb51357b9d472b7a36156db3e5"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\main.jsx": {
+    "mtime": 1778293497.6621728,
+    "hash": "bcd432efe2b2cde0645d3d43204fe890"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\socket.js": {
+    "mtime": 1778293497.6621728,
+    "hash": "3967728784744809529d1bbe1989ad44"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\bot-lector\\BotLectorView.jsx": {
+    "mtime": 1778293497.6559362,
+    "hash": "5661839bb13868350003b947bca18b7d"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\bot-lector\\botRulesEngine.js": {
+    "mtime": 1778293497.6569383,
+    "hash": "578523a87325a13019c350dd2ab30aa1"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\bot-lector\\defaultBotConfig.js": {
+    "mtime": 1778293497.6589463,
+    "hash": "9d61ce6d9cc97f5f5e83221870736e9f"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\src\\bot-lector\\ttsQueue.js": {
+    "mtime": 1778293497.661163,
+    "hash": "c588116db7472b53f1cf1be96149dd9e"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\scripts\\iniciar-backend.ps1": {
+    "mtime": 1778293497.6749125,
+    "hash": "0198c74018d376fbe0c6da2f5a56323a"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\scripts\\iniciar-dos-ventanas.ps1": {
+    "mtime": 1778293497.6759224,
+    "hash": "c8254bfe5decba6605eb76af09aecd50"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\scripts\\iniciar-frontend-con-log.ps1": {
+    "mtime": 1778293497.6774292,
+    "hash": "c03957d0b4e9cd8fabc3a58559441b52"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\scripts\\iniciar-frontend.ps1": {
+    "mtime": 1778293497.679603,
+    "hash": "bd8d05f5949fd7c7fd607eccabb39930"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\ARCHITECTURE.md": {
+    "mtime": 1777865349.180822,
+    "hash": "79b250ffa173f016d56cb71e7feb6d2e"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\COMANDOS_INICIO.txt": {
+    "mtime": 1778293497.620211,
+    "hash": "9572820f475a4903f1911b990a0dfc13"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\CONTEXT_IA.md": {
+    "mtime": 1777872415.3994431,
+    "hash": "4cb5c9751e90d6945faa3abf7abc80eb"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\README.md": {
+    "mtime": 1777865356.7116752,
+    "hash": "bb65e939ccf3f8e2ffaf2e40611d76b5"
+  },
+  "C:\\Users\\tenec\\Documents\\proyecto interactivo con tiktoklive\\frontend\\index.html": {
+    "mtime": 1777865316.0181725,
+    "hash": "6191bea509f8247f1390dc184137710e"
+  }
+}

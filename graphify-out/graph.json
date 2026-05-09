@@ -1,0 +1,5757 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "old_index.js",
+      "file_type": "code",
+      "source_file": "old_index.js",
+      "source_location": "L1",
+      "community": 13,
+      "norm_label": "old_index.js",
+      "id": "old_index_js"
+    },
+    {
+      "label": "f()",
+      "file_type": "code",
+      "source_file": "old_index.js",
+      "source_location": "L450",
+      "community": 13,
+      "norm_label": "f()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_f"
+    },
+    {
+      "label": "old_index_utf8.js",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "old_index_utf8.js",
+      "id": "old_index_utf8_js"
+    },
+    {
+      "label": "{ WebcastPushConnection }",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "{ webcastpushconnection }",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_webcastpushconnection"
+    },
+    {
+      "label": "express",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L2",
+      "community": 1,
+      "norm_label": "express",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_express"
+    },
+    {
+      "label": "http",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L3",
+      "community": 1,
+      "norm_label": "http",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_http"
+    },
+    {
+      "label": "{ Server }",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L4",
+      "community": 1,
+      "norm_label": "{ server }",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_server"
+    },
+    {
+      "label": "cors",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L5",
+      "community": 1,
+      "norm_label": "cors",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_cors"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L6",
+      "community": 1,
+      "norm_label": "fs",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L7",
+      "community": 1,
+      "norm_label": "path",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_path"
+    },
+    {
+      "label": "LOG_DIR",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L10",
+      "community": 1,
+      "norm_label": "log_dir",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_dir"
+    },
+    {
+      "label": "LOG_FILE",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L11",
+      "community": 1,
+      "norm_label": "log_file",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_file"
+    },
+    {
+      "label": "appendLogFile()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L12",
+      "community": 1,
+      "norm_label": "appendlogfile()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_appendlogfile"
+    },
+    {
+      "label": "_clog",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L32",
+      "community": 1,
+      "norm_label": "_clog",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_clog"
+    },
+    {
+      "label": "_cerr",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L33",
+      "community": 1,
+      "norm_label": "_cerr",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_cerr"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L43",
+      "community": 1,
+      "norm_label": "app",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_app"
+    },
+    {
+      "label": "io",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L51",
+      "community": 1,
+      "norm_label": "io",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_io"
+    },
+    {
+      "label": "CONFIG_FILE",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L58",
+      "community": 1,
+      "norm_label": "config_file",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_config_file"
+    },
+    {
+      "label": "DEFAULT_CONFIG",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L61",
+      "community": 1,
+      "norm_label": "default_config",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_default_config"
+    },
+    {
+      "label": "loadConfig()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L77",
+      "community": 1,
+      "norm_label": "loadconfig()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_loadconfig"
+    },
+    {
+      "label": "saveConfig()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L93",
+      "community": 1,
+      "norm_label": "saveconfig()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_saveconfig"
+    },
+    {
+      "label": "normalizeLiveChat()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L104",
+      "community": 1,
+      "norm_label": "normalizelivechat()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivechat"
+    },
+    {
+      "label": "normalizeLiveGift()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L114",
+      "community": 1,
+      "norm_label": "normalizelivegift()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivegift"
+    },
+    {
+      "label": "roomStates",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L128",
+      "community": 1,
+      "norm_label": "roomstates",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_roomstates"
+    },
+    {
+      "label": "getRoomState()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L130",
+      "community": 1,
+      "norm_label": "getroomstate()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate"
+    },
+    {
+      "label": "addToQueue()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L148",
+      "community": 1,
+      "norm_label": "addtoqueue()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_addtoqueue"
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L165",
+      "community": 1,
+      "norm_label": "processqueue()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processqueue"
+    },
+    {
+      "label": "activeTikTokConnections",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L189",
+      "community": 1,
+      "norm_label": "activetiktokconnections",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_activetiktokconnections"
+    },
+    {
+      "label": "normalizedUser",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L197",
+      "community": 1,
+      "norm_label": "normalizeduser",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizeduser"
+    },
+    {
+      "label": "clients",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L233",
+      "community": 1,
+      "norm_label": "clients",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_clients"
+    },
+    {
+      "label": "conn",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L236",
+      "community": 1,
+      "norm_label": "conn",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_conn"
+    },
+    {
+      "label": "mockChat",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L255",
+      "community": 1,
+      "norm_label": "mockchat",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockchat"
+    },
+    {
+      "label": "mockData",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L264",
+      "community": 1,
+      "norm_label": "mockdata",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockdata"
+    },
+    {
+      "label": "connectToTikTok()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L284",
+      "community": 1,
+      "norm_label": "connecttotiktok()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_connecttotiktok"
+    },
+    {
+      "label": "processEvent()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L361",
+      "community": 1,
+      "norm_label": "processevent()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processevent"
+    },
+    {
+      "label": "triggerAction()",
+      "file_type": "code",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L421",
+      "community": 1,
+      "norm_label": "triggeraction()",
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_triggeraction"
+    },
+    {
+      "label": "accountPool.js",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "accountpool.js",
+      "id": "backend_accountpool_js"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L6",
+      "community": 5,
+      "norm_label": "fs",
+      "id": "backend_accountpool_fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L7",
+      "community": 5,
+      "norm_label": "path",
+      "id": "backend_accountpool_path"
+    },
+    {
+      "label": "crypto",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L8",
+      "community": 5,
+      "norm_label": "crypto",
+      "id": "backend_accountpool_crypto"
+    },
+    {
+      "label": "ACCOUNTS_FILE",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L10",
+      "community": 5,
+      "norm_label": "accounts_file",
+      "id": "backend_accountpool_accounts_file"
+    },
+    {
+      "label": "POOL_CONFIG_FILE",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L11",
+      "community": 5,
+      "norm_label": "pool_config_file",
+      "id": "backend_accountpool_pool_config_file"
+    },
+    {
+      "label": "AccountStatus",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L14",
+      "community": 5,
+      "norm_label": "accountstatus",
+      "id": "backend_accountpool_accountstatus"
+    },
+    {
+      "label": "Account",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L22",
+      "community": 5,
+      "norm_label": "account",
+      "id": "backend_accountpool_account"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L23",
+      "community": 5,
+      "norm_label": ".constructor()",
+      "id": "backend_accountpool_account_constructor"
+    },
+    {
+      "label": ".toJSON()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L42",
+      "community": 5,
+      "norm_label": ".tojson()",
+      "id": "backend_accountpool_account_tojson"
+    },
+    {
+      "label": "AccountPool",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L64",
+      "community": 6,
+      "norm_label": "accountpool",
+      "id": "backend_accountpool_accountpool"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L65",
+      "community": 6,
+      "norm_label": ".constructor()",
+      "id": "backend_accountpool_accountpool_constructor"
+    },
+    {
+      "label": ".load()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L78",
+      "community": 6,
+      "norm_label": ".load()",
+      "id": "backend_accountpool_accountpool_load"
+    },
+    {
+      "label": ".persist()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L99",
+      "community": 6,
+      "norm_label": ".persist()",
+      "id": "backend_accountpool_accountpool_persist"
+    },
+    {
+      "label": ".addAccount()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L112",
+      "community": 6,
+      "norm_label": ".addaccount()",
+      "id": "backend_accountpool_accountpool_addaccount"
+    },
+    {
+      "label": ".removeAccount()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L119",
+      "community": 6,
+      "norm_label": ".removeaccount()",
+      "id": "backend_accountpool_accountpool_removeaccount"
+    },
+    {
+      "label": ".getAccount()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L128",
+      "community": 6,
+      "norm_label": ".getaccount()",
+      "id": "backend_accountpool_accountpool_getaccount"
+    },
+    {
+      "label": ".getAll()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L132",
+      "community": 6,
+      "norm_label": ".getall()",
+      "id": "backend_accountpool_accountpool_getall"
+    },
+    {
+      "label": ".getHealthyAccounts()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L136",
+      "community": 6,
+      "norm_label": ".gethealthyaccounts()",
+      "id": "backend_accountpool_accountpool_gethealthyaccounts"
+    },
+    {
+      "label": ".getBestAccountForRoom()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L142",
+      "community": 6,
+      "norm_label": ".getbestaccountforroom()",
+      "id": "backend_accountpool_accountpool_getbestaccountforroom"
+    },
+    {
+      "label": ".markActive()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L156",
+      "community": 6,
+      "norm_label": ".markactive()",
+      "id": "backend_accountpool_accountpool_markactive"
+    },
+    {
+      "label": ".markDisconnected()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L167",
+      "community": 6,
+      "norm_label": ".markdisconnected()",
+      "id": "backend_accountpool_accountpool_markdisconnected"
+    },
+    {
+      "label": ".recordActivity()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L177",
+      "community": 6,
+      "norm_label": ".recordactivity()",
+      "id": "backend_accountpool_accountpool_recordactivity"
+    },
+    {
+      "label": ".recordFailure()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L187",
+      "community": 6,
+      "norm_label": ".recordfailure()",
+      "id": "backend_accountpool_accountpool_recordfailure"
+    },
+    {
+      "label": ".getSnapshot()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L205",
+      "community": 6,
+      "norm_label": ".getsnapshot()",
+      "id": "backend_accountpool_accountpool_getsnapshot"
+    },
+    {
+      "label": ".size()",
+      "file_type": "code",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L217",
+      "community": 6,
+      "norm_label": ".size()",
+      "id": "backend_accountpool_accountpool_size"
+    },
+    {
+      "label": "connectionOrchestrator.js",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "connectionorchestrator.js",
+      "id": "backend_connectionorchestrator_js"
+    },
+    {
+      "label": "{ AccountPool, AccountStatus }",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L6",
+      "community": 5,
+      "norm_label": "{ accountpool, accountstatus }",
+      "id": "backend_connectionorchestrator_accountpool_accountstatus"
+    },
+    {
+      "label": "ConnectionOrchestrator",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L8",
+      "community": 9,
+      "norm_label": "connectionorchestrator",
+      "id": "backend_connectionorchestrator_connectionorchestrator"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L9",
+      "community": 9,
+      "norm_label": ".constructor()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_constructor"
+    },
+    {
+      "label": ".startHealthLoop()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L17",
+      "community": 9,
+      "norm_label": ".starthealthloop()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_starthealthloop"
+    },
+    {
+      "label": ".stopHealthLoop()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L23",
+      "community": 9,
+      "norm_label": ".stophealthloop()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_stophealthloop"
+    },
+    {
+      "label": ".runHealthChecks()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L27",
+      "community": 9,
+      "norm_label": ".runhealthchecks()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_runhealthchecks"
+    },
+    {
+      "label": ".acquireForRoom()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L49",
+      "community": 9,
+      "norm_label": ".acquireforroom()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_acquireforroom"
+    },
+    {
+      "label": ".connect()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L75",
+      "community": 9,
+      "norm_label": ".connect()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_connect"
+    },
+    {
+      "label": ".releaseForRoom()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L164",
+      "community": 9,
+      "norm_label": ".releaseforroom()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_releaseforroom"
+    },
+    {
+      "label": ".triggerFailover()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L183",
+      "community": 9,
+      "norm_label": ".triggerfailover()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_triggerfailover"
+    },
+    {
+      "label": ".getSystemHealth()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L220",
+      "community": 9,
+      "norm_label": ".getsystemhealth()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_getsystemhealth"
+    },
+    {
+      "label": ".normalizeChat()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L235",
+      "community": 9,
+      "norm_label": ".normalizechat()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_normalizechat"
+    },
+    {
+      "label": ".normalizeGift()",
+      "file_type": "code",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L245",
+      "community": 9,
+      "norm_label": ".normalizegift()",
+      "id": "backend_connectionorchestrator_connectionorchestrator_normalizegift"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "index.js",
+      "id": "backend_index_js"
+    },
+    {
+      "label": "{ WebcastPushConnection }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "{ webcastpushconnection }",
+      "id": "backend_index_webcastpushconnection"
+    },
+    {
+      "label": "express",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "express",
+      "id": "backend_index_express"
+    },
+    {
+      "label": "http",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L2",
+      "community": 0,
+      "norm_label": "http",
+      "id": "backend_index_http"
+    },
+    {
+      "label": "{ Server }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L3",
+      "community": 0,
+      "norm_label": "{ server }",
+      "id": "backend_index_server"
+    },
+    {
+      "label": "cors",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L4",
+      "community": 0,
+      "norm_label": "cors",
+      "id": "backend_index_cors"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L6",
+      "community": 0,
+      "norm_label": "fs",
+      "id": "backend_index_fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L7",
+      "community": 0,
+      "norm_label": "path",
+      "id": "backend_index_path"
+    },
+    {
+      "label": "{ AccountPool, AccountStatus }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "community": 0,
+      "norm_label": "{ accountpool, accountstatus }",
+      "id": "backend_index_accountpool_accountstatus"
+    },
+    {
+      "label": "ConnectionOrchestrator",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "community": 0,
+      "norm_label": "connectionorchestrator",
+      "id": "backend_index_connectionorchestrator"
+    },
+    {
+      "label": "{ AccountPool }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L9",
+      "community": 0,
+      "norm_label": "{ accountpool }",
+      "id": "backend_index_accountpool"
+    },
+    {
+      "label": "orchestrator",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L32",
+      "community": 0,
+      "norm_label": "orchestrator",
+      "id": "backend_index_orchestrator"
+    },
+    {
+      "label": "LOG_DIR",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L18",
+      "community": 0,
+      "norm_label": "log_dir",
+      "id": "backend_index_log_dir"
+    },
+    {
+      "label": "LOG_FILE",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L19",
+      "community": 0,
+      "norm_label": "log_file",
+      "id": "backend_index_log_file"
+    },
+    {
+      "label": "appendLogFile()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L20",
+      "community": 0,
+      "norm_label": "appendlogfile()",
+      "id": "backend_index_appendlogfile"
+    },
+    {
+      "label": "_clog",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L40",
+      "community": 0,
+      "norm_label": "_clog",
+      "id": "backend_index_clog"
+    },
+    {
+      "label": "_cerr",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L41",
+      "community": 0,
+      "norm_label": "_cerr",
+      "id": "backend_index_cerr"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L14",
+      "community": 0,
+      "norm_label": "app",
+      "id": "backend_index_app"
+    },
+    {
+      "label": "io",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L19",
+      "community": 0,
+      "norm_label": "io",
+      "id": "backend_index_io"
+    },
+    {
+      "label": "acc",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L80",
+      "community": 0,
+      "norm_label": "acc",
+      "id": "backend_index_acc"
+    },
+    {
+      "label": "health",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L95",
+      "community": 0,
+      "norm_label": "health",
+      "id": "backend_index_health"
+    },
+    {
+      "label": "success",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L160",
+      "community": 0,
+      "norm_label": "success",
+      "id": "backend_index_success"
+    },
+    {
+      "label": "CONFIG_FILE",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L194",
+      "community": 0,
+      "norm_label": "config_file",
+      "id": "backend_index_config_file"
+    },
+    {
+      "label": "DEFAULT_CONFIG",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L197",
+      "community": 0,
+      "norm_label": "default_config",
+      "id": "backend_index_default_config"
+    },
+    {
+      "label": "{ loadConfig }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L8",
+      "community": 0,
+      "norm_label": "{ loadconfig }",
+      "id": "backend_index_loadconfig"
+    },
+    {
+      "label": "saveConfig()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L229",
+      "community": 0,
+      "norm_label": "saveconfig()",
+      "id": "backend_index_saveconfig"
+    },
+    {
+      "label": "normalizeLiveChat()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L240",
+      "community": 0,
+      "norm_label": "normalizelivechat()",
+      "id": "backend_index_normalizelivechat"
+    },
+    {
+      "label": "normalizeLiveGift()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L250",
+      "community": 0,
+      "norm_label": "normalizelivegift()",
+      "id": "backend_index_normalizelivegift"
+    },
+    {
+      "label": "roomStates",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L264",
+      "community": 0,
+      "norm_label": "roomstates",
+      "id": "backend_index_roomstates"
+    },
+    {
+      "label": "getRoomState()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L266",
+      "community": 0,
+      "norm_label": "getroomstate()",
+      "id": "backend_index_getroomstate"
+    },
+    {
+      "label": "addToQueue()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L284",
+      "community": 0,
+      "norm_label": "addtoqueue()",
+      "id": "backend_index_addtoqueue"
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L301",
+      "community": 0,
+      "norm_label": "processqueue()",
+      "id": "backend_index_processqueue"
+    },
+    {
+      "label": "processEvent()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L325",
+      "community": 0,
+      "norm_label": "processevent()",
+      "id": "backend_index_processevent"
+    },
+    {
+      "label": "triggerAction()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L385",
+      "community": 0,
+      "norm_label": "triggeraction()",
+      "id": "backend_index_triggeraction"
+    },
+    {
+      "label": "activeTikTokConnections",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L409",
+      "community": 0,
+      "norm_label": "activetiktokconnections",
+      "id": "backend_index_activetiktokconnections"
+    },
+    {
+      "label": "normalizedUser",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L417",
+      "community": 0,
+      "norm_label": "normalizeduser",
+      "id": "backend_index_normalizeduser"
+    },
+    {
+      "label": "clients",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L476",
+      "community": 0,
+      "norm_label": "clients",
+      "id": "backend_index_clients"
+    },
+    {
+      "label": "conn",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L480",
+      "community": 0,
+      "norm_label": "conn",
+      "id": "backend_index_conn"
+    },
+    {
+      "label": "mockChat",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L498",
+      "community": 0,
+      "norm_label": "mockchat",
+      "id": "backend_index_mockchat"
+    },
+    {
+      "label": "mockData",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L507",
+      "community": 0,
+      "norm_label": "mockdata",
+      "id": "backend_index_mockdata"
+    },
+    {
+      "label": "connectToTikTok()",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L527",
+      "community": 0,
+      "norm_label": "connecttotiktok()",
+      "id": "backend_index_connecttotiktok"
+    },
+    {
+      "label": "seedAccounts.js",
+      "file_type": "code",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "seedaccounts.js",
+      "id": "backend_seedaccounts_js"
+    },
+    {
+      "label": "{ AccountPool, AccountStatus }",
+      "file_type": "code",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L6",
+      "community": 5,
+      "norm_label": "{ accountpool, accountstatus }",
+      "id": "backend_seedaccounts_accountpool_accountstatus"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L7",
+      "community": 5,
+      "norm_label": "path",
+      "id": "backend_seedaccounts_path"
+    },
+    {
+      "label": "ACCOUNTS_FILE",
+      "file_type": "code",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L9",
+      "community": 5,
+      "norm_label": "accounts_file",
+      "id": "backend_seedaccounts_accounts_file"
+    },
+    {
+      "label": "seed()",
+      "file_type": "code",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L11",
+      "community": 5,
+      "norm_label": "seed()",
+      "id": "backend_seedaccounts_seed"
+    },
+    {
+      "label": "ai.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "ai.js",
+      "id": "backend_ai_bot_ai_js"
+    },
+    {
+      "label": "{ GoogleGenerativeAI }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "{ googlegenerativeai }",
+      "id": "ai_bot_ai_googlegenerativeai"
+    },
+    {
+      "label": "{ GEMINI_API_KEY }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L2",
+      "community": 3,
+      "norm_label": "{ gemini_api_key }",
+      "id": "ai_bot_ai_gemini_api_key"
+    },
+    {
+      "label": "genAI",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L8",
+      "community": 3,
+      "norm_label": "genai",
+      "id": "ai_bot_ai_genai"
+    },
+    {
+      "label": "model",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L10",
+      "community": 3,
+      "norm_label": "model",
+      "id": "ai_bot_ai_model"
+    },
+    {
+      "label": "chatHistory",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L13",
+      "community": 3,
+      "norm_label": "chathistory",
+      "id": "ai_bot_ai_chathistory"
+    },
+    {
+      "label": "generateResponse()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L37",
+      "community": 3,
+      "norm_label": "generateresponse()",
+      "id": "ai_bot_ai_generateresponse"
+    },
+    {
+      "label": "config.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/config.js",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "config.js",
+      "id": "backend_ai_bot_config_js"
+    },
+    {
+      "label": "filtros.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "filtros.js",
+      "id": "backend_ai_bot_filtros_js"
+    },
+    {
+      "label": "{ MAX_MESSAGE_LENGTH, COOLDOWN_MS }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "{ max_message_length, cooldown_ms }",
+      "id": "ai_bot_filtros_max_message_length_cooldown_ms"
+    },
+    {
+      "label": "userCooldowns",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L3",
+      "community": 7,
+      "norm_label": "usercooldowns",
+      "id": "ai_bot_filtros_usercooldowns"
+    },
+    {
+      "label": "recentMessages",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L4",
+      "community": 7,
+      "norm_label": "recentmessages",
+      "id": "ai_bot_filtros_recentmessages"
+    },
+    {
+      "label": "isSpam()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L12",
+      "community": 7,
+      "norm_label": "isspam()",
+      "id": "ai_bot_filtros_isspam"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "index.js",
+      "id": "backend_ai_bot_index_js"
+    },
+    {
+      "label": "{ WebcastPushConnection }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L2",
+      "community": 7,
+      "norm_label": "{ webcastpushconnection }",
+      "id": "ai_bot_index_webcastpushconnection"
+    },
+    {
+      "label": "{ isSpam }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L3",
+      "community": 7,
+      "norm_label": "{ isspam }",
+      "id": "ai_bot_index_isspam"
+    },
+    {
+      "label": "audioQueue",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L4",
+      "community": 7,
+      "norm_label": "audioqueue",
+      "id": "ai_bot_index_audioqueue"
+    },
+    {
+      "label": "{ TIKTOK_USERNAME }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L5",
+      "community": 7,
+      "norm_label": "{ tiktok_username }",
+      "id": "ai_bot_index_tiktok_username"
+    },
+    {
+      "label": "targetRoom",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L13",
+      "community": 7,
+      "norm_label": "targetroom",
+      "id": "ai_bot_index_targetroom"
+    },
+    {
+      "label": "tiktokLiveConnection",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L16",
+      "community": 7,
+      "norm_label": "tiktokliveconnection",
+      "id": "ai_bot_index_tiktokliveconnection"
+    },
+    {
+      "label": "player.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "player.js",
+      "id": "backend_ai_bot_player_js"
+    },
+    {
+      "label": "sound",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "sound",
+      "id": "ai_bot_player_sound"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L2",
+      "community": 3,
+      "norm_label": "fs",
+      "id": "ai_bot_player_fs"
+    },
+    {
+      "label": "playAudio()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L11",
+      "community": 3,
+      "norm_label": "playaudio()",
+      "id": "ai_bot_player_playaudio"
+    },
+    {
+      "label": "queue.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "queue.js",
+      "id": "backend_ai_bot_queue_js"
+    },
+    {
+      "label": "{ generateResponse }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "{ generateresponse }",
+      "id": "ai_bot_queue_generateresponse"
+    },
+    {
+      "label": "{ generateAudio }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L2",
+      "community": 3,
+      "norm_label": "{ generateaudio }",
+      "id": "ai_bot_queue_generateaudio"
+    },
+    {
+      "label": "{ playAudio }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L3",
+      "community": 3,
+      "norm_label": "{ playaudio }",
+      "id": "ai_bot_queue_playaudio"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L4",
+      "community": 3,
+      "norm_label": "path",
+      "id": "ai_bot_queue_path"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L5",
+      "community": 3,
+      "norm_label": "fs",
+      "id": "ai_bot_queue_fs"
+    },
+    {
+      "label": "AudioQueue",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L7",
+      "community": 3,
+      "norm_label": "audioqueue",
+      "id": "ai_bot_queue_audioqueue"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L8",
+      "community": 3,
+      "norm_label": ".constructor()",
+      "id": "ai_bot_queue_audioqueue_constructor"
+    },
+    {
+      "label": ".add()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L22",
+      "community": 3,
+      "norm_label": ".add()",
+      "id": "ai_bot_queue_audioqueue_add"
+    },
+    {
+      "label": ".process()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L44",
+      "community": 3,
+      "norm_label": ".process()",
+      "id": "ai_bot_queue_audioqueue_process"
+    },
+    {
+      "label": "tts.js",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "tts.js",
+      "id": "backend_ai_bot_tts_js"
+    },
+    {
+      "label": "{ EdgeTTS }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "{ edgetts }",
+      "id": "ai_bot_tts_edgetts"
+    },
+    {
+      "label": "{ VOICE_NAME, PITCH, RATE }",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L2",
+      "community": 3,
+      "norm_label": "{ voice_name, pitch, rate }",
+      "id": "ai_bot_tts_voice_name_pitch_rate"
+    },
+    {
+      "label": "tts",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L5",
+      "community": 3,
+      "norm_label": "tts",
+      "id": "ai_bot_tts_tts"
+    },
+    {
+      "label": "generateAudio()",
+      "file_type": "code",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L17",
+      "community": 3,
+      "norm_label": "generateaudio()",
+      "id": "ai_bot_tts_generateaudio"
+    },
+    {
+      "label": "fix_jsx.py",
+      "file_type": "code",
+      "source_file": "frontend/fix_jsx.py",
+      "source_location": "L1",
+      "community": 14,
+      "norm_label": "fix_jsx.py",
+      "id": "frontend_fix_jsx_py"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "frontend/vite.config.js",
+      "source_location": "L1",
+      "community": 15,
+      "norm_label": "vite.config.js",
+      "id": "frontend_vite_config_js"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "app.jsx",
+      "id": "frontend_src_app_jsx"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L8",
+      "community": 4,
+      "norm_label": "app()",
+      "id": "src_app_app"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/main.jsx",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "main.jsx",
+      "id": "frontend_src_main_jsx"
+    },
+    {
+      "label": "socket.js",
+      "file_type": "code",
+      "source_file": "frontend/src/socket.js",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "socket.js",
+      "id": "frontend_src_socket_js"
+    },
+    {
+      "label": "getSocketUrl()",
+      "file_type": "code",
+      "source_file": "frontend/src/socket.js",
+      "source_location": "L8",
+      "community": 4,
+      "norm_label": "getsocketurl()",
+      "id": "src_socket_getsocketurl"
+    },
+    {
+      "label": "socket",
+      "file_type": "code",
+      "source_file": "frontend/src/socket.js",
+      "source_location": "L24",
+      "community": 4,
+      "norm_label": "socket",
+      "id": "src_socket_socket"
+    },
+    {
+      "label": "BotLectorView.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "botlectorview.jsx",
+      "id": "frontend_src_bot_lector_botlectorview_jsx"
+    },
+    {
+      "label": "loadTtsParams()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L15",
+      "community": 4,
+      "norm_label": "loadttsparams()",
+      "id": "bot_lector_botlectorview_loadttsparams"
+    },
+    {
+      "label": "saveTtsParams()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L25",
+      "community": 4,
+      "norm_label": "savettsparams()",
+      "id": "bot_lector_botlectorview_savettsparams"
+    },
+    {
+      "label": "BotLectorView()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L29",
+      "community": 4,
+      "norm_label": "botlectorview()",
+      "id": "bot_lector_botlectorview_botlectorview"
+    },
+    {
+      "label": "botRulesEngine.js",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "botrulesengine.js",
+      "id": "frontend_src_bot_lector_botrulesengine_js"
+    },
+    {
+      "label": "getViewerKey()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L27",
+      "community": 4,
+      "norm_label": "getviewerkey()",
+      "id": "bot_lector_botrulesengine_getviewerkey"
+    },
+    {
+      "label": "createDefaultViewerState()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L32",
+      "community": 4,
+      "norm_label": "createdefaultviewerstate()",
+      "id": "bot_lector_botrulesengine_createdefaultviewerstate"
+    },
+    {
+      "label": "matchesName()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L41",
+      "community": 4,
+      "norm_label": "matchesname()",
+      "id": "bot_lector_botrulesengine_matchesname"
+    },
+    {
+      "label": "isVipActivation()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L51",
+      "community": 4,
+      "norm_label": "isvipactivation()",
+      "id": "bot_lector_botrulesengine_isvipactivation"
+    },
+    {
+      "label": "refillBlock()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L62",
+      "community": 4,
+      "norm_label": "refillblock()",
+      "id": "bot_lector_botrulesengine_refillblock"
+    },
+    {
+      "label": "reduceGift()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L76",
+      "community": 4,
+      "norm_label": "reducegift()",
+      "id": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "label": "reduceChat()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L176",
+      "community": 4,
+      "norm_label": "reducechat()",
+      "id": "bot_lector_botrulesengine_reducechat"
+    },
+    {
+      "label": "defaultBotConfig.js",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "defaultbotconfig.js",
+      "id": "frontend_src_bot_lector_defaultbotconfig_js"
+    },
+    {
+      "label": "DEFAULT_BOT_CONFIG",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L2",
+      "community": 4,
+      "norm_label": "default_bot_config",
+      "id": "bot_lector_defaultbotconfig_default_bot_config"
+    },
+    {
+      "label": "loadBotConfig()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L16",
+      "community": 4,
+      "norm_label": "loadbotconfig()",
+      "id": "bot_lector_defaultbotconfig_loadbotconfig"
+    },
+    {
+      "label": "saveBotConfig()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L28",
+      "community": 4,
+      "norm_label": "savebotconfig()",
+      "id": "bot_lector_defaultbotconfig_savebotconfig"
+    },
+    {
+      "label": "ttsQueue.js",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L1",
+      "community": 8,
+      "norm_label": "ttsqueue.js",
+      "id": "frontend_src_bot_lector_ttsqueue_js"
+    },
+    {
+      "label": "TtsQueue",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L4",
+      "community": 8,
+      "norm_label": "ttsqueue",
+      "id": "bot_lector_ttsqueue_ttsqueue"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L5",
+      "community": 8,
+      "norm_label": ".constructor()",
+      "id": "bot_lector_ttsqueue_ttsqueue_constructor"
+    },
+    {
+      "label": ".setParams()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L19",
+      "community": 8,
+      "norm_label": ".setparams()",
+      "id": "bot_lector_ttsqueue_ttsqueue_setparams"
+    },
+    {
+      "label": ".getParams()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L23",
+      "community": 8,
+      "norm_label": ".getparams()",
+      "id": "bot_lector_ttsqueue_ttsqueue_getparams"
+    },
+    {
+      "label": ".paused()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L27",
+      "community": 8,
+      "norm_label": ".paused()",
+      "id": "bot_lector_ttsqueue_ttsqueue_paused"
+    },
+    {
+      "label": ".speak()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L35",
+      "community": 8,
+      "norm_label": ".speak()",
+      "id": "bot_lector_ttsqueue_ttsqueue_speak"
+    },
+    {
+      "label": "._drain()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L41",
+      "community": 8,
+      "norm_label": "._drain()",
+      "id": "bot_lector_ttsqueue_ttsqueue_drain"
+    },
+    {
+      "label": ".pause()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L62",
+      "community": 8,
+      "norm_label": ".pause()",
+      "id": "bot_lector_ttsqueue_ttsqueue_pause"
+    },
+    {
+      "label": ".resume()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L68",
+      "community": 8,
+      "norm_label": ".resume()",
+      "id": "bot_lector_ttsqueue_ttsqueue_resume"
+    },
+    {
+      "label": ".flush()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L73",
+      "community": 8,
+      "norm_label": ".flush()",
+      "id": "bot_lector_ttsqueue_ttsqueue_flush"
+    },
+    {
+      "label": ".listSpanishVoices()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L83",
+      "community": 8,
+      "norm_label": ".listspanishvoices()",
+      "id": "bot_lector_ttsqueue_ttsqueue_listspanishvoices"
+    },
+    {
+      "label": ".pickFemaleSpanishVoice()",
+      "file_type": "code",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L95",
+      "community": 8,
+      "norm_label": ".pickfemalespanishvoice()",
+      "id": "bot_lector_ttsqueue_ttsqueue_pickfemalespanishvoice"
+    },
+    {
+      "label": "iniciar-backend.ps1",
+      "file_type": "code",
+      "source_file": "scripts/iniciar-backend.ps1",
+      "source_location": "L1",
+      "community": 16,
+      "norm_label": "iniciar-backend.ps1",
+      "id": "scripts_iniciar_backend_ps1"
+    },
+    {
+      "label": "iniciar-dos-ventanas.ps1",
+      "file_type": "code",
+      "source_file": "scripts/iniciar-dos-ventanas.ps1",
+      "source_location": "L1",
+      "community": 17,
+      "norm_label": "iniciar-dos-ventanas.ps1",
+      "id": "scripts_iniciar_dos_ventanas_ps1"
+    },
+    {
+      "label": "iniciar-frontend-con-log.ps1",
+      "file_type": "code",
+      "source_file": "scripts/iniciar-frontend-con-log.ps1",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "iniciar-frontend-con-log.ps1",
+      "id": "scripts_iniciar_frontend_con_log_ps1"
+    },
+    {
+      "label": "iniciar-frontend.ps1",
+      "file_type": "code",
+      "source_file": "scripts/iniciar-frontend.ps1",
+      "source_location": "L1",
+      "community": 19,
+      "norm_label": "iniciar-frontend.ps1",
+      "id": "scripts_iniciar_frontend_ps1"
+    },
+    {
+      "label": "configManager.js",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "configmanager.js",
+      "id": "backend_configmanager_js"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "fs",
+      "id": "backend_configmanager_fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L2",
+      "community": 2,
+      "norm_label": "path",
+      "id": "backend_configmanager_path"
+    },
+    {
+      "label": "CONFIG_FILE",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L4",
+      "community": 2,
+      "norm_label": "config_file",
+      "id": "backend_configmanager_config_file"
+    },
+    {
+      "label": "DEFAULT_CONFIG",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L6",
+      "community": 2,
+      "norm_label": "default_config",
+      "id": "backend_configmanager_default_config"
+    },
+    {
+      "label": "loadConfig()",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L22",
+      "community": 2,
+      "norm_label": "loadconfig()",
+      "id": "backend_configmanager_loadconfig"
+    },
+    {
+      "label": "saveConfig()",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L39",
+      "community": 2,
+      "norm_label": "saveconfig()",
+      "id": "backend_configmanager_saveconfig"
+    },
+    {
+      "label": "getConfig()",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L49",
+      "community": 2,
+      "norm_label": "getconfig()",
+      "id": "backend_configmanager_getconfig"
+    },
+    {
+      "label": "setConfig()",
+      "file_type": "code",
+      "source_file": "backend/configManager.js",
+      "source_location": "L53",
+      "community": 2,
+      "norm_label": "setconfig()",
+      "id": "backend_configmanager_setconfig"
+    },
+    {
+      "label": "{ setupRoutes }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L11",
+      "community": 0,
+      "norm_label": "{ setuproutes }",
+      "id": "backend_index_setuproutes"
+    },
+    {
+      "label": "{ setupSockets }",
+      "file_type": "code",
+      "source_file": "backend/index.js",
+      "source_location": "L12",
+      "community": 0,
+      "norm_label": "{ setupsockets }",
+      "id": "backend_index_setupsockets"
+    },
+    {
+      "label": "logger.js",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L1",
+      "community": 10,
+      "norm_label": "logger.js",
+      "id": "backend_logger_js"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L1",
+      "community": 10,
+      "norm_label": "fs",
+      "id": "backend_logger_fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L2",
+      "community": 10,
+      "norm_label": "path",
+      "id": "backend_logger_path"
+    },
+    {
+      "label": "LOG_DIR",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L4",
+      "community": 10,
+      "norm_label": "log_dir",
+      "id": "backend_logger_log_dir"
+    },
+    {
+      "label": "LOG_FILE",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L5",
+      "community": 10,
+      "norm_label": "log_file",
+      "id": "backend_logger_log_file"
+    },
+    {
+      "label": "appendLogFile()",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L7",
+      "community": 10,
+      "norm_label": "appendlogfile()",
+      "id": "backend_logger_appendlogfile"
+    },
+    {
+      "label": "_clog",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L28",
+      "community": 10,
+      "norm_label": "_clog",
+      "id": "backend_logger_clog"
+    },
+    {
+      "label": "_cerr",
+      "file_type": "code",
+      "source_file": "backend/logger.js",
+      "source_location": "L29",
+      "community": 10,
+      "norm_label": "_cerr",
+      "id": "backend_logger_cerr"
+    },
+    {
+      "label": "queueManager.js",
+      "file_type": "code",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "queuemanager.js",
+      "id": "backend_queuemanager_js"
+    },
+    {
+      "label": "roomStates",
+      "file_type": "code",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "roomstates",
+      "id": "backend_queuemanager_roomstates"
+    },
+    {
+      "label": "getRoomState()",
+      "file_type": "code",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L3",
+      "community": 2,
+      "norm_label": "getroomstate()",
+      "id": "backend_queuemanager_getroomstate"
+    },
+    {
+      "label": "addToQueue()",
+      "file_type": "code",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L24",
+      "community": 2,
+      "norm_label": "addtoqueue()",
+      "id": "backend_queuemanager_addtoqueue"
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L43",
+      "community": 2,
+      "norm_label": "processqueue()",
+      "id": "backend_queuemanager_processqueue"
+    },
+    {
+      "label": "routes.js",
+      "file_type": "code",
+      "source_file": "backend/routes.js",
+      "source_location": "L1",
+      "community": 11,
+      "norm_label": "routes.js",
+      "id": "backend_routes_js"
+    },
+    {
+      "label": "express",
+      "file_type": "code",
+      "source_file": "backend/routes.js",
+      "source_location": "L1",
+      "community": 11,
+      "norm_label": "express",
+      "id": "backend_routes_express"
+    },
+    {
+      "label": "{ AccountStatus }",
+      "file_type": "code",
+      "source_file": "backend/routes.js",
+      "source_location": "L2",
+      "community": 11,
+      "norm_label": "{ accountstatus }",
+      "id": "backend_routes_accountstatus"
+    },
+    {
+      "label": "{ cachedGiftLists }",
+      "file_type": "code",
+      "source_file": "backend/routes.js",
+      "source_location": "L3",
+      "community": 11,
+      "norm_label": "{ cachedgiftlists }",
+      "id": "backend_routes_cachedgiftlists"
+    },
+    {
+      "label": "setupRoutes()",
+      "file_type": "code",
+      "source_file": "backend/routes.js",
+      "source_location": "L5",
+      "community": 11,
+      "norm_label": "setuproutes()",
+      "id": "backend_routes_setuproutes"
+    },
+    {
+      "label": "socketManager.js",
+      "file_type": "code",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "socketmanager.js",
+      "id": "backend_socketmanager_js"
+    },
+    {
+      "label": "{ getConfig, saveConfig, DEFAULT_CONFIG }",
+      "file_type": "code",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "{ getconfig, saveconfig, default_config }",
+      "id": "backend_socketmanager_getconfig_saveconfig_default_config"
+    },
+    {
+      "label": "{ connectToTikTok, activeTikTokConnections }",
+      "file_type": "code",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L2",
+      "community": 2,
+      "norm_label": "{ connecttotiktok, activetiktokconnections }",
+      "id": "backend_socketmanager_connecttotiktok_activetiktokconnections"
+    },
+    {
+      "label": "{ processEvent, normalizeLiveChat, normalizeLiveGift }",
+      "file_type": "code",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "community": 2,
+      "norm_label": "{ processevent, normalizelivechat, normalizelivegift }",
+      "id": "backend_socketmanager_processevent_normalizelivechat_normalizelivegift"
+    },
+    {
+      "label": "setupSockets()",
+      "file_type": "code",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L5",
+      "community": 2,
+      "norm_label": "setupsockets()",
+      "id": "backend_socketmanager_setupsockets"
+    },
+    {
+      "label": "tiktokConnection.js",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "tiktokconnection.js",
+      "id": "backend_tiktokconnection_js"
+    },
+    {
+      "label": "{ WebcastPushConnection }",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "{ webcastpushconnection }",
+      "id": "backend_tiktokconnection_webcastpushconnection"
+    },
+    {
+      "label": "{ getRoomState }",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L2",
+      "community": 2,
+      "norm_label": "{ getroomstate }",
+      "id": "backend_tiktokconnection_getroomstate"
+    },
+    {
+      "label": "{ normalizeLiveGift, normalizeLiveChat, processEvent }",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "community": 2,
+      "norm_label": "{ normalizelivegift, normalizelivechat, processevent }",
+      "id": "backend_tiktokconnection_normalizelivegift_normalizelivechat_processevent"
+    },
+    {
+      "label": "activeTikTokConnections",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L5",
+      "community": 2,
+      "norm_label": "activetiktokconnections",
+      "id": "backend_tiktokconnection_activetiktokconnections"
+    },
+    {
+      "label": "cachedGiftLists",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L6",
+      "community": 11,
+      "norm_label": "cachedgiftlists",
+      "id": "backend_tiktokconnection_cachedgiftlists"
+    },
+    {
+      "label": "connectToTikTok()",
+      "file_type": "code",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L8",
+      "community": 2,
+      "norm_label": "connecttotiktok()",
+      "id": "backend_tiktokconnection_connecttotiktok"
+    },
+    {
+      "label": "tiktokEvents.js",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "tiktokevents.js",
+      "id": "backend_tiktokevents_js"
+    },
+    {
+      "label": "{ getConfig }",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "{ getconfig }",
+      "id": "backend_tiktokevents_getconfig"
+    },
+    {
+      "label": "{ addToQueue, getRoomState }",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L2",
+      "community": 2,
+      "norm_label": "{ addtoqueue, getroomstate }",
+      "id": "backend_tiktokevents_addtoqueue_getroomstate"
+    },
+    {
+      "label": "normalizeLiveChat()",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L4",
+      "community": 2,
+      "norm_label": "normalizelivechat()",
+      "id": "backend_tiktokevents_normalizelivechat"
+    },
+    {
+      "label": "normalizeLiveGift()",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L14",
+      "community": 2,
+      "norm_label": "normalizelivegift()",
+      "id": "backend_tiktokevents_normalizelivegift"
+    },
+    {
+      "label": "triggerAction()",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L28",
+      "community": 2,
+      "norm_label": "triggeraction()",
+      "id": "backend_tiktokevents_triggeraction"
+    },
+    {
+      "label": "processEvent()",
+      "file_type": "code",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L55",
+      "community": 2,
+      "norm_label": "processevent()",
+      "id": "backend_tiktokevents_processevent"
+    },
+    {
+      "label": "Technical Architecture Vision",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "community": 20,
+      "norm_label": "technical architecture vision",
+      "id": "architecture_technical_vision"
+    },
+    {
+      "label": "Node.js Backend",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md",
+      "community": 12,
+      "norm_label": "node.js backend",
+      "id": "backend_module"
+    },
+    {
+      "label": "React Frontend",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md",
+      "community": 12,
+      "norm_label": "react frontend",
+      "id": "frontend_module"
+    },
+    {
+      "label": "ESP32 Hardware",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md",
+      "community": 12,
+      "norm_label": "esp32 hardware",
+      "id": "esp32_module"
+    },
+    {
+      "label": "Queue and Persistence System",
+      "file_type": "rationale",
+      "source_file": "CONTEXT_IA.md",
+      "community": 12,
+      "norm_label": "queue and persistence system",
+      "id": "queue_manager_rationale"
+    },
+    {
+      "label": "AI Development Rules",
+      "file_type": "rationale",
+      "source_file": "CONTEXT_IA.md",
+      "community": 21,
+      "norm_label": "ai development rules",
+      "id": "ia_development_rules"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index.js",
+      "source_location": "L450",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_f"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_webcastpushconnection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_express"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_http"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_server"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_cors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_appendlogfile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_clog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_cerr"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_io"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_config_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_default_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_loadconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_saveconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L104",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivechat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_roomstates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L148",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_addtoqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L165",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L189",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_activetiktokconnections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L205",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizeduser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L233",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_clients"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L236",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_conn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L255",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockchat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L264",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L284",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_connecttotiktok"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L361",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L421",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "old_index_utf8_js",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_triggeraction"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_loadconfig",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_saveconfig"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L149",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_addtoqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L286",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_connecttotiktok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L362",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L162",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_addtoqueue",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "old_index_utf8.js",
+      "source_location": "L367",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "proyecto_interactivo_con_tiktoklive_old_index_utf8_processevent",
+      "target": "proyecto_interactivo_con_tiktoklive_old_index_utf8_triggeraction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_crypto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_accounts_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_pool_config_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_accountstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_account"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_accountpool_accountpool"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_connectionorchestrator_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_index_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_js",
+      "target": "backend_seedaccounts_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountstatus",
+      "target": "backend_connectionorchestrator_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountstatus",
+      "target": "backend_index_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountstatus",
+      "target": "backend_seedaccounts_js"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_account",
+      "target": "backend_accountpool_account_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_account",
+      "target": "backend_accountpool_account_tojson"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_load"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_persist"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L112",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_addaccount"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_removeaccount"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_getaccount"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_getall"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L136",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_gethealthyaccounts"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L142",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_getbestaccountforroom"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L156",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_markactive"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_markdisconnected"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_recordactivity"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L187",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_recordfailure"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L205",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_getsnapshot"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L217",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_accountpool_accountpool_size"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_connectionorchestrator_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_index_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool",
+      "target": "backend_seedaccounts_js"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_addaccount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_removeaccount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L162",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_markactive"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L172",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_markdisconnected"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_recordactivity"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_persist",
+      "target": "backend_accountpool_accountpool_recordfailure"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_getall",
+      "target": "backend_accountpool_accountpool_gethealthyaccounts"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L206",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_getall",
+      "target": "backend_accountpool_accountpool_getsnapshot"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/accountPool.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_accountpool_accountpool_gethealthyaccounts",
+      "target": "backend_accountpool_accountpool_getbestaccountforroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_js",
+      "target": "backend_connectionorchestrator_accountpool_accountstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_js",
+      "target": "backend_connectionorchestrator_connectionorchestrator"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_js",
+      "target": "backend_index_js"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_starthealthloop"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_stophealthloop"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_runhealthchecks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_acquireforroom"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_connect"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_releaseforroom"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_triggerfailover"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L220",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_getsystemhealth"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L235",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_normalizechat"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L245",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator",
+      "target": "backend_connectionorchestrator_connectionorchestrator_normalizegift"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/connectionOrchestrator.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_connectionorchestrator_connectionorchestrator_runhealthchecks",
+      "target": "backend_connectionorchestrator_connectionorchestrator_triggerfailover"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_webcastpushconnection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_express"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_http"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_server"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_cors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_accountpool_accountstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_connectionorchestrator"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_accountpool"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_orchestrator"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_log_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_log_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_appendlogfile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_clog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_cerr"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_io"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_acc"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_health"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L160",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_success"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_config_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L197",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_default_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_loadconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L229",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_saveconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L240",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_normalizelivechat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L250",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_normalizelivegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L264",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_roomstates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L266",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_getroomstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L284",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_addtoqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L301",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_processqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L325",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_processevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L385",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_triggeraction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L409",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_activetiktokconnections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L449",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_normalizeduser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L476",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_clients"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L480",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_conn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L498",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_mockchat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L507",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_mockdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L527",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_connecttotiktok"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_configmanager_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_configmanager_loadconfig"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_routes_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_routes_setuproutes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_setuproutes"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_socketmanager_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_socketmanager_setupsockets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_js",
+      "target": "backend_index_setupsockets"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L220",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_loadconfig",
+      "target": "backend_index_saveconfig"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L285",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_getroomstate",
+      "target": "backend_index_addtoqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L302",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_getroomstate",
+      "target": "backend_index_processqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L326",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_getroomstate",
+      "target": "backend_index_processevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L529",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_getroomstate",
+      "target": "backend_index_connecttotiktok"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L298",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_addtoqueue",
+      "target": "backend_index_processqueue"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/index.js",
+      "source_location": "L331",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_index_processevent",
+      "target": "backend_index_triggeraction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_seedaccounts_js",
+      "target": "backend_seedaccounts_accountpool_accountstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_seedaccounts_js",
+      "target": "backend_seedaccounts_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_seedaccounts_js",
+      "target": "backend_seedaccounts_accounts_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/seedAccounts.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_seedaccounts_js",
+      "target": "backend_seedaccounts_seed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_googlegenerativeai"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "backend_ai_bot_config_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_gemini_api_key"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_genai"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_chathistory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/ai.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "ai_bot_ai_generateresponse"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_ai_js",
+      "target": "backend_ai_bot_queue_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_ai_generateresponse",
+      "target": "backend_ai_bot_queue_js"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "ai_bot_ai_generateresponse",
+      "target": "ai_bot_queue_audioqueue_process"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_config_js",
+      "target": "backend_ai_bot_filtros_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_config_js",
+      "target": "backend_ai_bot_index_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_config_js",
+      "target": "backend_ai_bot_tts_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_filtros_js",
+      "target": "ai_bot_filtros_max_message_length_cooldown_ms"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_filtros_js",
+      "target": "ai_bot_filtros_usercooldowns"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_filtros_js",
+      "target": "ai_bot_filtros_recentmessages"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/filtros.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_filtros_js",
+      "target": "ai_bot_filtros_isspam"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_filtros_js",
+      "target": "backend_ai_bot_index_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_filtros_isspam",
+      "target": "backend_ai_bot_index_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_webcastpushconnection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_isspam"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "backend_ai_bot_queue_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_audioqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_tiktok_username"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_targetroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/index.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_index_js",
+      "target": "ai_bot_index_tiktokliveconnection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_player_js",
+      "target": "ai_bot_player_sound"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_player_js",
+      "target": "ai_bot_player_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/player.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_player_js",
+      "target": "ai_bot_player_playaudio"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_player_js",
+      "target": "backend_ai_bot_queue_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_player_playaudio",
+      "target": "backend_ai_bot_queue_js"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "ai_bot_player_playaudio",
+      "target": "ai_bot_queue_audioqueue_process"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_generateresponse"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "backend_ai_bot_tts_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_tts_generateaudio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_generateaudio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_playaudio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_queue_js",
+      "target": "ai_bot_queue_audioqueue"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_queue_audioqueue",
+      "target": "ai_bot_queue_audioqueue_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_queue_audioqueue",
+      "target": "ai_bot_queue_audioqueue_add"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_queue_audioqueue",
+      "target": "ai_bot_queue_audioqueue_process"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ai_bot_queue_audioqueue_add",
+      "target": "ai_bot_queue_audioqueue_process"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/ai_bot/queue.js",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "ai_bot_queue_audioqueue_process",
+      "target": "ai_bot_tts_generateaudio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_tts_js",
+      "target": "ai_bot_tts_edgetts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_tts_js",
+      "target": "ai_bot_tts_voice_name_pitch_rate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_tts_js",
+      "target": "ai_bot_tts_tts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/ai_bot/tts.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_ai_bot_tts_js",
+      "target": "ai_bot_tts_generateaudio"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_app_jsx",
+      "target": "frontend_src_socket_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_app_jsx",
+      "target": "frontend_src_bot_lector_botlectorview_jsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_app_jsx",
+      "target": "src_app_app"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/main.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_main_jsx",
+      "target": "frontend_src_app_jsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/socket.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_socket_js",
+      "target": "src_socket_getsocketurl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/socket.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_socket_js",
+      "target": "src_socket_socket"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_socket_js",
+      "target": "frontend_src_bot_lector_botlectorview_jsx"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "frontend_src_bot_lector_ttsqueue_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_ttsqueue_ttsqueue"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "frontend_src_bot_lector_botrulesengine_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botrulesengine_reducechat"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "frontend_src_bot_lector_defaultbotconfig_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_default_bot_config"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_loadbotconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_savebotconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_loadttsparams"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_savettsparams"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/BotLectorView.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_botlectorview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_getviewerkey"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_createdefaultviewerstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_matchesname"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_isvipactivation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_refillblock"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L176",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_botrulesengine_js",
+      "target": "bot_lector_botrulesengine_reducechat"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_getviewerkey",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_getviewerkey",
+      "target": "bot_lector_botrulesengine_reducechat"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_createdefaultviewerstate",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L197",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_createdefaultviewerstate",
+      "target": "bot_lector_botrulesengine_reducechat"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_matchesname",
+      "target": "bot_lector_botrulesengine_isvipactivation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_matchesname",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_isvipactivation",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/botRulesEngine.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_botrulesengine_refillblock",
+      "target": "bot_lector_botrulesengine_reducegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_defaultbotconfig_js",
+      "target": "bot_lector_defaultbotconfig_default_bot_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_defaultbotconfig_js",
+      "target": "bot_lector_defaultbotconfig_loadbotconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/defaultBotConfig.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_defaultbotconfig_js",
+      "target": "bot_lector_defaultbotconfig_savebotconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_bot_lector_ttsqueue_js",
+      "target": "bot_lector_ttsqueue_ttsqueue"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_setparams"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_getparams"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_paused"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_speak"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_drain"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_pause"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_resume"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_flush"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_listspanishvoices"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue",
+      "target": "bot_lector_ttsqueue_ttsqueue_pickfemalespanishvoice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue_speak",
+      "target": "bot_lector_ttsqueue_ttsqueue_drain"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue_drain",
+      "target": "bot_lector_ttsqueue_ttsqueue_resume"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/bot-lector/ttsQueue.js",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bot_lector_ttsqueue_ttsqueue_listspanishvoices",
+      "target": "bot_lector_ttsqueue_ttsqueue_pickfemalespanishvoice"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_config_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_default_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_loadconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_saveconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_getconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_setconfig"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_configmanager_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_default_config"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/configManager.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_configmanager_loadconfig",
+      "target": "backend_configmanager_saveconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_saveconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_getconfig"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_configmanager_getconfig"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "backend_tiktokevents_triggeraction",
+      "target": "backend_configmanager_getconfig"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_configmanager_getconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_fs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_log_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_log_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_appendlogfile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_clog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/logger.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_logger_js",
+      "target": "backend_logger_cerr"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_roomstates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_addtoqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_processqueue"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_queuemanager_js"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_js"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_addtoqueue",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_processqueue",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_tiktokconnection_connecttotiktok",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_queuemanager_getroomstate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/queueManager.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_queuemanager_addtoqueue",
+      "target": "backend_queuemanager_processqueue"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_addtoqueue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_routes_express"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_routes_accountstatus"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_tiktokconnection_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_tiktokconnection_cachedgiftlists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_routes_cachedgiftlists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routes.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_routes_js",
+      "target": "backend_routes_setuproutes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_getconfig_saveconfig_default_config"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_connecttotiktok"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_activetiktokconnections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_connecttotiktok_activetiktokconnections"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_processevent"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_normalizelivechat"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_normalizelivegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_processevent_normalizelivechat_normalizelivegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/socketManager.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_setupsockets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_webcastpushconnection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_getroomstate"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_normalizelivegift"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_normalizelivechat"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_processevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_normalizelivegift_normalizelivechat_processevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_activetiktokconnections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_cachedgiftlists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokConnection.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_connecttotiktok"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_getconfig"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_addtoqueue_getroomstate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_normalizelivechat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_normalizelivegift"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_triggeraction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_processevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/tiktokEvents.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_tiktokevents_triggeraction"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CONTEXT_IA.md",
+      "source": "backend_module",
+      "target": "queue_manager_rationale"
+    },
+    {
+      "relation": "communicates_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ARCHITECTURE.md",
+      "source": "frontend_module",
+      "target": "backend_module"
+    },
+    {
+      "relation": "commands",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ARCHITECTURE.md",
+      "source": "backend_module",
+      "target": "esp32_module"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "eb500be42fc44040e2d2dfe07c6d0e99fdf8bcd2"
+}

@@ -1,0 +1,1747 @@
+{
+  "nodes": [
+    {
+      "id": "backend_configmanager_js",
+      "label": "configManager.js",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_configmanager_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_configmanager_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_configmanager_config_file",
+      "label": "CONFIG_FILE",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L4"
+    },
+    {
+      "id": "backend_configmanager_default_config",
+      "label": "DEFAULT_CONFIG",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_configmanager_loadconfig",
+      "label": "loadConfig()",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L22"
+    },
+    {
+      "id": "backend_configmanager_saveconfig",
+      "label": "saveConfig()",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L39"
+    },
+    {
+      "id": "backend_configmanager_getconfig",
+      "label": "getConfig()",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L49"
+    },
+    {
+      "id": "backend_configmanager_setconfig",
+      "label": "setConfig()",
+      "file_type": "code",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L53"
+    },
+    {
+      "id": "backend_index_js",
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_index_express",
+      "label": "express",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_index_http",
+      "label": "http",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_index_server",
+      "label": "{ Server }",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_index_cors",
+      "label": "cors",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L4"
+    },
+    {
+      "id": "backend_index_loadconfig",
+      "label": "{ loadConfig }",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "backend_index_accountpool",
+      "label": "{ AccountPool }",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L9"
+    },
+    {
+      "id": "backend_index_connectionorchestrator",
+      "label": "ConnectionOrchestrator",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L10"
+    },
+    {
+      "id": "backend_index_setuproutes",
+      "label": "{ setupRoutes }",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_index_setupsockets",
+      "label": "{ setupSockets }",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L12"
+    },
+    {
+      "id": "backend_index_app",
+      "label": "app",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L14"
+    },
+    {
+      "id": "backend_index_io",
+      "label": "io",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "backend_index_orchestrator",
+      "label": "orchestrator",
+      "file_type": "code",
+      "source_file": "backend\\index.js",
+      "source_location": "L32"
+    },
+    {
+      "id": "backend_logger_js",
+      "label": "logger.js",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_logger_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_logger_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_logger_log_dir",
+      "label": "LOG_DIR",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L4"
+    },
+    {
+      "id": "backend_logger_log_file",
+      "label": "LOG_FILE",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "backend_logger_appendlogfile",
+      "label": "appendLogFile()",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L7"
+    },
+    {
+      "id": "backend_logger_clog",
+      "label": "_clog",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L28"
+    },
+    {
+      "id": "backend_logger_cerr",
+      "label": "_cerr",
+      "file_type": "code",
+      "source_file": "backend\\logger.js",
+      "source_location": "L29"
+    },
+    {
+      "id": "backend_queuemanager_js",
+      "label": "queueManager.js",
+      "file_type": "code",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_queuemanager_roomstates",
+      "label": "roomStates",
+      "file_type": "code",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_queuemanager_getroomstate",
+      "label": "getRoomState()",
+      "file_type": "code",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_queuemanager_addtoqueue",
+      "label": "addToQueue()",
+      "file_type": "code",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_queuemanager_processqueue",
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L43"
+    },
+    {
+      "id": "backend_routes_js",
+      "label": "routes.js",
+      "file_type": "code",
+      "source_file": "backend\\routes.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_routes_express",
+      "label": "express",
+      "file_type": "code",
+      "source_file": "backend\\routes.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_routes_accountstatus",
+      "label": "{ AccountStatus }",
+      "file_type": "code",
+      "source_file": "backend\\routes.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_routes_cachedgiftlists",
+      "label": "{ cachedGiftLists }",
+      "file_type": "code",
+      "source_file": "backend\\routes.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_routes_setuproutes",
+      "label": "setupRoutes()",
+      "file_type": "code",
+      "source_file": "backend\\routes.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "backend_socketmanager_js",
+      "label": "socketManager.js",
+      "file_type": "code",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_socketmanager_getconfig_saveconfig_default_config",
+      "label": "{ getConfig, saveConfig, DEFAULT_CONFIG }",
+      "file_type": "code",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_socketmanager_connecttotiktok_activetiktokconnections",
+      "label": "{ connectToTikTok, activeTikTokConnections }",
+      "file_type": "code",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_socketmanager_processevent_normalizelivechat_normalizelivegift",
+      "label": "{ processEvent, normalizeLiveChat, normalizeLiveGift }",
+      "file_type": "code",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_socketmanager_setupsockets",
+      "label": "setupSockets()",
+      "file_type": "code",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "backend_tiktokconnection_js",
+      "label": "tiktokConnection.js",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_tiktokconnection_webcastpushconnection",
+      "label": "{ WebcastPushConnection }",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_tiktokconnection_getroomstate",
+      "label": "{ getRoomState }",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_tiktokconnection_normalizelivegift_normalizelivechat_processevent",
+      "label": "{ normalizeLiveGift, normalizeLiveChat, processEvent }",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_tiktokconnection_activetiktokconnections",
+      "label": "activeTikTokConnections",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "backend_tiktokconnection_cachedgiftlists",
+      "label": "cachedGiftLists",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_tiktokconnection_connecttotiktok",
+      "label": "connectToTikTok()",
+      "file_type": "code",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "backend_tiktokevents_js",
+      "label": "tiktokEvents.js",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_tiktokevents_getconfig",
+      "label": "{ getConfig }",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_tiktokevents_addtoqueue_getroomstate",
+      "label": "{ addToQueue, getRoomState }",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "backend_tiktokevents_normalizelivechat",
+      "label": "normalizeLiveChat()",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L4"
+    },
+    {
+      "id": "backend_tiktokevents_normalizelivegift",
+      "label": "normalizeLiveGift()",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L14"
+    },
+    {
+      "id": "backend_tiktokevents_triggeraction",
+      "label": "triggerAction()",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L28"
+    },
+    {
+      "id": "backend_tiktokevents_processevent",
+      "label": "processEvent()",
+      "file_type": "code",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L55"
+    },
+    {
+      "id": "frontend_src_app_jsx",
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_app",
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "frontend_src_main_jsx",
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_bot_lector_botlectorview_jsx",
+      "label": "BotLectorView.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "bot_lector_botlectorview_loadttsparams",
+      "label": "loadTtsParams()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "bot_lector_botlectorview_savettsparams",
+      "label": "saveTtsParams()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "bot_lector_botlectorview_botlectorview",
+      "label": "BotLectorView()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L29"
+    }
+  ],
+  "edges": [
+    {
+      "source": "backend_configmanager_js",
+      "target": "fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_config_file",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_default_config",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_loadconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_saveconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_getconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_js",
+      "target": "backend_configmanager_setconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_configmanager_loadconfig",
+      "target": "backend_configmanager_saveconfig",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\configManager.js",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "express",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_express",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "http",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_http",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "socket_io",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_server",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "cors",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_cors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_configmanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_configmanager_loadconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_loadconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_backend_accountpool_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_accountpool_accountpool",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_accountpool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_backend_connectionorchestrator_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_connectionorchestrator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_routes_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_routes_setuproutes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_setuproutes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_socketmanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_socketmanager_setupsockets",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_setupsockets",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_server",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_io",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_accountpool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_index_js",
+      "target": "backend_index_orchestrator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\index.js",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_log_dir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_log_file",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_appendlogfile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_clog",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_logger_js",
+      "target": "backend_logger_cerr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\logger.js",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_roomstates",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_addtoqueue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_js",
+      "target": "backend_queuemanager_processqueue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_addtoqueue",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_addtoqueue",
+      "target": "backend_queuemanager_processqueue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_queuemanager_processqueue",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\queueManager.js",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "express",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_routes_express",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_backend_accountpool_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_accountpool_accountstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_routes_accountstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_tiktokconnection_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_tiktokconnection_cachedgiftlists",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_routes_cachedgiftlists",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_routes_js",
+      "target": "backend_routes_setuproutes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\routes.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_getconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_saveconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_configmanager_default_config",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_getconfig_saveconfig_default_config",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_connecttotiktok",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokconnection_activetiktokconnections",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_connecttotiktok_activetiktokconnections",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_processevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_normalizelivechat",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_tiktokevents_normalizelivegift",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_processevent_normalizelivechat_normalizelivegift",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_socketmanager_js",
+      "target": "backend_socketmanager_setupsockets",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\socketManager.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "tiktok_live_connector",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_webcastpushconnection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_queuemanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_getroomstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_normalizelivegift",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_normalizelivechat",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokevents_processevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_normalizelivegift_normalizelivechat_processevent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_activetiktokconnections",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_cachedgiftlists",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_js",
+      "target": "backend_tiktokconnection_connecttotiktok",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_configmanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_configmanager_getconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_getconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_addtoqueue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_addtoqueue_getroomstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_normalizelivechat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_normalizelivegift",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_triggeraction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_js",
+      "target": "backend_tiktokevents_processevent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_tiktokevents_triggeraction",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_frontend_src_socket_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "frontend_src_bot_lector_botlectorview_jsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_app_jsx",
+      "target": "src_app_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_main_jsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_main_jsx",
+      "target": "client",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_main_jsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_main_jsx",
+      "target": "frontend_src_app_jsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_frontend_src_socket_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_frontend_src_bot_lector_ttsqueue_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_ttsqueue_ttsqueue",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_frontend_src_bot_lector_botrulesengine_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botrulesengine_reducegift",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botrulesengine_reducechat",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "c_users_tenec_documents_proyecto_interactivo_con_tiktoklive_frontend_src_bot_lector_defaultbotconfig_js",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_default_bot_config",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_loadbotconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_defaultbotconfig_savebotconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_loadttsparams",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_savettsparams",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_bot_lector_botlectorview_jsx",
+      "target": "bot_lector_botlectorview_botlectorview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\bot-lector\\BotLectorView.jsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokconnection_connecttotiktok",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend\\tiktokConnection.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_triggeraction",
+      "target": "backend_configmanager_getconfig",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_configmanager_getconfig",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tiktokevents_processevent",
+      "target": "backend_queuemanager_getroomstate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend\\tiktokEvents.js",
+      "source_location": "L57",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "architecture_technical_vision",
+      "label": "Technical Architecture Vision",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "backend_module",
+      "label": "Node.js Backend",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "frontend_module",
+      "label": "React Frontend",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "esp32_module",
+      "label": "ESP32 Hardware",
+      "file_type": "code",
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "id": "queue_manager_rationale",
+      "label": "Queue and Persistence System",
+      "file_type": "rationale",
+      "source_file": "CONTEXT_IA.md"
+    },
+    {
+      "id": "ia_development_rules",
+      "label": "AI Development Rules",
+      "file_type": "rationale",
+      "source_file": "CONTEXT_IA.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "backend_module",
+      "target": "queue_manager_rationale",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CONTEXT_IA.md"
+    },
+    {
+      "source": "frontend_module",
+      "target": "backend_module",
+      "relation": "communicates_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ARCHITECTURE.md"
+    },
+    {
+      "source": "backend_module",
+      "target": "esp32_module",
+      "relation": "commands",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ARCHITECTURE.md"
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 400
+}

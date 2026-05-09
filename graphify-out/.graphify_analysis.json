@@ -1,0 +1,474 @@
+{
+  "communities": {
+    "0": [
+      "backend_index_acc",
+      "backend_index_accountpool",
+      "backend_index_accountpool_accountstatus",
+      "backend_index_activetiktokconnections",
+      "backend_index_addtoqueue",
+      "backend_index_app",
+      "backend_index_appendlogfile",
+      "backend_index_cerr",
+      "backend_index_clients",
+      "backend_index_clog",
+      "backend_index_config_file",
+      "backend_index_conn",
+      "backend_index_connectionorchestrator",
+      "backend_index_connecttotiktok",
+      "backend_index_cors",
+      "backend_index_default_config",
+      "backend_index_express",
+      "backend_index_fs",
+      "backend_index_getroomstate",
+      "backend_index_health",
+      "backend_index_http",
+      "backend_index_io",
+      "backend_index_js",
+      "backend_index_loadconfig",
+      "backend_index_log_dir",
+      "backend_index_log_file",
+      "backend_index_mockchat",
+      "backend_index_mockdata",
+      "backend_index_normalizeduser",
+      "backend_index_normalizelivechat",
+      "backend_index_normalizelivegift",
+      "backend_index_orchestrator",
+      "backend_index_path",
+      "backend_index_processevent",
+      "backend_index_processqueue",
+      "backend_index_roomstates",
+      "backend_index_saveconfig",
+      "backend_index_server",
+      "backend_index_setuproutes",
+      "backend_index_setupsockets",
+      "backend_index_success",
+      "backend_index_triggeraction",
+      "backend_index_webcastpushconnection"
+    ],
+    "1": [
+      "old_index_utf8_js",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_activetiktokconnections",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_addtoqueue",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_app",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_appendlogfile",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_cerr",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_clients",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_clog",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_config_file",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_conn",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_connecttotiktok",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_cors",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_default_config",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_express",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_fs",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_http",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_io",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_loadconfig",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_dir",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_log_file",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockchat",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_mockdata",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizeduser",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivechat",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_normalizelivegift",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_path",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_processevent",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_processqueue",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_roomstates",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_saveconfig",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_server",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_triggeraction",
+      "proyecto_interactivo_con_tiktoklive_old_index_utf8_webcastpushconnection"
+    ],
+    "2": [
+      "backend_configmanager_config_file",
+      "backend_configmanager_default_config",
+      "backend_configmanager_fs",
+      "backend_configmanager_getconfig",
+      "backend_configmanager_js",
+      "backend_configmanager_loadconfig",
+      "backend_configmanager_path",
+      "backend_configmanager_saveconfig",
+      "backend_configmanager_setconfig",
+      "backend_queuemanager_addtoqueue",
+      "backend_queuemanager_getroomstate",
+      "backend_queuemanager_js",
+      "backend_queuemanager_processqueue",
+      "backend_queuemanager_roomstates",
+      "backend_socketmanager_connecttotiktok_activetiktokconnections",
+      "backend_socketmanager_getconfig_saveconfig_default_config",
+      "backend_socketmanager_js",
+      "backend_socketmanager_processevent_normalizelivechat_normalizelivegift",
+      "backend_socketmanager_setupsockets",
+      "backend_tiktokconnection_activetiktokconnections",
+      "backend_tiktokconnection_connecttotiktok",
+      "backend_tiktokconnection_getroomstate",
+      "backend_tiktokconnection_js",
+      "backend_tiktokconnection_normalizelivegift_normalizelivechat_processevent",
+      "backend_tiktokconnection_webcastpushconnection",
+      "backend_tiktokevents_addtoqueue_getroomstate",
+      "backend_tiktokevents_getconfig",
+      "backend_tiktokevents_js",
+      "backend_tiktokevents_normalizelivechat",
+      "backend_tiktokevents_normalizelivegift",
+      "backend_tiktokevents_processevent",
+      "backend_tiktokevents_triggeraction"
+    ],
+    "3": [
+      "ai_bot_ai_chathistory",
+      "ai_bot_ai_gemini_api_key",
+      "ai_bot_ai_genai",
+      "ai_bot_ai_generateresponse",
+      "ai_bot_ai_googlegenerativeai",
+      "ai_bot_ai_model",
+      "ai_bot_player_fs",
+      "ai_bot_player_playaudio",
+      "ai_bot_player_sound",
+      "ai_bot_queue_audioqueue",
+      "ai_bot_queue_audioqueue_add",
+      "ai_bot_queue_audioqueue_constructor",
+      "ai_bot_queue_audioqueue_process",
+      "ai_bot_queue_fs",
+      "ai_bot_queue_generateaudio",
+      "ai_bot_queue_generateresponse",
+      "ai_bot_queue_path",
+      "ai_bot_queue_playaudio",
+      "ai_bot_tts_edgetts",
+      "ai_bot_tts_generateaudio",
+      "ai_bot_tts_tts",
+      "ai_bot_tts_voice_name_pitch_rate",
+      "backend_ai_bot_ai_js",
+      "backend_ai_bot_player_js",
+      "backend_ai_bot_queue_js",
+      "backend_ai_bot_tts_js"
+    ],
+    "4": [
+      "bot_lector_botlectorview_botlectorview",
+      "bot_lector_botlectorview_loadttsparams",
+      "bot_lector_botlectorview_savettsparams",
+      "bot_lector_botrulesengine_createdefaultviewerstate",
+      "bot_lector_botrulesengine_getviewerkey",
+      "bot_lector_botrulesengine_isvipactivation",
+      "bot_lector_botrulesengine_matchesname",
+      "bot_lector_botrulesengine_reducechat",
+      "bot_lector_botrulesengine_reducegift",
+      "bot_lector_botrulesengine_refillblock",
+      "bot_lector_defaultbotconfig_default_bot_config",
+      "bot_lector_defaultbotconfig_loadbotconfig",
+      "bot_lector_defaultbotconfig_savebotconfig",
+      "frontend_src_app_jsx",
+      "frontend_src_bot_lector_botlectorview_jsx",
+      "frontend_src_bot_lector_botrulesengine_js",
+      "frontend_src_bot_lector_defaultbotconfig_js",
+      "frontend_src_main_jsx",
+      "frontend_src_socket_js",
+      "src_app_app",
+      "src_socket_getsocketurl",
+      "src_socket_socket"
+    ],
+    "5": [
+      "backend_accountpool_account",
+      "backend_accountpool_account_constructor",
+      "backend_accountpool_account_tojson",
+      "backend_accountpool_accounts_file",
+      "backend_accountpool_accountstatus",
+      "backend_accountpool_crypto",
+      "backend_accountpool_fs",
+      "backend_accountpool_js",
+      "backend_accountpool_path",
+      "backend_accountpool_pool_config_file",
+      "backend_connectionorchestrator_accountpool_accountstatus",
+      "backend_connectionorchestrator_js",
+      "backend_seedaccounts_accountpool_accountstatus",
+      "backend_seedaccounts_accounts_file",
+      "backend_seedaccounts_js",
+      "backend_seedaccounts_path",
+      "backend_seedaccounts_seed"
+    ],
+    "6": [
+      "backend_accountpool_accountpool",
+      "backend_accountpool_accountpool_addaccount",
+      "backend_accountpool_accountpool_constructor",
+      "backend_accountpool_accountpool_getaccount",
+      "backend_accountpool_accountpool_getall",
+      "backend_accountpool_accountpool_getbestaccountforroom",
+      "backend_accountpool_accountpool_gethealthyaccounts",
+      "backend_accountpool_accountpool_getsnapshot",
+      "backend_accountpool_accountpool_load",
+      "backend_accountpool_accountpool_markactive",
+      "backend_accountpool_accountpool_markdisconnected",
+      "backend_accountpool_accountpool_persist",
+      "backend_accountpool_accountpool_recordactivity",
+      "backend_accountpool_accountpool_recordfailure",
+      "backend_accountpool_accountpool_removeaccount",
+      "backend_accountpool_accountpool_size"
+    ],
+    "7": [
+      "ai_bot_filtros_isspam",
+      "ai_bot_filtros_max_message_length_cooldown_ms",
+      "ai_bot_filtros_recentmessages",
+      "ai_bot_filtros_usercooldowns",
+      "ai_bot_index_audioqueue",
+      "ai_bot_index_isspam",
+      "ai_bot_index_targetroom",
+      "ai_bot_index_tiktok_username",
+      "ai_bot_index_tiktokliveconnection",
+      "ai_bot_index_webcastpushconnection",
+      "backend_ai_bot_config_js",
+      "backend_ai_bot_filtros_js",
+      "backend_ai_bot_index_js"
+    ],
+    "8": [
+      "bot_lector_ttsqueue_ttsqueue",
+      "bot_lector_ttsqueue_ttsqueue_constructor",
+      "bot_lector_ttsqueue_ttsqueue_drain",
+      "bot_lector_ttsqueue_ttsqueue_flush",
+      "bot_lector_ttsqueue_ttsqueue_getparams",
+      "bot_lector_ttsqueue_ttsqueue_listspanishvoices",
+      "bot_lector_ttsqueue_ttsqueue_pause",
+      "bot_lector_ttsqueue_ttsqueue_paused",
+      "bot_lector_ttsqueue_ttsqueue_pickfemalespanishvoice",
+      "bot_lector_ttsqueue_ttsqueue_resume",
+      "bot_lector_ttsqueue_ttsqueue_setparams",
+      "bot_lector_ttsqueue_ttsqueue_speak",
+      "frontend_src_bot_lector_ttsqueue_js"
+    ],
+    "9": [
+      "backend_connectionorchestrator_connectionorchestrator",
+      "backend_connectionorchestrator_connectionorchestrator_acquireforroom",
+      "backend_connectionorchestrator_connectionorchestrator_connect",
+      "backend_connectionorchestrator_connectionorchestrator_constructor",
+      "backend_connectionorchestrator_connectionorchestrator_getsystemhealth",
+      "backend_connectionorchestrator_connectionorchestrator_normalizechat",
+      "backend_connectionorchestrator_connectionorchestrator_normalizegift",
+      "backend_connectionorchestrator_connectionorchestrator_releaseforroom",
+      "backend_connectionorchestrator_connectionorchestrator_runhealthchecks",
+      "backend_connectionorchestrator_connectionorchestrator_starthealthloop",
+      "backend_connectionorchestrator_connectionorchestrator_stophealthloop",
+      "backend_connectionorchestrator_connectionorchestrator_triggerfailover"
+    ],
+    "10": [
+      "backend_logger_appendlogfile",
+      "backend_logger_cerr",
+      "backend_logger_clog",
+      "backend_logger_fs",
+      "backend_logger_js",
+      "backend_logger_log_dir",
+      "backend_logger_log_file",
+      "backend_logger_path"
+    ],
+    "11": [
+      "backend_routes_accountstatus",
+      "backend_routes_cachedgiftlists",
+      "backend_routes_express",
+      "backend_routes_js",
+      "backend_routes_setuproutes",
+      "backend_tiktokconnection_cachedgiftlists"
+    ],
+    "12": [
+      "backend_module",
+      "esp32_module",
+      "frontend_module",
+      "queue_manager_rationale"
+    ],
+    "13": [
+      "old_index_js",
+      "proyecto_interactivo_con_tiktoklive_old_index_f"
+    ],
+    "14": [
+      "frontend_fix_jsx_py"
+    ],
+    "15": [
+      "frontend_vite_config_js"
+    ],
+    "16": [
+      "scripts_iniciar_backend_ps1"
+    ],
+    "17": [
+      "scripts_iniciar_dos_ventanas_ps1"
+    ],
+    "18": [
+      "scripts_iniciar_frontend_con_log_ps1"
+    ],
+    "19": [
+      "scripts_iniciar_frontend_ps1"
+    ],
+    "20": [
+      "architecture_technical_vision"
+    ],
+    "21": [
+      "ia_development_rules"
+    ]
+  },
+  "cohesion": {
+    "0": 0.05,
+    "1": 0.07,
+    "2": 0.12,
+    "3": 0.1,
+    "4": 0.15,
+    "5": 0.13,
+    "6": 0.2,
+    "7": 0.18,
+    "8": 0.19,
+    "9": 0.18,
+    "10": 0.25,
+    "11": 0.33,
+    "12": 0.5,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0
+  },
+  "gods": [
+    {
+      "id": "backend_accountpool_accountpool",
+      "label": "AccountPool",
+      "degree": 19
+    },
+    {
+      "id": "bot_lector_ttsqueue_ttsqueue",
+      "label": "TtsQueue",
+      "degree": 13
+    },
+    {
+      "id": "backend_connectionorchestrator_connectionorchestrator",
+      "label": "ConnectionOrchestrator",
+      "degree": 12
+    },
+    {
+      "id": "bot_lector_botrulesengine_reducegift",
+      "label": "reduceGift()",
+      "degree": 7
+    },
+    {
+      "id": "backend_queuemanager_getroomstate",
+      "label": "getRoomState()",
+      "degree": 7
+    },
+    {
+      "id": "backend_tiktokevents_processevent",
+      "label": "processEvent()",
+      "degree": 6
+    },
+    {
+      "id": "proyecto_interactivo_con_tiktoklive_old_index_utf8_getroomstate",
+      "label": "getRoomState()",
+      "degree": 5
+    },
+    {
+      "id": "backend_index_getroomstate",
+      "label": "getRoomState()",
+      "degree": 5
+    },
+    {
+      "id": "backend_configmanager_getconfig",
+      "label": "getConfig()",
+      "degree": 5
+    },
+    {
+      "id": "backend_accountpool_accountstatus",
+      "label": "AccountStatus",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Node.js Backend",
+      "target": "Queue and Persistence System",
+      "source_files": [
+        "ARCHITECTURE.md",
+        "CONTEXT_IA.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "implements",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "triggerAction()",
+      "target": "getConfig()",
+      "source_files": [
+        "backend/tiktokEvents.js",
+        "backend/configManager.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "processEvent()",
+      "target": "getConfig()",
+      "source_files": [
+        "backend/tiktokEvents.js",
+        "backend/configManager.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "connectToTikTok()",
+      "target": "getRoomState()",
+      "source_files": [
+        "backend/tiktokConnection.js",
+        "backend/queueManager.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "processEvent()",
+      "target": "getRoomState()",
+      "source_files": [
+        "backend/tiktokEvents.js",
+        "backend/queueManager.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `AccountPool` connect `Community 6` to `Community 0`, `Community 5`?",
+      "why": "High betweenness centrality (0.059) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `ConnectionOrchestrator` connect `Community 9` to `Community 5`?",
+      "why": "High betweenness centrality (0.040) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `TtsQueue` connect `Community 8` to `Community 4`?",
+      "why": "High betweenness centrality (0.009) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `{ WebcastPushConnection }`, `express`, `http` to the rest of the system?",
+      "why": "113 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
