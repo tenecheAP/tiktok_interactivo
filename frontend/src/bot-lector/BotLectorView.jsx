@@ -26,7 +26,7 @@ function saveTtsParams(p) {
   localStorage.setItem(TTS_STORAGE_KEY, JSON.stringify(p));
 }
 
-export default function BotLectorView() {
+export default function BotLectorView({ embedded = false }) {
   const [botConfig, setBotConfig] = useState(() => loadBotConfig());
   const [ttsParams, setTtsParams] = useState(() => loadTtsParams());
   const [voices, setVoices] = useState([]);
@@ -266,55 +266,57 @@ export default function BotLectorView() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans">
-      <header className="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <Link
-              to="/"
-              className="flex items-center gap-2 text-slate-400 hover:text-white text-xs font-bold uppercase"
-            >
-              <ArrowLeft size={16} /> Dashboard
-            </Link>
-            <h1 className="text-lg font-black tracking-tight text-white flex items-center gap-2">
-              <Headphones className="text-pink-500" size={22} />
-              Bot lector
-            </h1>
+    <div className="min-h-screen text-[var(--text-main)] font-sans">
+      {!embedded && (
+        <header className="border-b border-[var(--border-card)] bg-[var(--bg-card)]/90 backdrop-blur sticky top-0 z-10">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                className="flex items-center gap-2 text-slate-500 hover:text-[var(--text-main)] text-xs font-bold uppercase"
+              >
+                <ArrowLeft size={16} /> Dashboard
+              </Link>
+              <h1 className="text-lg font-black tracking-tight text-[var(--text-main)] flex items-center gap-2">
+                <Headphones className="text-pink-500" size={22} />
+                Bot lector
+              </h1>
+            </div>
+            <div className="flex items-center gap-4 text-[10px] font-mono uppercase">
+              <span className={`flex items-center gap-1.5 px-2 py-0.5 rounded ${
+                status === 'connected' ? 'bg-emerald-500/20 text-emerald-400' :
+                status === 'connecting' ? 'bg-amber-500/20 text-amber-400' :
+                'bg-red-500/20 text-red-400'
+              }`}>
+                <div className={`w-1.5 h-1.5 rounded-full ${
+                  status === 'connected' ? 'bg-emerald-500' :
+                  status === 'connecting' ? 'bg-amber-500 animate-pulse' :
+                  'bg-red-500'
+                }`}></div>
+                {status === 'connected' ? 'ACTIVO' : status === 'connecting' ? `CONECTANDO${reconnectAttempts > 0 ? ` (${reconnectAttempts})` : ''}` : 'INACTIVO'}
+              </span>
+              <span className="flex items-center gap-1">
+                <Users size={14} className="text-slate-500" />
+                {liveInfo.viewerCount}
+              </span>
+              <span className="text-slate-600">|</span>
+              <span title="Regalos procesados">🎁 {stats.totalGiftsProcessed}</span>
+              <span title="Chats procesados">💬 {stats.totalChatsProcessed}</span>
+              <span title="Utterances TTS">🔊 {stats.totalUtterances}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-4 text-[10px] font-mono uppercase">
-            <span className={`flex items-center gap-1.5 px-2 py-0.5 rounded ${
-              status === 'connected' ? 'bg-emerald-500/20 text-emerald-400' :
-              status === 'connecting' ? 'bg-amber-500/20 text-amber-400' :
-              'bg-red-500/20 text-red-400'
-            }`}>
-              <div className={`w-1.5 h-1.5 rounded-full ${
-                status === 'connected' ? 'bg-emerald-500' :
-                status === 'connecting' ? 'bg-amber-500 animate-pulse' :
-                'bg-red-500'
-              }`}></div>
-              {status === 'connected' ? 'ACTIVO' : status === 'connecting' ? `CONECTANDO${reconnectAttempts > 0 ? ` (${reconnectAttempts})` : ''}` : 'INACTIVO'}
-            </span>
-            <span className="flex items-center gap-1">
-              <Users size={14} className="text-slate-500" />
-              {liveInfo.viewerCount}
-            </span>
-            <span className="text-slate-600">|</span>
-            <span title="Regalos procesados">🎁 {stats.totalGiftsProcessed}</span>
-            <span title="Chats procesados">💬 {stats.totalChatsProcessed}</span>
-            <span title="Utterances TTS">🔊 {stats.totalUtterances}</span>
-          </div>
-        </div>
-      </header>
+        </header>
+      )}
 
       <main className="max-w-6xl mx-auto px-4 py-6 space-y-6">
         <p className="text-xs text-slate-500 leading-relaxed">
           Sin API oficial de TikTok: depende de{' '}
-          <code className="text-slate-400">tiktok-live-connector</code>. Si no
-          llega <code className="text-slate-400">uniqueId</code>, la clave es el
+          <code className="text-slate-500">tiktok-live-connector</code>. Si no
+          llega <code className="text-slate-500">uniqueId</code>, la clave es el
           nickname (riesgo de colisión entre usuarios).
         </p>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5 space-y-4">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-500">
             Conexión al live
           </h2>
@@ -324,13 +326,13 @@ export default function BotLectorView() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="@usuario TikTok en vivo"
-              className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-pink-500/40"
+              className="flex-1 bg-[var(--bg-input)] border border-[var(--border-card)] rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-pink-500/40"
             />
             <button
               type="button"
               onClick={connectToLive}
               disabled={status === 'connecting'}
-              className="bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs uppercase tracking-widest px-6 py-2 rounded-xl disabled:opacity-50"
+              className="bg-pink-600 hover:bg-pink-500 text-[var(--text-main)] font-bold text-xs uppercase tracking-widest px-6 py-2 rounded-xl disabled:opacity-50"
             >
               {status === 'connecting' ? 'Conectando...' : 'Conectar'}
             </button>
@@ -340,7 +342,7 @@ export default function BotLectorView() {
           )}
         </section>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5 space-y-4">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
             <Volume2 size={14} /> Voz (Web Speech API)
           </h2>
@@ -350,7 +352,7 @@ export default function BotLectorView() {
               <select
                 value={selectedVoiceURI}
                 onChange={(e) => setSelectedVoiceURI(e.target.value)}
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-sm"
               >
                 <option value="">Predeterminada del navegador</option>
                 {spanishVoices.map((v) => (
@@ -368,7 +370,7 @@ export default function BotLectorView() {
                 onChange={(e) =>
                   setTtsParams((p) => ({ ...p, lang: e.target.value }))
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-sm"
               />
             </label>
           </div>
@@ -404,7 +406,7 @@ export default function BotLectorView() {
             <button
               type="button"
               onClick={togglePause}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-xs font-bold uppercase border border-slate-700"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--border-card)] text-xs font-bold uppercase border border-[var(--border-card-hover)]"
             >
               {ttsPaused ? <Mic size={16} /> : <MicOff size={16} />}
               {ttsPaused ? 'Reanudar lectura' : 'Pausar lectura'}
@@ -415,14 +417,14 @@ export default function BotLectorView() {
                 ttsRef.current?.flush();
                 pushLog('info', 'Cola TTS vaciada.');
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-xs font-bold uppercase border border-slate-700"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--border-card)] text-xs font-bold uppercase border border-[var(--border-card-hover)]"
             >
               <Trash2 size={16} /> Vaciar cola
             </button>
           </div>
         </section>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5 space-y-4">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-500">
             Reglas de regalos
           </h2>
@@ -442,7 +444,7 @@ export default function BotLectorView() {
                       .filter(Boolean),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="block">
@@ -460,7 +462,7 @@ export default function BotLectorView() {
                       .filter(Boolean),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="block">
@@ -476,7 +478,7 @@ export default function BotLectorView() {
                     commentsPerBlock: Math.max(1, parseInt(e.target.value, 10) || 1),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="block">
@@ -495,7 +497,7 @@ export default function BotLectorView() {
                     ),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="block">
@@ -514,7 +516,7 @@ export default function BotLectorView() {
                     ),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="block">
@@ -532,7 +534,7 @@ export default function BotLectorView() {
                       .filter(Boolean),
                   })
                 }
-                className="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2"
+                className="mt-1 w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-3 py-2"
               />
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
@@ -570,7 +572,7 @@ export default function BotLectorView() {
           </button>
         </section>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5 space-y-3">
           <div className="flex justify-between items-center">
             <h2 className="text-xs font-black uppercase tracking-widest text-slate-500">
               Espectadores
@@ -586,7 +588,7 @@ export default function BotLectorView() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="text-slate-500 border-b border-slate-800">
+                <tr className="text-slate-500 border-b border-[var(--border-card)]">
                   <th className="py-2 pr-2">Clave</th>
                   <th className="py-2 pr-2">Estado</th>
                   <th className="py-2 pr-2">Leídos</th>
@@ -603,7 +605,7 @@ export default function BotLectorView() {
                   </tr>
                 ) : (
                   Object.entries(viewerMap).map(([k, v]) => (
-                    <tr key={k} className="border-b border-slate-800/50">
+                    <tr key={k} className="border-b border-[var(--border-card)]/50">
                       <td className="py-2 font-mono text-[10px] truncate max-w-[140px]">
                         {k}
                       </td>
@@ -619,7 +621,7 @@ export default function BotLectorView() {
           </div>
         </section>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5 space-y-3">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-500">
             Simulación (mismo socket que el dashboard)
           </h2>
@@ -629,7 +631,7 @@ export default function BotLectorView() {
                 key={t}
                 type="button"
                 onClick={() => socket.emit('simulate_event', t)}
-                className="px-4 py-2 rounded-lg bg-slate-800 text-[10px] font-black uppercase border border-slate-700"
+                className="px-4 py-2 rounded-lg bg-[var(--border-card)] text-[10px] font-black uppercase border border-[var(--border-card-hover)]"
               >
                 Simular {t}
               </button>
@@ -641,11 +643,11 @@ export default function BotLectorView() {
           </p>
         </section>
 
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-5">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-500 mb-2">
             Registro
           </h2>
-          <pre className="text-[10px] text-slate-400 font-mono whitespace-pre-wrap max-h-56 overflow-y-auto">
+          <pre className="text-[10px] text-slate-500 font-mono whitespace-pre-wrap max-h-56 overflow-y-auto">
             {logs.length === 0 ? 'Sin mensajes.' : logs.join('\n')}
           </pre>
         </section>

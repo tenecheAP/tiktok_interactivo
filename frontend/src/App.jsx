@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import { Settings, Play, Wifi, Volume2, User, Zap, Gift } from 'lucide-react';
+import { Settings, Play, Wifi, Volume2, User, Zap, Gift, Target, Heart } from 'lucide-react';
 import socket from './socket';
 import BotLectorView from './bot-lector/BotLectorView';
 // import AccountsEnjambre from './accounts-enjambre/AccountsEnjambre';
 
 function App() {
+  const [theme, setTheme] = useState('neon');
   const [username, setUsername] = useState('');
   const [history, setHistory] = useState(() => {
     const saved = localStorage.getItem('tiktok_history');
@@ -14,119 +15,185 @@ function App() {
   const [status, setStatus] = useState('disconnected');
   const [connectionError, setConnectionError] = useState('');
   const [config, setConfig] = useState(null);
-  const [localMappings, setLocalMappings] = useState([]);
+  const [localMappings, setLocalMappings] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tiktok_local_mappings');
+      if (saved) return JSON.parse(saved);
+    } catch { /* ignorar */ }
+    return [];
+  });
   const [events, setEvents] = useState([]);
   const [gifts, setGifts] = useState([]);
+  const [aggregatedGifts, setAggregatedGifts] = useState([]);
+  const [globalGiftStats, setGlobalGiftStats] = useState({});
   const [likesStatus, setLikesStatus] = useState({ current: 0, goal: 1000 });
   const [queues, setQueues] = useState({});
+  const [activeActions, setActiveActions] = useState({});
   const [stats, setStats] = useState({ totalLikes: 0, totalGifts: 0, totalFollowers: 0 });
   const [liveInfo, setLiveInfo] = useState({ viewerCount: 0, startTime: null, elapsed: '00:00:00' });
   const [audioEnabled, setAudioEnabled] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
-  const [showActivity, setShowActivity] = useState(false);
+  const [isBotActive, setIsBotActive] = useState(false);
+  const [showBotModal, setShowBotModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [isLoadingGifts, setIsLoadingGifts] = useState(false);
+  const [giftsError, setGiftsError] = useState('');
+
+  // Nombres personalizados de actuadores (persistidos)
+  const [actuatorNames, setActuatorNames] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tiktok_actuator_names');
+      if (saved) return JSON.parse(saved);
+    } catch { /* ignorar */ }
+    return {
+      relay_1: '',
+      relay_2: '',
+      relay_3: '',
+      relay_4: '',
+      led_pulse: '',
+      servo_wave: '',
+    };
+  });
+
+  const updateActuatorName = (id, name) => {
+    setActuatorNames(prev => {
+      const next = { ...prev, [id]: name };
+      localStorage.setItem('tiktok_actuator_names', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  // Bloquear scroll del body cuando el modal está abierto
+  useEffect(() => {
+    if (showConfig || showBotModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [showConfig, showBotModal]);
+
+  // Tipo técnico legible
+  const getActuatorType = (id) => {
+    if (id.startsWith('relay')) return 'Relay';
+    if (id.startsWith('led')) return 'LED';
+    if (id.startsWith('servo')) return 'Servo';
+    return id;
+  };
+
+  // Etiqueta completa: "Mi Motor (Relay 1)" o "Relay 1" si no tiene nombre
+  const getActuatorLabel = (id) => {
+    const customName = actuatorNames[id];
+    const typeName = getActuatorType(id);
+    const num = id.match(/_(\d+)$/)?.[1];
+    const techLabel = num ? `${typeName} ${num}` : typeName;
+    return customName ? `${customName} (${techLabel})` : techLabel;
+  };
+
   const lastSoundTime = useRef(0);
   const saveTimeoutRef = useRef(null);
 
-  const COMMON_GIFTS = [
-    // 1 Coin
+  // Fallback estático — se usa solo si el backend no envía la lista dinámica
+  const FALLBACK_GIFTS = [
     { name: 'Rose', icon: '🌹', value: 1 },
     { name: 'TikTok', icon: '📱', value: 1 },
     { name: 'Ice Cream Cone', icon: '🍦', value: 1 },
-    { name: 'Weightlifting', icon: '🏋️', value: 1 },
-    { name: 'Coffee', icon: '☕', value: 1 },
-    { name: 'GG', icon: '🎮', value: 1 },
-    { name: 'Mini Speaker', icon: '🔊', value: 1 },
-    { name: 'Tennis', icon: '🎾', value: 1 },
-    { name: 'Soccer', icon: '⚽', value: 1 },
-    { name: 'Darts', icon: '🎾', value: 1 },
-    
-    // 5-9 Coins
-    { name: 'Panda', icon: '🐼', value: 5 },
     { name: 'Finger Heart', icon: '🫰', value: 5 },
+    { name: 'Panda', icon: '🐼', value: 5 },
     { name: 'Mic', icon: '🎤', value: 5 },
-    { name: 'Hand Heart', icon: '🫶', value: 5 },
-    { name: 'Bravia', icon: '👏', value: 5 },
-    { name: 'Flower', icon: '🌸', value: 9 },
-    { name: 'Mirror', icon: '🪞', value: 9 },
-
-    // 10-49 Coins
     { name: 'Perfume', icon: '🧴', value: 20 },
     { name: 'Doughnut', icon: '🍩', value: 30 },
-    { name: 'Mirror', icon: '🪞', value: 30 },
-    { name: 'Garland', icon: '💐', value: 30 },
-    
-    // 50-99 Coins
-    { name: 'Tea', icon: '🍵', value: 50 },
-    { name: 'Garland', icon: '🌺', value: 50 },
     { name: 'Cap', icon: '🧢', value: 99 },
-    { name: 'Paper Crane', icon: '🦢', value: 99 },
-    { name: 'Goggles', icon: '🥽', value: 99 },
-    { name: 'Hat', icon: '🎩', value: 99 },
-    
-    // 100-299 Coins
     { name: 'Confetti', icon: '🎊', value: 100 },
-    { name: 'Cake Slice', icon: '🍰', value: 100 },
-    { name: 'Bear', icon: '🐻', value: 100 },
-    { name: 'Mishka', icon: '🧸', value: 100 },
-    { name: 'Hat and Mustache', icon: '🎩', value: 199 },
+    { name: 'Paper Crane', icon: '🦢', value: 100 },
     { name: 'Crown', icon: '👑', value: 199 },
     { name: 'Corgi', icon: '🐕', value: 299 },
-    { name: 'Duck', icon: '🦆', value: 299 },
-    { name: 'Pug', icon: '🐶', value: 299 },
-    { name: 'Glasses', icon: '👓', value: 199 },
-    { name: 'Headphones', icon: '🎧', value: 199 },
-    
-    // 300-999 Coins
     { name: 'Concert', icon: '🎫', value: 500 },
-    { name: 'Sunset', icon: '🌅', value: 500 },
-    { name: 'Swan', icon: '🦢', value: 699 },
-    { name: 'Balloon', icon: '🎈', value: 699 },
-    { name: 'Train', icon: '🚆', value: 899 },
-    { name: 'Motorcycle', icon: '🏍️', value: 899 },
-    { name: 'Travel', icon: '🧳', value: 999 },
-    
-    // 1000-4999 Coins
     { name: 'Ferris Wheel', icon: '🎡', value: 1000 },
-    { name: 'Mine', icon: '⛏️', value: 1000 },
-    { name: 'Champion', icon: '🏆', value: 1500 },
-    { name: 'Flower Arrangement', icon: '💐', value: 1500 },
     { name: 'Whale', icon: '🐳', value: 2150 },
-    { name: 'Jetski', icon: '🛵', value: 2999 },
     { name: 'Supercar', icon: '🏎️', value: 2999 },
-    { name: 'Carousel', icon: '🎡', value: 3000 },
-    { name: 'Sports Car', icon: '🏎️', value: 3999 },
-    
-    // 5000-9999 Coins
-    { name: 'Submarine', icon: '🛥️', value: 5199 },
     { name: 'Airplane', icon: '✈️', value: 6000 },
-    { name: 'Helicopter', icon: '🚁', value: 6999 },
-    { name: 'Cruise Ship', icon: '🚢', value: 7000 },
-    { name: 'Yacht', icon: '🛳️', value: 9888 },
-    
-    // 10000+ Coins
     { name: 'Interstellar', icon: '🚀', value: 10000 },
-    { name: 'Castle', icon: '🏰', value: 10000 },
-    { name: 'Rocket', icon: '🚀', value: 10000 },
-    { name: 'Falcon', icon: '🦅', value: 10999 },
-    { name: 'Spaceship', icon: '🚀', value: 13999 },
-    { name: 'Planet', icon: '🪐', value: 15000 },
-    { name: 'Unicorn', icon: '🦄', value: 15000 },
-    { name: 'Galleon', icon: '🚢', value: 19999 },
-    { name: 'Seal', icon: '🦭', value: 20000 },
-    { name: 'Phoenix', icon: '🦅', value: 25999 },
-    { name: 'Dragon', icon: '🐉', value: 26999 },
-    { name: 'Lion', icon: '🦁', value: 29999 },
-    { name: 'Leon and Lion', icon: '🦁🦁', value: 34000 },
     { name: 'Universe', icon: '🌌', value: 34999 },
-    { name: 'TikTok Universe', icon: '🌌', value: 34999 },
-    { name: 'Zeus', icon: '⚡', value: 39999 },
-    { name: 'Pegasus', icon: '🐎', value: 39999 }
   ];
 
-  const [giftFilter, setGiftFilter] = useState('all'); // 'all', 'low', 'medium', 'high'
+  // Genera mappings automáticos inteligentes según el valor de cada regalo
+  // Criterio:
+  //   value <= 10   → relay_1 (1 actuador, efecto rápido)
+  //   11–99         → relay_2 (otro actuador diferente)
+  //   100–499       → relay_1 + relay_2 (combo de 2)
+  //   500–999       → relay_1 + relay_2 + led_pulse (combo + luz)
+  //   1000–4999     → relay_1 + relay_2 + relay_3 + led_pulse (casi todos)
+  //   5000+         → TODOS: relay_1..4 + led_pulse + servo_wave (¡espectáculo completo!)
+  const generateSmartDefaults = (gifts) => {
+    const tiers = [
+      { max: 10,    actions: ['relay_1'],                                     duration: 1000 },
+      { max: 99,    actions: ['relay_2'],                                     duration: 1500 },
+      { max: 499,   actions: ['relay_1', 'relay_2'],                          duration: 2000 },
+      { max: 999,   actions: ['relay_1', 'relay_2', 'led_pulse'],             duration: 2500 },
+      { max: 4999,  actions: ['relay_1', 'relay_2', 'relay_3', 'led_pulse'],  duration: 3000 },
+      { max: Infinity, actions: ['relay_1', 'relay_2', 'relay_3', 'relay_4', 'led_pulse', 'servo_wave'], duration: 5000 },
+    ];
+
+    // Elegir 1 regalo representativo por tier (el más popular/conocido de cada rango)
+    const selected = [];
+    const usedNames = new Set();
+
+    for (const tier of tiers) {
+      const prevMax = tiers[tiers.indexOf(tier) - 1]?.max || 0;
+      const candidates = gifts.filter(g =>
+        g.value > prevMax && g.value <= tier.max && !usedNames.has(g.name)
+      );
+      if (candidates.length > 0) {
+        // Elegir el que tenga el valor más bajo del tier (el más accesible)
+        candidates.sort((a, b) => a.value - b.value);
+        const pick = candidates[0];
+        usedNames.add(pick.name);
+        selected.push({
+          id: selected.length + 1,
+          event: 'gift',
+          giftName: pick.name,
+          action: tier.actions,
+          duration: tier.duration,
+          sound: 'gift.mp3',
+          autoReset: true,
+          _autoGenerated: true,
+        });
+      }
+    }
+
+    // Añadir un mapping de "follow" como bonus
+    selected.push({
+      id: selected.length + 1,
+      event: 'follow',
+      giftName: '',
+      action: ['led_pulse'],
+      duration: 500,
+      sound: 'welcome.mp3',
+      autoReset: true,
+      _autoGenerated: true,
+    });
+
+    return selected;
+  };
+
+  // giftsList: dinámico (del socket) o fallback estático
+  const [giftsList, setGiftsList] = useState(FALLBACK_GIFTS);
+
+  // Al iniciar: si no hay mappings guardados, generar defaults inteligentes
+  useEffect(() => {
+    const saved = localStorage.getItem('tiktok_local_mappings');
+    if (!saved || JSON.parse(saved).length === 0) {
+      const defaults = generateSmartDefaults(FALLBACK_GIFTS);
+      setLocalMappings(defaults);
+      localStorage.setItem('tiktok_local_mappings', JSON.stringify(defaults));
+      console.info(`[AUTO-CONFIG] Generados ${defaults.length} mappings iniciales inteligentes`);
+    }
+  }, []); // Solo al montar
+
+  const [giftFilter, setGiftFilter] = useState('all');
   
-  const filteredGifts = COMMON_GIFTS.filter(gift => {
+  const filteredGifts = giftsList.filter(gift => {
     if (giftFilter === 'all') return true;
     if (giftFilter === 'low') return gift.value <= 10;
     if (giftFilter === 'medium') return gift.value > 10 && gift.value <= 500;
@@ -134,14 +201,18 @@ function App() {
     return true;
   });
 
+  // Devuelve imagen <img> o emoji según la fuente de datos
   const getGiftIcon = (name) => {
-    const gift = COMMON_GIFTS.find(g => g.name.toLowerCase() === name?.toLowerCase());
-    return gift ? gift.icon : '🎁';
+    const gift = giftsList.find(g => g.name.toLowerCase() === name?.toLowerCase());
+    if (gift?.image_url) {
+      return <img src={gift.image_url} alt={gift.name} className="w-6 h-6 object-contain" />;
+    }
+    return gift?.icon || '🎁';
   };
 
   const getActionsDisplay = (actions) => {
     if (!actions || actions.length === 0) return 'Ninguno';
-    return actions.map(action => action.replace('_', ' ')).join(', ');
+    return actions.map(a => getActuatorLabel(a)).join(', ');
   };
 
   const toggleAudio = () => {
@@ -261,9 +332,14 @@ function App() {
       }));
       
       // Solo actualizar localMappings si el panel no está abierto para evitar saltos al escribir
+      // Y solo si no hay mappings guardados localmente (para respetar la config local)
       setLocalMappings(prev => {
-        // Si el panel está cerrado o no hay mapeos locales aún, sincronizar
         if (!showConfig || prev.length === 0) {
+          // Si tenemos mappings locales guardados, no sobreescribir con los del server
+          const localSaved = localStorage.getItem('tiktok_local_mappings');
+          if (localSaved && JSON.parse(localSaved).length > 0 && prev.length > 0) {
+            return prev;
+          }
           return normalizedMappings;
         }
         return prev;
@@ -284,21 +360,131 @@ function App() {
 
     socket.on('action_executing', (data) => {
       setEvents(prev => [data, ...prev].slice(0, 20));
+      
       if (data.giftName) {
-        setGifts(prev => [data, ...prev].slice(0, 10));
-        setStats(prev => ({ ...prev, totalGifts: prev.totalGifts + 1 }));
+        // 1. Historial de sesión (Agredado por usuario + tipo)
+        setAggregatedGifts(prev => {
+          const existingIndex = prev.findIndex(g => g.user === data.user && g.giftName === data.giftName);
+          if (existingIndex !== -1) {
+            const updated = [...prev];
+            const item = { ...updated[existingIndex] };
+            item.repeatCount = (item.repeatCount || 0) + (data.repeatCount || 1);
+            item.ts = Date.now();
+            updated.splice(existingIndex, 1);
+            return [item, ...updated];
+          }
+          return [{ ...data, repeatCount: data.repeatCount || 1, ts: Date.now() }, ...prev].slice(0, 30);
+        });
+
+        // 2. Estadísticas Globales (Totales por tipo)
+        setGlobalGiftStats(prev => {
+          const current = prev[data.giftName] || { count: 0, totalValue: 0 };
+          return {
+            ...prev,
+            [data.giftName]: {
+              count: current.count + (data.repeatCount || 1),
+              totalValue: current.totalValue + (data.giftValue || 0) * (data.repeatCount || 1)
+            }
+          };
+        });
+
+        setStats(prev => ({ ...prev, totalGifts: prev.totalGifts + (data.repeatCount || 1) }));
       }
+      
       if (data.eventName === 'follow') {
         setStats(prev => ({ ...prev, totalFollowers: prev.totalFollowers + 1 }));
       }
+
+      // 3. Actuador activo para UI
+      setActiveActions(prev => ({ ...prev, [data.action]: data }));
+      setTimeout(() => {
+        setActiveActions(prev => {
+          const next = { ...prev };
+          // Solo borrar si es la misma acción (evitar borrar una nueva acción que empezó)
+          if (next[data.action]?.ts === data.ts) {
+            delete next[data.action];
+          }
+          return next;
+        });
+      }, data.duration);
+
       playEventSound(data.sound);
     });
 
     socket.on('action', (data) => {
-      // Para regalos sin acción física (muro de regalos)
-      // El backend envía "Sin acción física" cuando no hay mapeo
+      // Para regalos sin acción física
       if (data.giftName) {
-        setGifts(prev => [data, ...prev].slice(0, 5));
+        setAggregatedGifts(prev => {
+          const existingIndex = prev.findIndex(g => g.user === data.user && g.giftName === data.giftName);
+          if (existingIndex !== -1) {
+            const updated = [...prev];
+            const item = { ...updated[existingIndex] };
+            item.repeatCount = (item.repeatCount || 0) + (data.repeatCount || 1);
+            item.ts = Date.now();
+            updated.splice(existingIndex, 1);
+            return [item, ...updated];
+          }
+          return [{ ...data, repeatCount: data.repeatCount || 1, ts: Date.now() }, ...prev].slice(0, 30);
+        });
+
+        setGlobalGiftStats(prev => {
+          const current = prev[data.giftName] || { count: 0, totalValue: 0 };
+          return {
+            ...prev,
+            [data.giftName]: {
+              count: current.count + (data.repeatCount || 1),
+              totalValue: current.totalValue + (data.giftValue || 0) * (data.repeatCount || 1)
+            }
+          };
+        });
+
+        setStats(prev => ({ ...prev, totalGifts: prev.totalGifts + (data.repeatCount || 1) }));
+      }
+    });
+
+    socket.on('gift_list', (list) => {
+      if (Array.isArray(list) && list.length > 0) {
+        console.info(`[GIFTS] Recibidos ${list.length} regalos dinámicos del servidor`);
+        setGiftsList(list);
+        setIsLoadingGifts(false);
+        setGiftsError('');
+
+        // Auto-migrar mappings: si un giftName configurado no existe en la nueva lista,
+        // buscar el regalo más cercano en valor (diamond_count)
+        setLocalMappings(prev => {
+          let changed = false;
+          const migrated = prev.map(m => {
+            if (m.event !== 'gift' || !m.giftName) return m;
+            const exists = list.find(g => g.name.toLowerCase() === m.giftName.toLowerCase());
+            if (exists) return m; // El regalo existe, no migrar
+
+            // Buscar el valor del regalo en la lista fallback para saber su rango
+            const fallbackGift = FALLBACK_GIFTS.find(g => g.name.toLowerCase() === m.giftName.toLowerCase());
+            const targetValue = fallbackGift?.value || 1;
+
+            // Buscar el regalo más cercano en valor en la nueva lista
+            let closest = list[0];
+            let minDiff = Math.abs((list[0]?.value || 0) - targetValue);
+            for (const g of list) {
+              const diff = Math.abs((g.value || 0) - targetValue);
+              if (diff < minDiff) {
+                minDiff = diff;
+                closest = g;
+              }
+            }
+
+            console.warn(`[AUTO-MATCH] "${m.giftName}" (${targetValue} coins) no encontrado. Asignado: "${closest.name}" (${closest.value} coins)`);
+            changed = true;
+            return { ...m, giftName: closest.name, _migratedFrom: m.giftName };
+          });
+
+          if (changed) {
+            localStorage.setItem('tiktok_local_mappings', JSON.stringify(migrated));
+            // Sincronizar con backend
+            setTimeout(() => saveConfig(migrated), 500);
+          }
+          return changed ? migrated : prev;
+        });
       }
     });
 
@@ -312,6 +498,7 @@ function App() {
       socket.off('queue_update');
       socket.off('action_executing');
       socket.off('action');
+      socket.off('gift_list');
     };
   }, []);
 
@@ -331,6 +518,9 @@ function App() {
         maxValue: parseInt(m.maxValue) || 0
       }));
       
+      // Persistir en localStorage
+      localStorage.setItem('tiktok_local_mappings', JSON.stringify(sanitizedMappings));
+      
       const configToSave = config || {
         levels: {
           follower: { priority: 1, color: '#00ff00' },
@@ -340,9 +530,9 @@ function App() {
       };
       
       socket.emit('update_config', { ...configToSave, mappings: sanitizedMappings });
-      console.log('Configuración sincronizada con el backend');
+      console.log('Configuración sincronizada con el backend y guardada localmente');
       setIsSaving(false);
-    }, 800); // Aumentado a 800ms para dar más tiempo de escritura fluida
+    }, 800);
   };
 
   const updateMapping = (index, field, value) => {
@@ -409,6 +599,7 @@ function App() {
 
   const resetConfig = () => {
     if (window.confirm('¿Estás seguro de que quieres restablecer todos los mapeos a los valores por defecto?')) {
+      localStorage.removeItem('tiktok_local_mappings');
       socket.emit('reset_config');
     }
   };
@@ -432,42 +623,54 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-pink-500/30">
+    <div data-theme={theme} className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] font-sans selection:bg-pink-500/30 transition-colors duration-500">
       {/* Top Stats Bar */}
-      <div className="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40">
+      <div className="bg-[var(--bg-card)]/80 backdrop-blur-md border-b border-[var(--border-card)] sticky top-0 z-40">
         <div className="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-4">
               <h1 className="text-xl font-black tracking-tighter bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent uppercase italic">
-                TikTok Live <span className="text-slate-200 not-italic">Pro</span>
+                TikTok Live <span className="text-[var(--text-main)] not-italic">Pro</span>
               </h1>
               <Link
                 to="/bot-lector"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[10px] font-black uppercase tracking-widest text-violet-400 hover:text-violet-300 border border-violet-500/40 px-2 py-1 rounded-lg"
               >
-                Bot lector
+                Bot lector (Pestaña)
               </Link>
+              <button
+                onClick={() => { setIsBotActive(true); setShowBotModal(true); }}
+                className={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-lg border transition-all ${
+                  isBotActive 
+                    ? 'text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/10' 
+                    : 'text-pink-400 hover:text-pink-300 border-pink-500/40'
+                }`}
+              >
+                {isBotActive ? '🎙️ Ver Bot (Activo en Fondo)' : '🎙️ Activar en Fondo'}
+              </button>
             </div>
             <div className="hidden md:flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"></div>
-                  Likes: <span className="text-slate-200">{stats.totalLikes.toLocaleString()}</span>
+                  Likes: <span className="text-[var(--text-main)]">{stats.totalLikes.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-500"></div>
-                  Gifts: <span className="text-slate-200">{stats.totalGifts}</span>
+                  Gifts: <span className="text-[var(--text-main)]">{stats.totalGifts}</span>
                 </div>
-                <div className="flex items-center gap-2 border-l border-slate-800 pl-6 ml-2">
+                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6 ml-2">
                   <Wifi size={12} className={status === 'connected' ? 'text-emerald-500' : 'text-slate-700'} />
                   ESP32: <span className={status === 'connected' ? 'text-emerald-400' : 'text-slate-500'}>{status === 'connected' ? 'En Línea' : 'Offline'}</span>
                 </div>
-                <div className="flex items-center gap-2 border-l border-slate-800 pl-6">
+                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6">
                   <div className={`w-1.5 h-1.5 rounded-full ${status === 'connected' ? 'bg-red-500 animate-pulse' : 'bg-slate-700'}`}></div>
-                  Live: <span className="text-slate-200 tabular-nums font-mono text-xs">{liveInfo.elapsed}</span>
+                  Live: <span className="text-[var(--text-main)] tabular-nums font-mono text-xs">{liveInfo.elapsed}</span>
                 </div>
-                <div className="flex items-center gap-2 border-l border-slate-800 pl-6">
+                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6">
                   <User size={12} className="text-slate-500" />
-                  Viewers: <span className="text-slate-200 tabular-nums">{liveInfo.viewerCount.toLocaleString()}</span>
+                  Viewers: <span className="text-[var(--text-main)] tabular-nums">{liveInfo.viewerCount.toLocaleString()}</span>
                 </div>
               </div>
           </div>
@@ -475,7 +678,7 @@ function App() {
           <div className="flex items-center gap-4">
             <button 
               onClick={toggleAudio}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${audioEnabled ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-pink-500 text-white shadow-lg shadow-pink-500/20'}`}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${audioEnabled ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-pink-500 text-[var(--text-main)] shadow-lg shadow-pink-500/20'}`}
             >
               {audioEnabled ? <Volume2 size={14} /> : <Volume2 size={14} className="animate-bounce" />}
               {audioEnabled ? 'Audio On' : 'Activar Audio'}
@@ -484,15 +687,49 @@ function App() {
               <div className={`w-2 h-2 rounded-full ${status === 'connected' ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
               {status.toUpperCase()}
             </div>
+            
+            <button 
+              onClick={() => setTheme(theme === 'neon' ? 'dark' : (theme === 'dark' ? 'light' : 'neon'))}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-[var(--border-card)] bg-[var(--bg-card)]`}
+            >
+              {theme === 'neon' ? '🌟 Neon' : (theme === 'dark' ? '🌙 Dark' : '☀️ Light')}
+            </button>
+
             <button 
               onClick={() => setShowConfig(!showConfig)}
-              className={`p-2 rounded-lg transition-all ${showConfig ? 'bg-pink-500 text-white shadow-lg shadow-pink-500/20' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+              className={`p-2 rounded-lg transition-all ${showConfig ? 'bg-pink-500 text-[var(--text-main)] shadow-lg shadow-pink-500/20' : 'bg-[var(--bg-input)] border border-[var(--border-card)] text-[var(--text-main)] opacity-80 hover:opacity-100'}`}
             >
               <Settings size={18} />
             </button>
           </div>
         </div>
       </div>
+
+      
+      {/* Bot Lector Modal */}
+      {isBotActive && (
+        <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm transition-opacity ${showBotModal ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+           <div className="bg-[var(--bg-card)] border border-pink-500/30 rounded-2xl p-0 shadow-2xl w-full max-w-6xl h-[90vh] overflow-hidden flex flex-col">
+              <div className="flex justify-between items-center p-4 border-b border-[var(--border-card)] bg-[var(--bg-card)]">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-black text-[var(--text-main)] uppercase tracking-tighter italic">Bot Lector <span className="text-pink-500">Integrado</span></h2>
+                  <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-black">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div> ACTIVO
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={() => { setIsBotActive(false); setShowBotModal(false); }} className="bg-red-500/10 text-red-500 px-4 py-2 rounded-xl text-xs font-bold hover:bg-red-500 hover:text-[var(--text-main)] transition-all">Apagar Bot</button>
+                  <button onClick={() => setShowBotModal(false)} className="bg-[var(--bg-input)] hover:bg-[var(--border-card)] border border-[var(--border-card)] text-[var(--text-main)] px-4 py-2 rounded-xl text-xs font-bold transition-all">
+                    Volver al Dashboard (Seguirá leyendo de fondo)
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 overflow-y-auto relative bg-[var(--bg-main)]">
+                 <BotLectorView embedded={true} />
+              </div>
+           </div>
+        </div>
+      )}
 
       <main className="max-w-[1600px] mx-auto p-6 space-y-6">
 
@@ -502,155 +739,74 @@ function App() {
           <Route path="/" element={
             <div className="space-y-6">
               <div className="grid grid-cols-12 gap-6">
-                {/* Sidebar Dinámica: Controls (Not Connected) or Gifts (Connected) */}
-                <div className={`${status === 'connected' ? 'col-span-12 lg:col-span-3' : 'col-span-12 lg:col-span-4'} space-y-6 transition-all duration-500`}>
-            
-            {status === 'connected' ? (
-              <>
-                {/* Modo Live: Regalos en el Sidebar */}
-                <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm h-[calc(100vh-200px)] flex flex-col">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                      <Gift size={14} className="text-violet-500" /> Donaciones
-                    </h3>
-                    <span className="text-[10px] font-black text-pink-500 animate-pulse">LIVE</span>
-                  </div>
-                  
-                  <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-2">
-                    {gifts.length === 0 ? (
-                      <div className="flex flex-col items-center justify-center h-full opacity-30 italic">
-                        <Gift size={32} className="mb-2" />
-                        <p className="text-[10px] uppercase font-black">Esperando...</p>
-                      </div>
-                    ) : (
-                      gifts.map((g, i) => (
-                        <div key={i} className="bg-slate-950 p-3 rounded-xl border border-slate-800/50 group hover:border-pink-500/30 transition-all">
-                          <div className="flex items-center gap-3">
-                            <div className="text-2xl group-hover:scale-110 transition-transform">
-                              {getGiftIcon(g.giftName)}
-                            </div>
-                            <div className="min-w-0">
-                              <p className="text-[11px] font-black text-slate-200 truncate">{g.user}</p>
-                              <p className="text-[9px] text-pink-500 font-bold uppercase">{g.giftName} x{g.repeatCount}</p>
-                            </div>
-                          </div>
+                {/* Área Principal - Pantalla Completa */}
+                <div className="col-span-12 space-y-6 transition-all duration-500">
+                  {status !== 'connected' && (
+                    <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-6 shadow-[var(--glow-shadow)] animate-in fade-in slide-in-from-top-4 duration-500">
+                      <div className="flex flex-col md:flex-row items-center gap-6">
+                        <div className="flex-1 space-y-2">
+                          <h3 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest flex items-center gap-2">
+                            <Play size={18} className="text-pink-500" /> Control de Conexión
+                          </h3>
+                          <p className="text-[10px] text-slate-500 font-bold uppercase">Ingresa tu usuario de TikTok para iniciar el monitoreo en vivo</p>
                         </div>
-                      ))
-                    )}
-                  </div>
-
-                  {/* Controles Minimizados al final del sidebar */}
-                  <div className="pt-4 mt-4 border-t border-slate-800 space-y-2">
-                    <button 
-                      onClick={() => setStatus('disconnected')}
-                      className="w-full bg-slate-800 hover:bg-red-500/10 hover:text-red-500 py-2 rounded-lg text-[9px] font-black uppercase transition-all border border-slate-700"
-                    >
-                      Desconectar
-                    </button>
-                    <div className="grid grid-cols-2 gap-1">
-                      {['gift', 'like', 'follow', 'chat'].map(type => (
-                        <button 
-                          key={type}
-                          onClick={() => socket.emit('simulate_event', type)}
-                          className="bg-slate-950 hover:bg-slate-800 py-1.5 rounded-md text-[8px] font-black uppercase transition-all border border-slate-800 text-slate-500"
-                        >
-                          {type}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-              </>
-            ) : (
-              <>
-                {/* Modo Config: Controles de Conexión */}
-                <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
-                  <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Play size={14} className="text-pink-500" /> Control de Conexión
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="@usuario"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500/50 outline-none transition-all placeholder:text-slate-700"
-                      />
-                    </div>
-                    <button
-                      onClick={() => connectToLive()}
-                      disabled={status === 'connecting'}
-                      className="w-full bg-slate-100 text-slate-950 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all disabled:opacity-50"
-                    >
-                      {status === 'connecting' ? 'Conectando...' : 'Establecer Conexión'}
-                    </button>
-
-                    {connectionError && (
-                      <div className="mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
-                        <p className="text-xs font-bold text-red-400 text-center">{connectionError}</p>
-                      </div>
-                    )}
-                    
-                    {history.length > 0 && (
-                      <div className="pt-4 border-t border-slate-800">
-                        <p className="text-[10px] font-bold text-slate-600 uppercase mb-3">Recientes</p>
-                        <div className="flex flex-wrap gap-2">
-                          {history.map((u, i) => (
-                            <button
-                              key={i}
-                              onClick={() => connectToLive(u)}
-                              className="text-[10px] font-bold bg-slate-800/50 hover:bg-slate-800 text-slate-400 px-3 py-1.5 rounded-lg border border-slate-800 transition-all"
-                            >
-                              {u}
-                            </button>
-                          ))}
+                        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                          <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="@usuario"
+                            className="bg-[var(--bg-input)] border border-[var(--border-card)] rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500/50 outline-none transition-all w-full sm:w-64"
+                          />
+                          <button
+                            onClick={() => connectToLive()}
+                            disabled={status === 'connecting'}
+                            className="bg-slate-100 text-slate-950 px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all disabled:opacity-50"
+                          >
+                            {status === 'connecting' ? 'Conectando...' : 'Conectar'}
+                          </button>
                         </div>
                       </div>
-                    )}
-                  </div>
-                </section>
-
-                <section className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
-                  <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Zap size={14} className="text-yellow-500" /> Simulador de Pruebas
-                  </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {['gift', 'like', 'follow', 'chat'].map(type => (
-                      <button 
-                        key={type}
-                        onClick={() => socket.emit('simulate_event', type)}
-                        className="bg-slate-800 hover:bg-slate-700 py-3 rounded-xl text-[10px] font-black uppercase transition-all border border-slate-700/50"
-                      >
-                        {type}
-                      </button>
-                    ))}
-                  </div>
-                </section>
-              </>
-            )}
-          </div>
-
-          {/* Actuators & Goals - Area Principal Prioritaria */}
-          <div className={`${status === 'connected' ? 'col-span-12 lg:col-span-9' : 'col-span-12 lg:col-span-8'} space-y-6 transition-all duration-500`}>
-            <section className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm ring-1 ring-blue-500/20">
+                      {connectionError && (
+                        <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-red-400 text-center">{connectionError}</p>
+                        </div>
+                      )}
+                    </section>
+                  )}
+            <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-6 shadow-[var(--glow-shadow)] ring-1 ring-blue-500/20">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-sm font-black text-white uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest flex items-center gap-2">
                   <Settings size={18} className="text-blue-500" /> Panel de Actuadores (Relays)
                 </h3>
                 <span className="text-[10px] font-black bg-blue-500/10 text-blue-500 px-2 py-1 rounded">ESTADO EN VIVO</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {['relay_1', 'relay_2', 'relay_3', 'relay_4'].map(act => (
-                  <div key={act} className={`p-4 rounded-2xl border transition-all ${queues[act] > 0 ? 'bg-blue-500/10 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)]' : 'bg-slate-950 border-slate-800'}`}>
-                    <div className="flex flex-col items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${queues[act] > 0 ? 'bg-blue-500 text-white animate-pulse' : 'bg-slate-900 text-slate-600'}`}>
-                        <Zap size={18} />
+                  <div key={act} className={`p-4 rounded-2xl border transition-all min-h-[160px] relative flex flex-col items-center justify-center overflow-hidden ${queues[act] > 0 ? 'bg-blue-500/10 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)]' : 'bg-[var(--bg-input)] border-[var(--border-card)]'}`}>
+                    {/* Badge de Regalo Activo (Esquina Superior) */}
+                    {activeActions[act] && (
+                      <div className="absolute top-2 right-2 flex flex-col items-end animate-in fade-in zoom-in duration-300 z-20">
+                        <div className="bg-blue-500 text-white w-8 h-8 rounded-lg shadow-lg flex items-center justify-center text-lg border border-white/20">
+                          {getGiftIcon(activeActions[act].giftName)}
+                        </div>
+                        <span className="text-[6px] font-black bg-blue-500/80 text-white px-1 rounded mt-1 uppercase truncate max-w-[50px]">
+                          {activeActions[act].user}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="flex flex-col items-center gap-3 relative z-10">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${queues[act] > 0 ? 'bg-blue-500 text-[var(--text-main)] scale-110 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : 'bg-[var(--bg-card)] text-slate-600'}`}>
+                        <Zap size={18} className={queues[act] > 0 ? 'animate-pulse' : ''} />
                       </div>
                       <div className="text-center">
-                        <span className="text-[10px] font-black text-slate-400 uppercase block mb-1">{act.replace('_', ' ')}</span>
+                        {actuatorNames[act] && (
+                          <span className="text-[11px] font-black text-[var(--text-main)] block mb-0.5">{actuatorNames[act]}</span>
+                        )}
+                        <span className="text-[9px] font-bold text-slate-500 uppercase block mb-1">{getActuatorType(act)} {act.match(/_(\d+)$/)?.[1]}</span>
                         {queues[act] > 0 ? (
-                          <span className="text-xs font-black text-blue-400 tabular-nums">Cola: {queues[act]}</span>
+                          <span className="text-xs font-black text-blue-400 tabular-nums animate-bounce">Cola: {queues[act]}</span>
                         ) : (
                           <span className="text-[10px] font-bold text-slate-700 uppercase italic">Inactivo</span>
                         )}
@@ -661,13 +817,18 @@ function App() {
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
                 {['led_pulse', 'servo_wave'].map(act => (
-                  <div key={act} className={`p-4 rounded-2xl border transition-all ${queues[act] > 0 ? 'bg-violet-500/10 border-violet-500/50' : 'bg-slate-950 border-slate-800'}`}>
+                  <div key={act} className={`p-4 rounded-2xl border transition-all ${queues[act] > 0 ? 'bg-violet-500/10 border-violet-500/50' : 'bg-[var(--bg-input)] border-[var(--border-card)]'}`}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${queues[act] > 0 ? 'bg-violet-500 text-white animate-bounce' : 'bg-slate-900 text-slate-600'}`}>
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${queues[act] > 0 ? 'bg-violet-500 text-[var(--text-main)] animate-bounce' : 'bg-[var(--bg-card)] text-slate-600'}`}>
                           <Settings size={14} />
                         </div>
-                        <span className="text-[10px] font-black text-slate-300 uppercase tracking-wider">{act.replace('_', ' ')}</span>
+                        <div>
+                          {actuatorNames[act] && (
+                            <span className="text-[11px] font-black text-[var(--text-main)] block">{actuatorNames[act]}</span>
+                          )}
+                          <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">{getActuatorType(act)}</span>
+                        </div>
                       </div>
                       {queues[act] > 0 && <span className="text-xs font-black text-violet-400">Activo</span>}
                     </div>
@@ -676,9 +837,9 @@ function App() {
               </div>
             </section>
 
-            <section className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm ring-1 ring-pink-500/20">
+            <section className="bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl p-6 shadow-[var(--glow-shadow)] ring-1 ring-pink-500/20">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-sm font-black text-white uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest flex items-center gap-2">
                   <Zap size={18} className="text-pink-500" /> Meta de la Comunidad
                 </h3>
                 <span className="text-[10px] font-black bg-pink-500/10 text-pink-500 px-2 py-1 rounded">
@@ -688,7 +849,7 @@ function App() {
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
                   <div className="space-y-1">
-                    <p className="text-3xl font-black text-white tabular-nums">{likesStatus.current.toLocaleString()}</p>
+                    <p className="text-3xl font-black text-[var(--text-main)] tabular-nums">{likesStatus.current.toLocaleString()}</p>
                     <p className="text-[10px] font-bold text-slate-500 uppercase">Likes acumulados</p>
                   </div>
                   <div className="text-right space-y-1">
@@ -696,7 +857,7 @@ function App() {
                     <p className="text-[10px] font-bold text-slate-500 uppercase">Siguiente Activación</p>
                   </div>
                 </div>
-                <div className="w-full bg-slate-950 h-4 rounded-full overflow-hidden border border-slate-800 p-0.5">
+                <div className="w-full bg-[var(--bg-input)] h-4 rounded-full overflow-hidden border border-[var(--border-card)] p-0.5">
                   <div 
                     className="bg-gradient-to-r from-pink-500 via-violet-500 to-blue-500 h-full rounded-full transition-all duration-1000 shadow-[0_0_20px_rgba(236,72,153,0.3)] relative"
                     style={{ width: `${(likesStatus.current / likesStatus.goal) * 100}%` }}
@@ -709,111 +870,183 @@ function App() {
           </div>
         </div>
 
-        {/* Muro de Regalos (Solo visible si no está conectado para no duplicar) */}
-        {status !== 'connected' && (
-          <div className="grid grid-cols-12 gap-6">
-            <section className="col-span-12 lg:col-span-8 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
+        {/* Sistema de Regalos y Estadísticas */}
+        <div className="grid grid-cols-12 gap-6 mb-10">
+            {/* Panel de Donantes Agregados */}
+            <section className="col-span-12 lg:col-span-8 bg-[var(--bg-card)] backdrop-[var(--backdrop)] border border-[var(--border-card)] rounded-2xl p-6 shadow-[var(--glow-shadow)]">
               <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2">
-                <Gift size={14} className="text-violet-500" /> Muro de Regalos Recientes
+                <Gift size={14} className="text-pink-500" /> Donantes Recientes (Agrupados)
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {gifts.length === 0 ? (
-                  <div className="col-span-full py-12 text-center">
-                    <p className="text-xs text-slate-600 font-bold uppercase italic">Esperando donaciones...</p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {aggregatedGifts.length === 0 ? (
+                  <div className="col-span-full py-12 text-center border-2 border-dashed border-[var(--border-card)] rounded-2xl opacity-50">
+                    <p className="text-[10px] text-slate-500 font-bold uppercase italic">Esperando actividad de regalos...</p>
                   </div>
                 ) : (
-                  gifts.map((g, i) => (
-                    <div key={i} className="bg-slate-950 p-4 rounded-2xl border border-slate-800/50 group hover:border-pink-500/30 transition-all text-center">
-                      <div className="text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">
-                        {getGiftIcon(g.giftName)}
+                  aggregatedGifts.map((g, i) => (
+                    <div key={i} className="bg-[var(--bg-input)] p-4 rounded-2xl border border-[var(--border-card)]/50 group hover:border-pink-500/30 transition-all relative overflow-hidden">
+                      <div className="absolute top-0 right-0 p-1 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Gift size={40} />
                       </div>
-                      <p className="text-[10px] font-black text-slate-200 truncate mb-1">{g.user}</p>
-                      <p className="text-[9px] text-pink-500 font-black uppercase">{g.giftName} x{g.repeatCount}</p>
+                      <div className="flex flex-col items-center text-center relative z-10">
+                        <div className="w-12 h-12 mb-3 bg-[var(--bg-card)] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          {getGiftIcon(g.giftName)}
+                        </div>
+                        <p className="text-[11px] font-black text-[var(--text-main)] truncate w-full mb-1">{g.user}</p>
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[9px] font-black bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded-full uppercase tracking-tighter">
+                            {g.giftName}
+                          </span>
+                          <span className="text-xs font-black text-white tabular-nums">
+                            x{g.repeatCount}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   ))
                 )}
               </div>
             </section>
 
-            <section className="col-span-12 lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col justify-center">
-              <button 
-                onClick={() => setShowActivity(!showActivity)}
-                className={`w-full py-6 rounded-2xl border-2 border-dashed transition-all flex flex-col items-center justify-center gap-3 ${showActivity ? 'bg-emerald-500/5 border-emerald-500/30 text-emerald-400' : 'bg-slate-950 border-slate-800 text-slate-500 hover:border-pink-500/30'}`}
-              >
-                <Volume2 size={24} className={showActivity ? 'animate-pulse' : ''} />
-                <div className="text-center">
-                  <span className="text-xs font-black uppercase tracking-widest block">Monitor de Actividad</span>
-                  <span className="text-[10px] font-bold opacity-60 uppercase mt-1">{showActivity ? 'Ocultar Panel' : 'Desplegar Panel'}</span>
+            {/* Inventario Global de Sesión */}
+            <section className="col-span-12 lg:col-span-4 bg-[var(--bg-card)] backdrop-[var(--backdrop)] border border-[var(--border-card)] rounded-2xl p-6 shadow-[var(--glow-shadow)]">
+              <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <Target size={14} className="text-emerald-500" /> Inventario de Sesión
+              </h3>
+              <div className="space-y-3 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+                {Object.keys(globalGiftStats).length === 0 ? (
+                  <p className="text-[10px] text-slate-600 italic text-center py-10">Sin acumulados todavía</p>
+                ) : (
+                  Object.entries(globalGiftStats)
+                    .sort(([,a], [,b]) => b.count - a.count)
+                    .map(([name, data]) => (
+                      <div key={name} className="flex items-center justify-between p-3 bg-[var(--bg-input)] rounded-xl border border-[var(--border-card)]/30 hover:border-emerald-500/30 transition-all">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[var(--bg-card)] flex items-center justify-center">
+                            {getGiftIcon(name)}
+                          </div>
+                          <span className="text-[10px] font-bold text-slate-300 uppercase">{name}</span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-xs font-black text-emerald-400 tabular-nums block">x{data.count}</span>
+                          <span className="text-[7px] text-slate-500 font-bold tabular-nums italic">{data.totalValue} 💎</span>
+                        </div>
+                      </div>
+                    ))
+                )}
+              </div>
+              <div className="mt-6 pt-4 border-t border-[var(--border-card)]">
+                <div className="flex justify-between items-center text-[10px] font-black uppercase text-slate-500">
+                  <span>Total Monedas (Est.)</span>
+                  <span className="text-[var(--text-main)] text-sm">
+                    {Object.values(globalGiftStats).reduce((acc, curr) => acc + curr.totalValue, 0).toLocaleString()} 💎
+                  </span>
                 </div>
-              </button>
+              </div>
             </section>
           </div>
-        )}
-
-        {/* Si está conectado, el monitor de actividad se muestra como un botón flotante o discreto */}
-        {status === 'connected' && (
-          <div className="flex justify-end">
-            <button 
-              onClick={() => setShowActivity(!showActivity)}
-              className={`px-6 py-3 rounded-xl border transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${showActivity ? 'bg-emerald-500 text-white border-emerald-500' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
-            >
-              <Volume2 size={14} /> {showActivity ? 'Cerrar Monitor' : 'Revisar Actividad'}
-            </button>
-          </div>
-        )}
-
-        {/* Global Event Log - Desplegable */}
-        {showActivity && (
-          <section className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl animate-in slide-in-from-bottom-4 duration-300">
-            <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/50">
+  
+        {/* Monitor y Registro de Actividad Consolidado */}
+        <div className="grid grid-cols-12 gap-6">
+          {/* Columna 1: Registro Detallado */}
+          <section className="col-span-12 lg:col-span-7 bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-[var(--glow-shadow)]">
+            <div className="px-6 py-4 border-b border-[var(--border-card)] flex justify-between items-center bg-[var(--bg-input)]/50">
               <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                <Volume2 size={14} className="text-emerald-500" /> Registro Detallado de Eventos
+                <Volume2 size={14} className="text-pink-500" /> Registro Detallado
               </h3>
-              <button onClick={() => setShowActivity(false)} className="text-[10px] font-black text-slate-600 hover:text-white uppercase transition-colors">Cerrar Monitor</button>
+              <span className="text-[10px] font-bold text-slate-600 italic uppercase">Eventos en Tiempo Real</span>
             </div>
-            <div className="h-[400px] overflow-y-auto custom-scrollbar">
+            <div className="h-[500px] overflow-y-auto custom-scrollbar">
               {events.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-slate-700 space-y-2 opacity-50">
                   <User size={40} strokeWidth={1} />
-                  <p className="text-xs font-bold uppercase tracking-widest">Sin actividad registrada</p>
+                  <p className="text-xs font-bold uppercase tracking-widest">Sin actividad</p>
                 </div>
               ) : (
-                <div className="divide-y divide-slate-800/30">
+                <div className="divide-y divide-slate-800/50">
                   {events.map((ev, i) => (
-                    <div key={i} className="px-6 py-3 flex items-center justify-between hover:bg-slate-800/20 transition-colors group">
+                    <div key={i} className="px-6 py-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors group">
                       <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-center text-slate-500">
-                          {ev.giftName ? <span className="text-lg">{getGiftIcon(ev.giftName)}</span> : <User size={14} />}
+                        <div className="w-10 h-10 bg-[var(--bg-input)] rounded-xl border border-[var(--border-card)] flex items-center justify-center text-slate-500 group-hover:border-pink-500/50 transition-all">
+                          {ev.giftName ? (
+                            <span className="text-xl">{getGiftIcon(ev.giftName)}</span>
+                          ) : (
+                            <User size={18} />
+                          )}
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <p className="text-xs font-black text-slate-200">{ev.user}</p>
-                            <span className={`text-[7px] px-1 py-0.5 rounded font-black uppercase ${ev.level === 'super_fan' ? 'bg-pink-500 text-white' : 'bg-slate-800 text-slate-500'}`}>
+                            <p className="text-sm font-black text-[var(--text-main)]">{ev.user}</p>
+                            <span className={`text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tighter ${ev.level === 'super_fan' ? 'bg-pink-500 text-[var(--text-main)]' : (ev.level === 'fan' ? 'bg-violet-500 text-[var(--text-main)]' : 'bg-[var(--border-card)] text-[var(--text-main)] opacity-70')}`}>
                               {ev.level}
                             </span>
                           </div>
-                          <p className="text-[9px] font-bold text-slate-500 uppercase">
-                            {ev.eventName} <span className="text-slate-700 mx-1">•</span> <span className="text-blue-500">{ev.action}</span>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase mt-0.5">
+                            {ev.eventName} <span className="text-slate-600 mx-1">•</span> <span className="text-pink-500/80">{ev.action}</span>
                           </p>
                         </div>
                       </div>
-                      <span className="text-[8px] font-mono text-slate-700 tabular-nums">SYNC_OK</span>
+                      <div className="text-right">
+                        <span className="text-[9px] font-black text-slate-700 group-hover:text-emerald-500 transition-colors uppercase tabular-nums">
+                          Sync OK
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
           </section>
-        )}
+
+          {/* Columna 2: Monitor de Usuarios */}
+          <section className="col-span-12 lg:col-span-5 bg-[var(--bg-card)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-[var(--glow-shadow)]">
+            <div className="px-6 py-4 border-b border-[var(--border-card)] flex justify-between items-center bg-[var(--bg-input)]/50">
+              <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                <User size={14} className="text-blue-500" /> Actividad de Usuarios
+              </h3>
+              <span className="text-[10px] font-bold text-slate-600 italic uppercase">Estado</span>
+            </div>
+            <div className="h-[500px] overflow-y-auto custom-scrollbar">
+              {events.length === 0 ? (
+                <div className="h-full flex flex-col items-center justify-center text-slate-700 space-y-2 opacity-50">
+                  <User size={40} strokeWidth={1} />
+                  <p className="text-xs font-bold uppercase tracking-widest">Esperando interacción...</p>
+                </div>
+              ) : (
+                <div className="divide-y divide-slate-800/30">
+                  {events.map((ev, i) => (
+                    <div key={i} className="px-6 py-3 flex items-center justify-between hover:bg-slate-800/20 transition-colors group">
+                      <div className="flex items-center gap-4">
+                        <div className="w-8 h-8 bg-[var(--bg-input)] rounded-lg border border-[var(--border-card)] flex items-center justify-center text-slate-500">
+                          {ev.giftName ? <span className="text-lg">{getGiftIcon(ev.giftName)}</span> : <User size={14} />}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <p className="text-xs font-black text-[var(--text-main)]">{ev.user}</p>
+                            <span className={`text-[7px] px-1 py-0.5 rounded font-black uppercase ${ev.level === 'super_fan' ? 'bg-pink-500 text-[var(--text-main)]' : 'bg-[var(--border-card)] text-[var(--text-main)] opacity-70'}`}>
+                              {ev.level}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <span className="text-[10px] font-black text-emerald-500">LIVE</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        </div>
+
 
         {/* Configuration Overlay */}
         {showConfig && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-              <div className="bg-slate-900 border border-pink-500/30 rounded-2xl p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200 w-full max-w-6xl">
-                <div className="flex justify-between items-center mb-8">
+            <div className="fixed inset-0 z-50 flex items-start justify-center p-4 bg-[var(--bg-main)]/95 backdrop-blur-md overflow-y-auto py-10 custom-scrollbar">
+              <div className="bg-[var(--bg-card)] border border-pink-500/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.5)] animate-in fade-in zoom-in-95 duration-300 w-full max-w-6xl my-auto">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 border-b border-[var(--border-card)] pb-8">
                   <div>
                   <div className="flex items-center gap-3">
-                    <h2 className="text-xl font-black text-white uppercase tracking-tighter italic">Panel de Configuración</h2>
+                    <h2 className="text-xl font-black text-[var(--text-main)] uppercase tracking-tighter italic">Panel de Configuración</h2>
                     {isSaving && (
                       <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[8px] font-black uppercase tracking-widest animate-pulse">
                         <div className="w-1 h-1 rounded-full bg-emerald-500"></div>
@@ -822,34 +1055,198 @@ function App() {
                     )}
                   </div>
                   <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Mapeo de lógica y actuadores físicos</p>
+                  <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded mt-1 inline-block ${giftsList[0]?.image_url ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}`}>
+                    {giftsList[0]?.image_url ? `🟢 ${giftsList.length} regalos dinámicos (TikTok API)` : `🟡 ${giftsList.length} regalos (fallback local)`}
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <button 
+                    onClick={() => {
+                      if (window.confirm('¿Regenerar mappings automáticos? Se reemplazarán los actuales.')) {
+                        const defaults = generateSmartDefaults(giftsList);
+                        setLocalMappings(defaults);
+                        localStorage.setItem('tiktok_local_mappings', JSON.stringify(defaults));
+                        saveConfig(defaults);
+                      }
+                    }}
+                    className="bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-[var(--text-main)] px-4 py-2 rounded-xl text-xs font-bold transition-all border border-violet-500/20"
+                  >
+                    ⚡ Auto-Generar
+                  </button>
+                  <button 
                     onClick={resetConfig}
-                    className="bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all border border-red-500/20"
+                    className="bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-[var(--text-main)] px-4 py-2 rounded-xl text-xs font-bold transition-all border border-red-500/20"
                   >
                     Restablecer
                   </button>
-                  <button onClick={() => setShowConfig(false)} className="bg-slate-800 hover:bg-slate-700 text-slate-400 px-4 py-2 rounded-xl text-xs font-bold transition-all">Cerrar</button>
+                  <button onClick={() => setShowConfig(false)} className="bg-[var(--bg-input)] hover:bg-[var(--border-card)] border border-[var(--border-card)] text-[var(--text-main)] px-4 py-2 rounded-xl text-xs font-bold transition-all">Cerrar</button>
                 </div>
               </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar pb-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {/* Personalizar Nombres de Actuadores */}
+                  <div className="p-4 bg-[var(--bg-input)]/30 rounded-2xl border border-[var(--border-card)]">
+                    <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                      <Settings size={14} /> Nombres de Actuadores
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {Object.keys(actuatorNames).map(id => (
+                        <div key={id} className="space-y-1">
+                          <label className="text-[7px] font-black text-slate-600 uppercase block pl-1">
+                            {getActuatorType(id)} {id.match(/_(\d+)$/)?.[1] || ''}
+                          </label>
+                          <input
+                            type="text"
+                            value={actuatorNames[id]}
+                            placeholder={id.replace('_', ' ')}
+                            onChange={(e) => updateActuatorName(id, e.target.value)}
+                            className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-2 py-1.5 text-[10px] outline-none focus:border-pink-500/50 text-[var(--text-main)] placeholder:opacity-30"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Metas de la Comunidad */}
+                  <div className="p-4 bg-[var(--bg-input)]/30 rounded-2xl border border-[var(--border-card)] relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-2 opacity-5">
+                      <Target size={60} />
+                    </div>
+                    <div className="flex justify-between items-center mb-4 relative z-10">
+                      <h3 className="text-[10px] font-black text-pink-500 uppercase tracking-widest flex items-center gap-2">
+                        <Heart size={14} /> Metas de la Comunidad
+                      </h3>
+                      <button 
+                        onClick={() => {
+                          const newId = localMappings.length > 0 ? Math.max(...localMappings.map(m => m.id)) + 1 : 1;
+                          const newGoal = { id: newId, event: 'like_goal', threshold: 1000, action: ['relay_1'], autoReset: true, duration: 1000 };
+                          setLocalMappings([...localMappings, newGoal]);
+                        }}
+                        className="text-[9px] font-black bg-pink-500 text-white px-2 py-1 rounded-lg uppercase transition-all hover:bg-pink-600"
+                      >
+                        + Añadir Meta
+                      </button>
+                    </div>
+
+                    <div className="space-y-4 relative z-10 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                      {localMappings.filter(m => m.event.endsWith('_goal')).map((m) => {
+                        const idx = localMappings.findIndex(lm => lm.id === m.id);
+                        return (
+                          <div key={m.id} className="p-4 bg-[var(--bg-card)]/50 rounded-2xl border border-pink-500/20 space-y-4 relative group/goal">
+                            <button 
+                              onClick={() => {
+                                const next = localMappings.filter(lm => lm.id !== m.id);
+                                setLocalMappings(next);
+                                saveConfig(next);
+                              }}
+                              className="absolute top-2 right-2 text-slate-600 hover:text-red-500 opacity-0 group-hover/goal:opacity-100 transition-opacity"
+                            >
+                              <Zap size={12} className="rotate-45" />
+                            </button>
+
+                            <div className="grid grid-cols-2 gap-3">
+                              <div>
+                                <label className="text-[7px] font-black text-slate-500 uppercase mb-1 block">Tipo de Meta</label>
+                                <select 
+                                  value={m.event} 
+                                  onChange={(e) => updateMapping(idx, 'event', e.target.value)}
+                                  className="w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-2 py-1.5 text-[10px] text-[var(--text-main)] outline-none"
+                                >
+                                  <option value="like_goal">Likes del Live</option>
+                                  <option value="follow_goal">Nuevos Seguidores</option>
+                                  <option value="share_goal">Compartidas</option>
+                                  <option value="viewer_goal">Récord Espectadores</option>
+                                  <option value="gift_value_goal">Diamantes (Monedas)</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label className="text-[7px] font-black text-slate-500 uppercase mb-1 block">Objetivo (Cantidad)</label>
+                                <input 
+                                  type="number" 
+                                  value={m.threshold} 
+                                  onChange={(e) => updateMapping(idx, 'threshold', e.target.value)} 
+                                  className="w-full bg-[var(--bg-input)] border border-pink-500/20 rounded-lg px-2 py-1.5 text-[10px] font-black text-pink-500 outline-none focus:border-pink-500/50" 
+                                />
+                              </div>
+                            </div>
+
+                            <div>
+                              <label className="text-[7px] font-black text-slate-500 uppercase mb-2 block">Actuadores a disparar</label>
+                              <div className="grid grid-cols-3 gap-2">
+                                {Object.keys(actuatorNames).map(actId => (
+                                  <label key={actId} className={`flex items-center gap-1.5 p-1.5 rounded-lg border transition-all cursor-pointer ${m.action.includes(actId) ? 'bg-pink-500/10 border-pink-500/30' : 'bg-[var(--bg-input)] border-transparent'}`}>
+                                    <input 
+                                      type="checkbox"
+                                      checked={m.action.includes(actId)}
+                                      onChange={() => {
+                                        const nextActions = m.action.includes(actId) 
+                                          ? m.action.filter(a => a !== actId)
+                                          : [...m.action, actId];
+                                        updateMapping(idx, 'action', nextActions);
+                                      }}
+                                      className="hidden"
+                                    />
+                                    <span className={`text-[8px] font-bold truncate ${m.action.includes(actId) ? 'text-pink-400' : 'text-slate-600'}`}>
+                                      {actuatorNames[actId] || actId.replace('_', ' ')}
+                                    </span>
+                                  </label>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                              <div className="flex-1">
+                                <label className="text-[7px] font-black text-slate-500 uppercase mb-1 block">Duración (ms)</label>
+                                <input 
+                                  type="number" 
+                                  value={m.duration} 
+                                  onChange={(e) => updateMapping(idx, 'duration', e.target.value)} 
+                                  className="w-full bg-[var(--bg-input)] border border-[var(--border-card)] rounded-lg px-2 py-1.5 text-[10px] text-[var(--text-main)] outline-none" 
+                                />
+                              </div>
+                              <button 
+                                onClick={() => updateMapping(idx, 'autoReset', !m.autoReset)}
+                                className={`mt-3 px-3 py-1.5 rounded-lg text-[8px] font-black uppercase transition-all border ${m.autoReset ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500' : 'bg-slate-500/10 border-slate-500/30 text-slate-500'}`}
+                              >
+                                Auto-Reset: {m.autoReset ? 'ON' : 'OFF'}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      {localMappings.filter(m => m.event.endsWith('_goal')).length === 0 && (
+                        <div className="py-10 text-center opacity-30 italic text-[10px] font-bold uppercase">No hay metas activas</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-10 border-t border-[var(--border-card)] pt-8">
+                  <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                    <Zap size={14} className="text-pink-500" /> Mapeo de Regalos Específicos
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {localMappings.map((m, index) => (
-                    <div key={m.id} className="bg-slate-950 p-5 rounded-2xl border border-slate-800 relative group hover:border-slate-700 transition-all">
+                    <div key={m.id} className="bg-[var(--bg-input)] p-5 rounded-2xl border border-[var(--border-card)] relative group hover:border-[var(--border-card-hover)] transition-all">
                       <button 
                         onClick={() => removeMapping(m.id)}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110 z-10"
+                        className="absolute -top-2 -right-2 bg-red-500 text-[var(--text-main)] w-6 h-6 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110 z-10"
                       >
                         ✕
                       </button>
                       
                       <div className="flex justify-between items-center mb-5">
-                        <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest italic">Slot #{m.id}</span>
+                        <div>
+                          <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest italic">Slot #{m.id}</span>
+                          {m._migratedFrom && (
+                            <span className="block text-[8px] text-amber-400 font-bold mt-0.5">
+                              ⚠️ Auto-migrado desde "{m._migratedFrom}"
+                            </span>
+                          )}
+                        </div>
                         <select 
                           value={m.event}
                           onChange={(e) => updateMapping(index, 'event', e.target.value)}
-                          className="bg-slate-900 text-[10px] font-black text-pink-500 border-none outline-none rounded-lg px-2 py-1 uppercase tracking-wider"
+                          className="bg-[var(--bg-card)] text-[10px] font-black text-pink-500 border-none outline-none rounded-lg px-2 py-1 uppercase tracking-wider"
                         >
                           <option value="gift">Gift (Nombre)</option>
                           <option value="gift_value">Gift (Valor)</option>
@@ -862,7 +1259,7 @@ function App() {
                         {m.event === 'gift' && (
                           <div className="space-y-3">
                             <div className="flex gap-3">
-                              <div className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center text-2xl">
+                              <div className="w-12 h-12 bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl flex items-center justify-center text-2xl">
                                 {getGiftIcon(m.giftName)}
                               </div>
                               <div className="flex-1">
@@ -871,19 +1268,23 @@ function App() {
                                   type="text" 
                                   value={m.giftName || ''} 
                                   onChange={(e) => updateMapping(index, 'giftName', e.target.value)}
-                                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs outline-none focus:border-pink-500/50 text-white"
+                                  className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-xs outline-none focus:border-pink-500/50 text-[var(--text-main)]"
                                   placeholder="Nombre exacto"
                                 />
                               </div>
                             </div>
                             <div className="flex flex-wrap gap-1 max-h-24 overflow-y-auto pr-1 custom-scrollbar">
-                              {filteredGifts.map(gift => (
+                              {filteredGifts.map((gift, gi) => (
                                 <button
-                                  key={gift.name}
+                                  key={gift.id || gift.name + gi}
                                   onClick={() => updateMapping(index, 'giftName', gift.name)}
-                                  className={`text-[9px] px-2 py-1 rounded-md border transition-all ${m.giftName === gift.name ? 'bg-pink-500/20 border-pink-500 text-pink-400' : 'bg-slate-900 border-slate-800 text-slate-500 hover:border-slate-600'}`}
+                                  className={`text-[9px] px-2 py-1 rounded-md border transition-all flex items-center gap-1 ${m.giftName === gift.name ? 'bg-pink-500/20 border-pink-500 text-pink-400' : 'bg-[var(--bg-card)] border-[var(--border-card)] text-slate-500 hover:border-slate-600'}`}
                                 >
-                                  {gift.icon} {gift.name}
+                                  {gift.image_url
+                                    ? <img src={gift.image_url} alt={gift.name} className="w-4 h-4 object-contain" />
+                                    : <span>{gift.icon}</span>
+                                  }
+                                  {gift.name}
                                 </button>
                               ))}
                             </div>
@@ -898,7 +1299,7 @@ function App() {
                                 type="number" 
                                 value={m.minValue} 
                                 onChange={(e) => updateMapping(index, 'minValue', e.target.value)} 
-                                className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" 
+                                className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-xs text-[var(--text-main)]" 
                               />
                             </div>
                             <div>
@@ -907,7 +1308,7 @@ function App() {
                                 type="number" 
                                 value={m.maxValue} 
                                 onChange={(e) => updateMapping(index, 'maxValue', e.target.value)} 
-                                className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" 
+                                className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-xs text-[var(--text-main)]" 
                               />
                             </div>
                           </div>
@@ -921,7 +1322,7 @@ function App() {
                                 type="number" 
                                 value={m.threshold} 
                                 onChange={(e) => updateMapping(index, 'threshold', e.target.value)} 
-                                className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" 
+                                className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-xs text-[var(--text-main)]" 
                               />
                             </div>
                             <button 
@@ -933,37 +1334,47 @@ function App() {
                           </div>
                         )}
 
-                        <div className="pt-3 border-t border-slate-800/50">
+                        <div className="pt-3 border-t border-[var(--border-card)]/50">
                           <div>
                             <label className="text-[8px] font-black text-slate-600 uppercase mb-2 block">Actuadores (selección múltiple)</label>
                             <div className="grid grid-cols-2 gap-2">
                               {['relay_1', 'relay_2', 'relay_3', 'relay_4'].map(actuator => (
-                                <label key={actuator} className="flex items-center gap-2 cursor-pointer hover:bg-slate-800/50 p-1 rounded">
+                                <label key={actuator} className="flex items-center gap-2 cursor-pointer hover:bg-[var(--border-card)] p-1 rounded">
                                   <input
                                     type="checkbox"
                                     checked={(m.action || []).includes(actuator)}
                                     onChange={(e) => updateMappingActions(index, actuator, e.target.checked)}
-                                    className="w-3 h-3 text-pink-500 bg-slate-800 border-slate-700 rounded focus:ring-pink-500"
+                                    className="w-3 h-3 text-pink-500 bg-[var(--bg-input)] border-[var(--border-card)] rounded focus:ring-pink-500"
                                   />
-                                  <span className="text-[9px] font-bold text-slate-300 uppercase">{actuator.replace('_', ' ')}</span>
+                                  <div className="leading-tight">
+                                    {actuatorNames[actuator] && (
+                                      <span className="text-[9px] font-black text-[var(--text-main)] block">{actuatorNames[actuator]}</span>
+                                    )}
+                                    <span className="text-[8px] font-bold text-slate-500 uppercase">{getActuatorType(actuator)} {actuator.match(/_(\d+)$/)?.[1]}</span>
+                                  </div>
                                 </label>
                               ))}
                             </div>
                             <div className="grid grid-cols-2 gap-2 mt-2">
                               {['led_pulse', 'servo_wave'].map(actuator => (
-                                <label key={actuator} className="flex items-center gap-2 cursor-pointer hover:bg-slate-800/50 p-1 rounded">
+                                <label key={actuator} className="flex items-center gap-2 cursor-pointer hover:bg-[var(--border-card)] p-1 rounded">
                                   <input
                                     type="checkbox"
                                     checked={(m.action || []).includes(actuator)}
                                     onChange={(e) => updateMappingActions(index, actuator, e.target.checked)}
-                                    className="w-3 h-3 text-pink-500 bg-slate-800 border-slate-700 rounded focus:ring-pink-500"
+                                    className="w-3 h-3 text-pink-500 bg-[var(--bg-input)] border-[var(--border-card)] rounded focus:ring-pink-500"
                                   />
-                                  <span className="text-[9px] font-bold text-slate-300 uppercase">{actuator.replace('_', ' ')}</span>
+                                  <div className="leading-tight">
+                                    {actuatorNames[actuator] && (
+                                      <span className="text-[9px] font-black text-[var(--text-main)] block">{actuatorNames[actuator]}</span>
+                                    )}
+                                    <span className="text-[8px] font-bold text-slate-500 uppercase">{getActuatorType(actuator)}</span>
+                                  </div>
                                 </label>
                               ))}
                             </div>
                             {(m.action || []).length > 0 && (
-                              <div className="mt-2 p-2 bg-slate-900/50 rounded-lg border border-slate-800">
+                              <div className="mt-2 p-2 bg-[var(--bg-card)]/50 rounded-lg border border-[var(--border-card)]">
                                 <span className="text-[8px] font-black text-slate-500 uppercase mb-1 block">Activar:</span>
                                 <span className="text-[9px] font-bold text-pink-400">{getActionsDisplay(m.action)}</span>
                               </div>
@@ -975,7 +1386,7 @@ function App() {
                               type="number" 
                               value={m.duration} 
                               onChange={(e) => updateMapping(index, 'duration', e.target.value)} 
-                              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-2 py-2 text-[10px] text-white outline-none" 
+                              className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-2 py-2 text-[10px] text-[var(--text-main)] outline-none" 
                             />
                           </div>
                         </div>
@@ -984,73 +1395,57 @@ function App() {
                   ))}
                   <button 
                     onClick={addMapping}
-                    className="bg-slate-950 border-2 border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center p-8 hover:border-pink-500/30 hover:bg-slate-900/50 transition-all group min-h-[250px]"
+                    className="bg-[var(--bg-input)] border-2 border-dashed border-[var(--border-card)] rounded-2xl flex flex-col items-center justify-center p-8 hover:border-pink-500/30 hover:bg-[var(--bg-card)]/50 transition-all group min-h-[250px]"
                   >
-                    <div className="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 bg-[var(--border-card)] rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                       <span className="text-2xl text-slate-600 group-hover:text-pink-500">+</span>
                     </div>
                     <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest group-hover:text-slate-400">Nuevo Mapeo</span>
                   </button>
                 </div>
               </div>
+            </div>
           </div>
         )}
 
-        {/* Global Event Log */}
-        <section className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-sm">
-          <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
-            <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
-              <Volume2 size={14} className="text-violet-500" /> Monitor de Actividad
-            </h3>
-            <span className="text-[10px] font-bold text-slate-600 italic">Streaming en vivo...</span>
-          </div>
-          <div className="h-[500px] overflow-y-auto custom-scrollbar">
-            {events.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-slate-700 space-y-2 opacity-50">
-                <User size={40} strokeWidth={1} />
-                <p className="text-xs font-bold uppercase tracking-widest">Sin actividad</p>
-              </div>
-            ) : (
-              <div className="divide-y divide-slate-800/50">
-                {events.map((ev, i) => (
-                  <div key={i} className="px-6 py-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors group">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-slate-500 group-hover:border-pink-500/50 transition-all">
-                        {ev.giftName ? (
-                          <span className="text-xl">{getGiftIcon(ev.giftName)}</span>
-                        ) : (
-                          <User size={18} />
-                        )}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <p className="text-sm font-black text-slate-100">{ev.user}</p>
-                          <span className={`text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tighter ${ev.level === 'super_fan' ? 'bg-pink-500 text-white' : (ev.level === 'fan' ? 'bg-violet-500 text-white' : 'bg-slate-800 text-slate-400')}`}>
-                            {ev.level}
-                          </span>
-                        </div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase mt-0.5">
-                          {ev.eventName} <span className="text-slate-600 mx-1">•</span> <span className="text-pink-500/80">{ev.action}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[9px] font-black text-slate-700 group-hover:text-emerald-500 transition-colors uppercase tabular-nums">
-                        Sync: &lt;50ms
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
             </div>
           } />
         </Routes>
       </main>
 
       <style dangerouslySetInnerHTML={{ __html: `
+        
+        :root {
+          --bg-main: #0f172a; /* slate-900 */
+          --text-main: #f8fafc; /* slate-50 */
+          --bg-card: #1e293b; /* slate-800 */
+          --border-card: #334155; /* slate-700 */
+          --border-card-hover: #475569;
+          --bg-input: #020617;
+          --glow-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+          --backdrop: none;
+        }
+        [data-theme="neon"] {
+          --bg-main: #020617; /* slate-950 */
+          --text-main: #f8fafc; /* slate-50 */
+          --bg-card: rgba(15, 23, 42, 0.4);
+          --border-card: rgba(236, 72, 153, 0.3);
+          --border-card-hover: rgba(236, 72, 153, 0.6);
+          --bg-input: rgba(2, 6, 23, 0.6);
+          --glow-shadow: 0 0 20px rgba(236, 72, 153, 0.15);
+          --backdrop: blur(12px);
+        }
+        [data-theme="light"] {
+          --bg-main: #f8fafc;
+          --text-main: #0f172a;
+          --bg-card: #ffffff;
+          --border-card: #e2e8f0;
+          --border-card-hover: #cbd5e1;
+          --bg-input: #f1f5f9;
+          --glow-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+          --backdrop: none;
+        }
+
         @keyframes shimmer {
           0% { background-position: 0 0; }
           100% { background-position: 40px 40px; }
