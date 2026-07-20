@@ -8,9 +8,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T20:38:34.617Z",
-    "lastSeen": "2026-07-20T00:16:00.796Z",
-    "timesReceived": 243998,
-    "lastModified": "2026-07-20T00:16:00.796Z"
+    "lastSeen": "2026-07-20T01:09:50.574Z",
+    "timesReceived": 245401,
+    "lastModified": "2026-07-20T01:09:50.574Z"
   },
   {
     "id": 5487,
@@ -21,9 +21,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T20:43:38.791Z",
-    "lastSeen": "2026-07-20T00:20:29.443Z",
-    "timesReceived": 62,
-    "lastModified": "2026-07-20T00:20:29.443Z"
+    "lastSeen": "2026-07-20T00:26:47.814Z",
+    "timesReceived": 67,
+    "lastModified": "2026-07-20T00:26:47.814Z"
   },
   {
     "id": 6064,
@@ -146,14 +146,14 @@
     "id": 7934,
     "name": "Heart Me",
     "diamonds": 1,
-    "icon": "https://p16-webcast.tiktokcdn.com/img/alisg/webcast-sg/resource/composed.74f75978aaa649f2700bf3e68f4a88ad.png~tplv-obj.png",
+    "icon": "https://p16-webcast.tiktokcdn.com/img/alisg/webcast-sg/resource/composed.0cab7187dc0d27a0623de23a18ce88b0.png~tplv-obj.png",
     "description": "Sent Heart Me",
     "type": 4,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:06:34.599Z",
-    "lastSeen": "2026-07-20T00:23:29.367Z",
-    "timesReceived": 132,
-    "lastModified": "2026-07-20T00:23:29.367Z"
+    "lastSeen": "2026-07-20T00:58:22.328Z",
+    "timesReceived": 140,
+    "lastModified": "2026-07-20T00:58:22.328Z"
   },
   {
     "id": 15104,
@@ -203,9 +203,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:06:37.850Z",
-    "lastSeen": "2026-07-19T23:44:56.538Z",
-    "timesReceived": 195,
-    "lastModified": "2026-07-19T23:44:56.538Z"
+    "lastSeen": "2026-07-20T01:10:14.488Z",
+    "timesReceived": 262,
+    "lastModified": "2026-07-20T01:10:14.488Z"
   },
   {
     "id": 15231,
@@ -216,9 +216,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:06:39.443Z",
-    "lastSeen": "2026-07-20T00:14:53.695Z",
-    "timesReceived": 315,
-    "lastModified": "2026-07-20T00:14:53.695Z"
+    "lastSeen": "2026-07-20T00:58:29.135Z",
+    "timesReceived": 317,
+    "lastModified": "2026-07-20T00:58:29.135Z"
   },
   {
     "id": 6784,
@@ -294,9 +294,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:07:17.201Z",
-    "lastSeen": "2026-07-20T00:00:36.051Z",
-    "timesReceived": 71,
-    "lastModified": "2026-07-20T00:00:36.051Z"
+    "lastSeen": "2026-07-20T00:57:08.068Z",
+    "timesReceived": 78,
+    "lastModified": "2026-07-20T00:57:08.068Z"
   },
   {
     "id": 105781,
@@ -359,9 +359,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:16:05.563Z",
-    "lastSeen": "2026-07-20T00:20:09.496Z",
-    "timesReceived": 3976,
-    "lastModified": "2026-07-20T00:20:09.496Z"
+    "lastSeen": "2026-07-20T00:26:35.413Z",
+    "timesReceived": 3980,
+    "lastModified": "2026-07-20T00:26:35.413Z"
   },
   {
     "id": 5576,
@@ -372,9 +372,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T21:28:23.455Z",
-    "lastSeen": "2026-07-20T00:20:59.111Z",
-    "timesReceived": 4,
-    "lastModified": "2026-07-20T00:20:59.111Z"
+    "lastSeen": "2026-07-20T00:59:28.415Z",
+    "timesReceived": 8,
+    "lastModified": "2026-07-20T00:59:28.415Z"
   },
   {
     "id": 14488,
@@ -424,9 +424,9 @@
     "type": 4,
     "repeatable": true,
     "firstSeen": "2026-07-19T22:02:58.139Z",
-    "lastSeen": "2026-07-19T22:02:58.139Z",
-    "timesReceived": 1,
-    "lastModified": "2026-07-19T22:02:58.139Z"
+    "lastSeen": "2026-07-20T00:55:30.537Z",
+    "timesReceived": 2,
+    "lastModified": "2026-07-20T00:55:30.537Z"
   },
   {
     "id": 231957,
@@ -450,9 +450,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T22:12:51.142Z",
-    "lastSeen": "2026-07-20T00:10:27.395Z",
-    "timesReceived": 49,
-    "lastModified": "2026-07-20T00:10:27.395Z"
+    "lastSeen": "2026-07-20T00:43:51.009Z",
+    "timesReceived": 76,
+    "lastModified": "2026-07-20T00:43:51.009Z"
   },
   {
     "id": 12505,
@@ -476,9 +476,9 @@
     "type": 1,
     "repeatable": true,
     "firstSeen": "2026-07-19T23:42:44.229Z",
-    "lastSeen": "2026-07-20T00:23:04.428Z",
-    "timesReceived": 38,
-    "lastModified": "2026-07-20T00:23:04.428Z"
+    "lastSeen": "2026-07-20T00:26:38.755Z",
+    "timesReceived": 42,
+    "lastModified": "2026-07-20T00:26:38.755Z"
   },
   {
     "id": 9947,
@@ -557,5 +557,18 @@
     "lastSeen": "2026-07-20T00:05:06.602Z",
     "timesReceived": 1,
     "lastModified": "2026-07-20T00:05:06.602Z"
+  },
+  {
+    "id": 456635,
+    "name": "Xtreme 360",
+    "diamonds": 1,
+    "icon": "https://p16-webcast.tiktokcdn.com/img/alisg/webcast-sg/resource/saliency_seg_1778535337155_0.c043f4845d496d0e501e46b94bc7f098.png~tplv-obj.png",
+    "description": "Sent Xtreme 360",
+    "type": 1,
+    "repeatable": true,
+    "firstSeen": "2026-07-20T00:49:43.799Z",
+    "lastSeen": "2026-07-20T00:49:47.149Z",
+    "timesReceived": 2,
+    "lastModified": "2026-07-20T00:49:47.149Z"
   }
 ]

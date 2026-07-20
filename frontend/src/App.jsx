@@ -368,6 +368,7 @@ function App() {
     });
 
     socket.on('action_executing', (data) => {
+      console.log('📦 action_executing recibido:', data);
       setEvents(prev => [data, ...prev].slice(0, 20));
       
       if (data.giftName) {
