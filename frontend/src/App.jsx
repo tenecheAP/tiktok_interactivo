@@ -1,18 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import { Settings, Play, Wifi, Volume2, User, Zap, Gift, Target, Heart } from 'lucide-react';
+import { Settings, Play, Wifi, Volume2, User, Zap, Gift, Target, Heart, Search } from 'lucide-react';
 import socket from './socket';
 import BotLectorView from './bot-lector/BotLectorView';
+import GiftCatalogView from './GiftCatalogView';
 // import AccountsEnjambre from './accounts-enjambre/AccountsEnjambre';
 
 function App() {
   const [theme, setTheme] = useState('neon');
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => {
+    return localStorage.getItem('tiktok_current_username') || '';
+  });
   const [history, setHistory] = useState(() => {
     const saved = localStorage.getItem('tiktok_history');
     return saved ? JSON.parse(saved) : [];
   });
-  const [status, setStatus] = useState('disconnected');
+  const [status, setStatus] = useState(() => {
+    const saved = localStorage.getItem('tiktok_session_status');
+    return saved || 'disconnected';
+  });
   const [connectionError, setConnectionError] = useState('');
   const [config, setConfig] = useState(null);
   const [localMappings, setLocalMappings] = useState(() => {
@@ -38,6 +44,7 @@ function App() {
   const [isSaving, setIsSaving] = useState(false);
   const [isLoadingGifts, setIsLoadingGifts] = useState(false);
   const [giftsError, setGiftsError] = useState('');
+  const [giftSearchQuery, setGiftSearchQuery] = useState('');
 
   // Nombres personalizados de actuadores (persistidos)
   const [actuatorNames, setActuatorNames] = useState(() => {
@@ -314,8 +321,10 @@ function App() {
       if (data.status === 'connected') {
         setLiveInfo(prev => ({ ...prev, startTime: data.startTime }));
         setConnectionError('');
+        localStorage.setItem('tiktok_session_status', 'connected');
       } else if (data.status === 'error' || data.status === 'disconnected') {
         setConnectionError(data.error || 'Error de conexión');
+        localStorage.setItem('tiktok_session_status', 'disconnected');
       }
     });
 
@@ -609,98 +618,114 @@ function App() {
       setConnectionError('');
       socket.emit('set_username', userToConnect);
       setStatus('connecting');
+       // NO guardar 'connecting' en localStorage, solo connected o disconnected
+       localStorage.setItem('tiktok_current_username', userToConnect);
       
-      // Actualizar historial
-      setHistory(prev => {
-        const filtered = prev.filter(u => u !== userToConnect);
-        const newHistory = [userToConnect, ...filtered].slice(0, 5);
-        localStorage.setItem('tiktok_history', JSON.stringify(newHistory));
-        return newHistory;
-      });
+       // Actualizar historial
+       setHistory(prev => {
+         const filtered = prev.filter(u => u !== userToConnect);
+         const newHistory = [userToConnect, ...filtered].slice(0, 5);
+         localStorage.setItem('tiktok_history', JSON.stringify(newHistory));
+         return newHistory;
+       });
       
-      if (selectedUsername) setUsername(selectedUsername);
-    }
+       if (selectedUsername) setUsername(selectedUsername);
+     }
+  };
+
+  const closeSession = () => {
+     if (window.confirm('¿Cerrar la sesión actual?')) {
+       socket.emit('disconnect_live');
+       setUsername('');
+       setStatus('disconnected');
+       localStorage.removeItem('tiktok_current_username');
+       localStorage.setItem('tiktok_session_status', 'disconnected');
+       setStats({ totalLikes: 0, totalGifts: 0, totalFollowers: 0 });
+       setLiveInfo({ viewerCount: 0, startTime: null, elapsed: '00:00:00' });
+     }
   };
 
   return (
     <div data-theme={theme} className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] font-sans selection:bg-pink-500/30 transition-colors duration-500">
       {/* Top Stats Bar */}
       <div className="bg-[var(--bg-card)]/80 backdrop-blur-md border-b border-[var(--border-card)] sticky top-0 z-40">
-        <div className="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-4">
-              <h1 className="text-xl font-black tracking-tighter bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent uppercase italic">
-                TikTok Live <span className="text-[var(--text-main)] not-italic">Pro</span>
-              </h1>
-              <Link
-                to="/bot-lector"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] font-black uppercase tracking-widest text-violet-400 hover:text-violet-300 border border-violet-500/40 px-2 py-1 rounded-lg"
-              >
-                Bot lector (Pestaña)
-              </Link>
-              <button
-                onClick={() => { setIsBotActive(true); setShowBotModal(true); }}
-                className={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-lg border transition-all ${
-                  isBotActive 
-                    ? 'text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/10' 
-                    : 'text-pink-400 hover:text-pink-300 border-pink-500/40'
-                }`}
-              >
-                {isBotActive ? '🎙️ Ver Bot (Activo en Fondo)' : '🎙️ Activar en Fondo'}
-              </button>
-            </div>
-            <div className="hidden md:flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"></div>
-                  Likes: <span className="text-[var(--text-main)]">{stats.totalLikes.toLocaleString()}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-violet-500"></div>
-                  Gifts: <span className="text-[var(--text-main)]">{stats.totalGifts}</span>
-                </div>
-                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6 ml-2">
-                  <Wifi size={12} className={status === 'connected' ? 'text-emerald-500' : 'text-slate-700'} />
-                  ESP32: <span className={status === 'connected' ? 'text-emerald-400' : 'text-slate-500'}>{status === 'connected' ? 'En Línea' : 'Offline'}</span>
-                </div>
-                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6">
-                  <div className={`w-1.5 h-1.5 rounded-full ${status === 'connected' ? 'bg-red-500 animate-pulse' : 'bg-slate-700'}`}></div>
-                  Live: <span className="text-[var(--text-main)] tabular-nums font-mono text-xs">{liveInfo.elapsed}</span>
-                </div>
-                <div className="flex items-center gap-2 border-l border-[var(--border-card)] pl-6">
-                  <User size={12} className="text-slate-500" />
-                  Viewers: <span className="text-[var(--text-main)] tabular-nums">{liveInfo.viewerCount.toLocaleString()}</span>
-                </div>
-              </div>
-          </div>
+       <div className="max-w-[1600px] mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
+         {/* Izquierda: Logo y Nav */}
+         <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0 overflow-x-auto pb-1">
+           <Link to="/">
+             <h1 className="text-xs sm:text-lg font-black tracking-tighter bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent uppercase italic hover:opacity-90 whitespace-nowrap">
+               TikTok<span className="text-[var(--text-main)] not-italic text-[9px] sm:text-base"> Pro</span>
+             </h1>
+           </Link>
+           <Link
+             to="/catalog"
+             className="hidden sm:block text-[9px] font-black uppercase tracking-widest text-pink-400 hover:text-pink-300 border border-pink-500/40 px-1.5 py-0.5 rounded"
+           >
+             Catálogo
+           </Link>
+           <Link
+             to="/bot-lector"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="hidden lg:block text-[9px] font-black uppercase tracking-widest text-violet-400 hover:text-violet-300 border border-violet-500/40 px-1.5 py-0.5 rounded"
+           >
+             Bot
+           </Link>
+           <button
+             onClick={() => { setIsBotActive(true); setShowBotModal(true); }}
+             className={`hidden sm:block text-[9px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded border transition-all ${
+               isBotActive 
+                 ? 'text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/10' 
+                 : 'text-pink-400 hover:text-pink-300 border-pink-500/40'
+             }`}
+           >
+             {isBotActive ? '🎙️' : '🎙️'}
+           </button>
+         </div>
 
-          <div className="flex items-center gap-4">
+         {/* Centro: Sesión actual si está conectado */}
+         {status === 'connected' && username && (
+           <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-bold flex-shrink-0 whitespace-nowrap">
+             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+             @{username}
+           </div>
+         )}
+
+         {/* Derecha: Botones de control */}
+         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <button 
               onClick={toggleAudio}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${audioEnabled ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-pink-500 text-[var(--text-main)] shadow-lg shadow-pink-500/20'}`}
+              className={`flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded text-xs font-bold transition-all flex-shrink-0 ${audioEnabled ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-pink-500 text-[var(--text-main)]'}`}
+              title={audioEnabled ? 'Audio On' : 'Activar Audio'}
             >
-              {audioEnabled ? <Volume2 size={14} /> : <Volume2 size={14} className="animate-bounce" />}
-              {audioEnabled ? 'Audio On' : 'Activar Audio'}
+              <Volume2 size={13} className="sm:w-3.5 sm:h-3.5" />
             </button>
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-bold ${status === 'connected' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'}`}>
-              <div className={`w-2 h-2 rounded-full ${status === 'connected' ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
-              {status.toUpperCase()}
-            </div>
             
             <button 
               onClick={() => setTheme(theme === 'neon' ? 'dark' : (theme === 'dark' ? 'light' : 'neon'))}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-[var(--border-card)] bg-[var(--bg-card)]`}
+              className={`hidden sm:flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded text-xs font-bold transition-all border border-[var(--border-card)] bg-[var(--bg-card)] flex-shrink-0`}
+              title={`Tema: ${theme === 'neon' ? 'Neon' : (theme === 'dark' ? 'Dark' : 'Light')}`}
             >
-              {theme === 'neon' ? '🌟 Neon' : (theme === 'dark' ? '🌙 Dark' : '☀️ Light')}
+              {theme === 'neon' ? '🌟' : (theme === 'dark' ? '🌙' : '☀️')}
             </button>
 
             <button 
               onClick={() => setShowConfig(!showConfig)}
-              className={`p-2 rounded-lg transition-all ${showConfig ? 'bg-pink-500 text-[var(--text-main)] shadow-lg shadow-pink-500/20' : 'bg-[var(--bg-input)] border border-[var(--border-card)] text-[var(--text-main)] opacity-80 hover:opacity-100'}`}
+              className={`flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded transition-all flex-shrink-0 ${showConfig ? 'bg-pink-500 text-[var(--text-main)] shadow-lg shadow-pink-500/20' : 'bg-[var(--bg-input)] border border-[var(--border-card)] text-[var(--text-main)] opacity-80 hover:opacity-100'}`}
+              title="Configuración"
             >
-              <Settings size={18} />
+              <Settings size={13} className="sm:w-3.5 sm:h-3.5" />
             </button>
+
+            {status === 'connected' && (
+              <button 
+                onClick={closeSession}
+                className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500 hover:text-[var(--text-main)] transition-all flex-shrink-0"
+                title="Cerrar sesión"
+              >
+                <User size={13} className="sm:w-3.5 sm:h-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -735,6 +760,7 @@ function App() {
 
         <Routes>
           <Route path="/bot-lector" element={<BotLectorView />} />
+          <Route path="/catalog" element={<GiftCatalogView />} />
           {/* <Route path="/accounts-enjambre" element={<AccountsEnjambre />} /> */}
           <Route path="/" element={
             <div className="space-y-6">
@@ -1134,9 +1160,11 @@ function App() {
                           <div key={m.id} className="p-4 bg-[var(--bg-card)]/50 rounded-2xl border border-pink-500/20 space-y-4 relative group/goal">
                             <button 
                               onClick={() => {
-                                const next = localMappings.filter(lm => lm.id !== m.id);
-                                setLocalMappings(next);
-                                saveConfig(next);
+                                if (window.confirm('¿Estás seguro de que quieres eliminar esta meta de comunidad?')) {
+                                  const next = localMappings.filter(lm => lm.id !== m.id);
+                                  setLocalMappings(next);
+                                  saveConfig(next);
+                                }
                               }}
                               className="absolute top-2 right-2 text-slate-600 hover:text-red-500 opacity-0 group-hover/goal:opacity-100 transition-opacity"
                             >
@@ -1228,7 +1256,11 @@ function App() {
                   {localMappings.map((m, index) => (
                     <div key={m.id} className="bg-[var(--bg-input)] p-5 rounded-2xl border border-[var(--border-card)] relative group hover:border-[var(--border-card-hover)] transition-all">
                       <button 
-                        onClick={() => removeMapping(m.id)}
+                        onClick={() => {
+                          if (window.confirm(`¿Estás seguro de que quieres eliminar el mapeo del Slot #${m.id}?`)) {
+                            removeMapping(m.id);
+                          }
+                        }}
                         className="absolute -top-2 -right-2 bg-red-500 text-[var(--text-main)] w-6 h-6 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110 z-10"
                       >
                         ✕
@@ -1250,6 +1282,7 @@ function App() {
                         >
                           <option value="gift">Gift (Nombre)</option>
                           <option value="gift_value">Gift (Valor)</option>
+                          <option value="gift_any">Gift (Cualquiera)</option>
                           <option value="like_goal">Like Goal</option>
                           <option value="follow">Follow</option>
                         </select>
@@ -1273,20 +1306,67 @@ function App() {
                                 />
                               </div>
                             </div>
+                            <div className="space-y-2 mt-2">
+                              <div className="flex gap-1.5 items-center bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-2.5 py-1">
+                                <Search size={10} className="text-slate-500" />
+                                <input
+                                  type="text"
+                                  placeholder="Buscar por nombre..."
+                                  value={giftSearchQuery}
+                                  onChange={(e) => setGiftSearchQuery(e.target.value)}
+                                  className="bg-transparent text-[10px] outline-none text-[var(--text-main)] placeholder:opacity-50 w-full"
+                                />
+                                {giftSearchQuery && (
+                                  <button onClick={() => setGiftSearchQuery('')} className="text-[10px] text-slate-500 hover:text-white">✕</button>
+                                )}
+                              </div>
+                              <div className="flex gap-1 justify-between">
+                                {['all', 'low', 'medium', 'high'].map(filter => (
+                                  <button
+                                    key={filter}
+                                    onClick={() => setGiftFilter(filter)}
+                                    type="button"
+                                    className={`text-[8px] font-black uppercase px-2 py-0.5 rounded border transition-all ${giftFilter === filter ? 'bg-pink-500/20 border-pink-500 text-pink-400' : 'border-transparent text-slate-500 hover:text-[var(--text-main)]'}`}
+                                  >
+                                    {filter === 'all' && 'Todos'}
+                                    {filter === 'low' && 'Bajo'}
+                                    {filter === 'medium' && 'Medio'}
+                                    {filter === 'high' && 'Alto'}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
                             <div className="flex flex-wrap gap-1 max-h-24 overflow-y-auto pr-1 custom-scrollbar">
-                              {filteredGifts.map((gift, gi) => (
-                                <button
-                                  key={gift.id || gift.name + gi}
-                                  onClick={() => updateMapping(index, 'giftName', gift.name)}
-                                  className={`text-[9px] px-2 py-1 rounded-md border transition-all flex items-center gap-1 ${m.giftName === gift.name ? 'bg-pink-500/20 border-pink-500 text-pink-400' : 'bg-[var(--bg-card)] border-[var(--border-card)] text-slate-500 hover:border-slate-600'}`}
-                                >
-                                  {gift.image_url
-                                    ? <img src={gift.image_url} alt={gift.name} className="w-4 h-4 object-contain" />
-                                    : <span>{gift.icon}</span>
+                              {(() => {
+                                const uniqueMap = new Map();
+                                filteredGifts.forEach(g => {
+                                  if (g.name) {
+                                    const key = g.name.toLowerCase();
+                                    if (!uniqueMap.has(key) || (!uniqueMap.get(key).image_url && g.image_url)) {
+                                      uniqueMap.set(key, g);
+                                    }
                                   }
-                                  {gift.name}
-                                </button>
-                              ))}
+                                });
+                                return Array.from(uniqueMap.values())
+                                  .filter(g => g.name.toLowerCase().includes(giftSearchQuery.toLowerCase()))
+                                  .map((gift, gi) => {
+                                    const imgUrl = gift.image_url || (typeof gift.icon === 'string' && gift.icon.startsWith('http') ? gift.icon : null);
+                                    return (
+                                      <button
+                                        key={gift.id || gift.name + gi}
+                                        onClick={() => updateMapping(index, 'giftName', gift.name)}
+                                        className={`text-[9px] px-2 py-1 rounded-md border transition-all flex items-center gap-1 ${m.giftName === gift.name ? 'bg-pink-500/20 border-pink-500 text-pink-400' : 'bg-[var(--bg-card)] border-[var(--border-card)] text-slate-500 hover:border-slate-600'}`}
+                                      >
+                                        {imgUrl ? (
+                                          <img src={imgUrl} alt={gift.name} className="w-4 h-4 object-contain" />
+                                        ) : (
+                                          <span>{typeof gift.icon === 'string' ? gift.icon : '🎁'}</span>
+                                        )}
+                                        {gift.name}
+                                      </button>
+                                    );
+                                  });
+                              })()}
                             </div>
                           </div>
                         )}
@@ -1311,6 +1391,38 @@ function App() {
                                 className="w-full bg-[var(--bg-card)] border border-[var(--border-card)] rounded-lg px-3 py-2 text-xs text-[var(--text-main)]" 
                               />
                             </div>
+                          </div>
+                        )}
+
+                        {m.event === 'gift_any' && (
+                          <div className="space-y-3">
+                            <label className="text-[8px] font-black text-slate-600 uppercase mb-2 block">Categoría de Regalo</label>
+                            <div className="flex gap-2 flex-wrap">
+                              {[
+                                { value: 'all', label: 'Todos', color: 'slate' },
+                                { value: 'low', label: 'Bajo', color: 'blue' },
+                                { value: 'medium', label: 'Medio', color: 'amber' },
+                                { value: 'high', label: 'Alto', color: 'pink' }
+                              ].map(cat => (
+                                <button
+                                  key={cat.value}
+                                  onClick={() => updateMapping(index, 'giftCategory', cat.value)}
+                                  className={`px-3 py-2 rounded-lg text-[9px] font-black uppercase transition-all border ${
+                                    m.giftCategory === cat.value
+                                      ? `bg-${cat.color}-500/20 border-${cat.color}-500/50 text-${cat.color}-400`
+                                      : `border-[var(--border-card)] text-slate-500 hover:text-[var(--text-main)]`
+                                  }`}
+                                >
+                                  {cat.label}
+                                </button>
+                              ))}
+                            </div>
+                            <p className="text-[8px] text-slate-500 italic">
+                              {m.giftCategory === 'all' && '✓ Se activará con CUALQUIER regalo'}
+                              {m.giftCategory === 'low' && '✓ Se activará con regalos de bajo valor'}
+                              {m.giftCategory === 'medium' && '✓ Se activará con regalos de valor medio'}
+                              {m.giftCategory === 'high' && '✓ Se activará con regalos de alto valor'}
+                            </p>
                           </div>
                         )}
 

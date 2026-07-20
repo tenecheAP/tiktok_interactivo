@@ -1,5 +1,6 @@
 const { getConfig } = require('./configManager');
 const { addToQueue, getRoomState } = require('./queueManager');
+const giftCatalogManager = require('./giftCatalogManager');
 
 function normalizeLiveChat(data) {
     return {
@@ -110,6 +111,9 @@ function processEvent(eventType, data, username) {
     if (eventType === 'gift') {
         const giftName = data.giftName || 'Regalo';
         const giftValue = data.giftValue || data.diamondCount || 0;
+        
+        // Actualizar catálogo de regalos inteligente
+        giftCatalogManager.updateGift(data);
         
         // Meta de diamantes acumulados
         if (giftValue > 0) {

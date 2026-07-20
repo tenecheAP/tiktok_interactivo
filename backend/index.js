@@ -28,6 +28,9 @@ global.io = io;
 
 // Inicializar configuración y gestores
 loadConfig();
+const giftCatalogManager = require('./giftCatalogManager');
+giftCatalogManager.load();
+
 const accountPool = new AccountPool();
 const orchestrator = new ConnectionOrchestrator(accountPool);
 

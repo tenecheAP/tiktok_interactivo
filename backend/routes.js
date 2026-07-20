@@ -1,6 +1,7 @@
 const express = require('express');
 const { AccountStatus } = require('./accountPool');
 const { cachedGiftLists } = require('./tiktokConnection');
+const giftCatalogManager = require('./giftCatalogManager');
 
 function setupRoutes(app, accountPool, orchestrator) {
     app.get('/', (req, res) => {
@@ -131,6 +132,31 @@ function setupRoutes(app, accountPool, orchestrator) {
         accountPool.config = { ...accountPool.config, ...req.body };
         accountPool.persist();
         res.json(accountPool.config);
+    });
+
+    // === INTELLIGENT GIFT CATALOG ENDPOINTS ===
+    app.get('/api/catalog/gifts', (req, res) => {
+        const query = req.query.q;
+        if (query) {
+            return res.json(giftCatalogManager.search(query));
+        }
+        res.json(giftCatalogManager.getAll());
+    });
+
+    app.get('/api/catalog/stats', (req, res) => {
+        res.json(giftCatalogManager.stats());
+    });
+
+    app.get('/api/catalog/export/csv', (req, res) => {
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader('Content-Disposition', 'attachment; filename=gifts.csv');
+        res.send(giftCatalogManager.exportCSV());
+    });
+
+    app.get('/api/catalog/export/json', (req, res) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Content-Disposition', 'attachment; filename=gifts.json');
+        res.send(giftCatalogManager.exportJSON());
     });
 }
 

@@ -41,7 +41,9 @@ function connectToTikTok(username, socket) {
 
         // Intentar extraer la lista de regalos disponibles
         try {
-            const gifts = tiktokConnection.getAvailableGifts();
+            const gifts = typeof tiktokConnection.getAvailableGifts === 'function'
+                ? tiktokConnection.getAvailableGifts()
+                : (tiktokConnection.availableGifts || null);
             if (gifts && gifts.length > 0) {
                 const mapped = gifts.map(g => ({
                     id: g.id || g.giftId,
